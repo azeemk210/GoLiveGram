@@ -1,0 +1,254 @@
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Smartphone, Download } from 'lucide-react';
+import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloads';
+
+const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      
+      // Detect which section is currently in view
+      const sections = ['features', 'monetization', 'creators', 'testimonials'];
+      let currentSection = '';
+      
+      // Find the section with the most visible area
+      let maxVisibleArea = 0;
+      
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          
+          // Calculate visible area of this section
+          const visibleTop = Math.max(0, rect.top);
+          const visibleBottom = Math.min(window.innerHeight, rect.bottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const visibleArea = visibleHeight * rect.width;
+          
+          // If this section has more visible area than previous sections
+          if (visibleArea > maxVisibleArea && visibleHeight > 50) { // At least 50px visible
+            maxVisibleArea = visibleArea;
+            currentSection = sectionId;
+          }
+        }
+      });
+      
+      // Alternative method: Check which section the scroll position is in
+      if (!currentSection) {
+        const scrollPosition = window.scrollY + 200; // 200px offset from top
+        
+        sections.forEach(sectionId => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const elementTop = element.offsetTop;
+            const elementBottom = elementTop + element.offsetHeight;
+            
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+              currentSection = sectionId;
+            }
+          }
+        });
+      }
+      
+      // Don't highlight anything if we're at the very top
+      if (window.scrollY < 50) {
+        currentSection = '';
+      }
+      
+      setActiveSection(currentSection);
+      
+      // Debug logging
+      console.log('Scroll Y:', window.scrollY, 'Active section:', currentSection);
+      
+      // Log section positions for debugging
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          console.log(`${sectionId}: top=${Math.round(rect.top)}, bottom=${Math.round(rect.bottom)}, visible=${rect.top < window.innerHeight && rect.bottom > 0}`);
+        }
+      });
+    };
+    
+    // Initial call
+    handleScroll();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      // Immediately set active section when clicked
+      setActiveSection(sectionId);
+    }
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    }`}>
+      <nav className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <img 
+              src="/Go.svg" 
+              alt="GoLiveGram - Stream, Connect & Monetize Your Passion" 
+              className="h-10 w-auto hover:scale-105 transition-transform duration-200"
+              style={{ maxWidth: '160px' }}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = '/Go.png';
+              }}
+            />
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-8">
+            <button 
+              onClick={() => scrollToSection('features')}
+              className={`transition-colors font-medium cursor-pointer ${
+                activeSection === 'features' 
+                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
+                  : 'text-gray-700 hover:text-red-500'
+              }`}
+            >
+              Features
+            </button>
+            <button 
+              onClick={() => scrollToSection('monetization')}
+              className={`transition-colors font-medium cursor-pointer ${
+                activeSection === 'monetization' 
+                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
+                  : 'text-gray-700 hover:text-red-500'
+              }`}
+            >
+              Monetization
+            </button>
+            <button 
+              onClick={() => scrollToSection('creators')}
+              className={`transition-colors font-medium cursor-pointer ${
+                activeSection === 'creators' 
+                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
+                  : 'text-gray-700 hover:text-red-500'
+              }`}
+            >
+              Creators
+            </button>
+            <button 
+              onClick={() => scrollToSection('testimonials')}
+              className={`transition-colors font-medium cursor-pointer ${
+                activeSection === 'testimonials' 
+                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
+                  : 'text-gray-700 hover:text-red-500'
+              }`}
+            >
+              Success Stories
+            </button>
+          </div>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <button 
+              onClick={() => handleDownloadClick('web')}
+              className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors font-medium cursor-pointer"
+            >
+              <Smartphone className="w-4 h-4" />
+              <span>Try Web Version</span>
+            </button>
+            <button 
+              onClick={() => handleDownloadClick(getRecommendedPlatform())}
+              className="btn-primary flex items-center space-x-2 cursor-pointer"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download App</span>
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+            <div className="flex flex-col space-y-4 pt-4">
+              <button 
+                onClick={() => scrollToSection('features')}
+                className={`text-left transition-colors font-medium cursor-pointer ${
+                  activeSection === 'features' 
+                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
+                    : 'text-gray-700 hover:text-red-500'
+                }`}
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => scrollToSection('monetization')}
+                className={`text-left transition-colors font-medium cursor-pointer ${
+                  activeSection === 'monetization' 
+                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
+                    : 'text-gray-700 hover:text-red-500'
+                }`}
+              >
+                Monetization
+              </button>
+              <button 
+                onClick={() => scrollToSection('creators')}
+                className={`text-left transition-colors font-medium cursor-pointer ${
+                  activeSection === 'creators' 
+                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
+                    : 'text-gray-700 hover:text-red-500'
+                }`}
+              >
+                Creators
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')}
+                className={`text-left transition-colors font-medium cursor-pointer ${
+                  activeSection === 'testimonials' 
+                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
+                    : 'text-gray-700 hover:text-red-500'
+                }`}
+              >
+                Success Stories
+              </button>
+              <div className="pt-4 space-y-2">
+                <button 
+                  onClick={() => handleDownloadClick('web')}
+                  className="w-full btn-secondary flex items-center justify-center space-x-2 cursor-pointer"
+                >
+                  <Smartphone className="w-4 h-4" />
+                  <span>Try Web Version</span>
+                </button>
+                <button 
+                  onClick={() => handleDownloadClick(getRecommendedPlatform())}
+                  className="w-full btn-primary flex items-center justify-center space-x-2 cursor-pointer"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download App</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+};
+
+export default Header;

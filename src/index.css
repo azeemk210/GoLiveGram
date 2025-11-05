@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+.hero-bg {
+  background: linear-gradient(135deg, #ee3a3a 0%, #d73333 50%, #3B82F6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(238, 58, 58, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(215, 51, 51, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(2deg); }
+  66% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+/* Component-specific styles */
+.feature-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #f3f4f6;
+}
+
+.feature-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #ee3a3a, #d73333);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary {
+  background: white;
+  color: #ee3a3a;
+  border: 2px solid #ee3a3a;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background-color: #fef2f2;
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Ensure text is always visible */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  color: inherit;
+}
+
+/* Fix any potential text visibility issues */
+.text-gray-900 {
+  color: #1f2937 !important;
+}
+
+.text-gray-800 {
+  color: #1f2937 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure cards have proper backgrounds */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+/* Fix gradient text for better visibility */
+.text-gradient.bg-gradient-to-r {
+  background: linear-gradient(to right, #10b981, #059669);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Ensure earnings calculator middle card is always visible */
+.earnings-card-featured {
+  background: linear-gradient(135deg, #ee3a3a 0%, #d73333 50%, #3b82f6 100%) !important;
+  color: white !important;
+  position: relative;
+  z-index: 1;
+}
+
+.earnings-card-featured * {
+  color: white !important;
+}
+
+.earnings-card-featured h4,
+.earnings-card-featured div {
+  color: white !important;
+}
+
+.earnings-card-featured .text-white\/90 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Ensure all earnings calculator cards are visible */
+.earnings-calculator .text-center {
+  position: relative;
+  z-index: 1;
+}
+
+.earnings-calculator .bg-white {
+  background-color: white !important;
+  border: 1px solid #e5e7eb;
+}
+
+.earnings-calculator .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+.earnings-calculator .text-green-600 {
+  color: #16a34a !important;
+}
+
+.earnings-calculator .text-gray-600 {
+  color: #4b5563 !important;
+}

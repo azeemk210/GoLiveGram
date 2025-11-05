@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>GoLiveGram - Stream, Connect & Monetize Your Passion | Live Streaming App</title>
+    <meta name="title" content="GoLiveGram - Stream, Connect & Monetize Your Passion | Live Streaming App" />
+    <meta name="description" content="Join 2.5M+ creators earning $500-$5000/month on GoLiveGram. Go live, build community, and turn your passion into profit with multiple monetization streams. Download now!" />
+    <meta name="keywords" content="live streaming app, monetize streaming, creator economy, go live, earn money streaming, social media app, content creator, video streaming, live broadcast, influencer marketing" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://golivegram.com/" />
+    <meta property="og:title" content="GoLiveGram - Stream, Connect & Monetize Your Passion" />
+    <meta property="og:description" content="Join 2.5M+ creators earning $500-$5000/month. Go live, build community, and monetize your passion with GoLiveGram!" />
+    <meta property="og:image" content="https://golivegram.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://golivegram.com/" />
+    <meta property="twitter:title" content="GoLiveGram - Stream, Connect & Monetize Your Passion" />
+    <meta property="twitter:description" content="Join 2.5M+ creators earning $500-$5000/month on GoLiveGram. Start your creator journey today!" />
+    <meta property="twitter:image" content="https://golivegram.com/twitter-image.png" />
+    
+    <!-- Theme -->
+    <meta name="theme-color" content="#ee3a3a" />
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GoLiveGram",
+      "operatingSystem": ["iOS", "Android", "Web"],
+      "applicationCategory": "SocialNetworkingApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "15000"
+      },
+      "description": "Join 2.5M+ creators earning $500-$5000/month on GoLiveGram. Go live, build community, and turn your passion into profit with multiple monetization streams.",
+      "url": "https://golivegram.com",
+      "downloadUrl": [
+        "https://apps.apple.com/app/golivegram",
+        "https://play.google.com/store/apps/details?id=com.golivegram"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Google Analytics 4 -->
+    <!-- Replace G-XXXXXXXXXX with your actual Google Analytics 4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+      
+      // Track app downloads
+      function trackDownload(platform) {
+        gtag('event', 'app_download', {
+          'app_platform': platform,
+          'value': 1
+        });
+      }
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <!-- Replace YOUR_PIXEL_ID with your actual Facebook Pixel ID -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
+      
+      // Track app downloads
+      function trackFBDownload(platform) {
+        fbq('track', 'StartTrial', {
+          value: 1.00,
+          currency: 'USD',
+          predicted_ltv: 25.00
+        });
+      }
+    </script>
+  </body>
+</html>
