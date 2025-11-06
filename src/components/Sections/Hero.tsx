@@ -7,25 +7,25 @@ const Hero: React.FC = () => {
     <section id="hero" className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        {/* Extra Floating Emojis (top corners / sides) */}
-        <div className="absolute top-8 right-8 floating-element text-3xl pointer-events-none" aria-hidden="true">🎥</div>
-        <div className="absolute top-8 left-8 floating-element text-4xl pointer-events-none" aria-hidden="true">💎</div>
-        <div className="absolute top-32 right-32 floating-element text-3xl pointer-events-none motion-safe:animate-bounce" aria-hidden="true">🔥</div>
-        <div className="absolute top-16 left-1/4 floating-element text-3xl pointer-events-none" aria-hidden="true">🌟</div>
-        {/* Floating Money Icons */}
-        <div className="absolute top-20 left-10 floating-element text-4xl">💰</div>
-        <div className="absolute top-40 right-20 floating-element text-3xl animate-pulse">💵</div>
-        <div className="absolute bottom-40 left-20 floating-element text-2xl">💸</div>
+        {/* Extra Floating Emojis (top corners / sides) - Hidden on mobile */}
+        <div className="absolute top-8 right-8 floating-element text-3xl pointer-events-none hidden md:block" aria-hidden="true">🎥</div>
+        <div className="absolute top-8 left-8 floating-element text-4xl pointer-events-none hidden md:block" aria-hidden="true">💎</div>
+        <div className="absolute top-32 right-32 floating-element text-3xl pointer-events-none motion-safe:animate-bounce hidden md:block" aria-hidden="true">🔥</div>
+        <div className="absolute top-16 left-1/4 floating-element text-3xl pointer-events-none hidden md:block" aria-hidden="true">🌟</div>
+        {/* Floating Money Icons - Hidden on mobile */}
+        <div className="absolute top-20 left-10 floating-element text-4xl hidden md:block">💰</div>
+        <div className="absolute top-40 right-20 floating-element text-3xl animate-pulse hidden md:block">💵</div>
+        <div className="absolute bottom-40 left-20 floating-element text-2xl hidden md:block">💸</div>
         
-        {/* Streaming Icons */}
-        <div className="absolute top-60 left-1/4 floating-element text-3xl">📺</div>
-        <div className="absolute top-32 right-1/3 floating-element text-2xl">⚡</div>
-        <div className="absolute bottom-60 right-10 floating-element text-3xl">📡</div>
+        {/* Streaming Icons - Hidden on mobile */}
+        <div className="absolute top-60 left-1/4 floating-element text-3xl hidden md:block">📺</div>
+        <div className="absolute top-32 right-1/3 floating-element text-2xl hidden md:block">⚡</div>
+        <div className="absolute bottom-60 right-10 floating-element text-3xl hidden md:block">📡</div>
         
-        {/* Hearts */}
-        <div className="absolute top-80 left-1/3 floating-element text-2xl">❤️</div>
-        <div className="absolute bottom-20 left-1/2 floating-element text-2xl">💜</div>
-        <div className="absolute top-96 right-1/4 floating-element text-2xl">💙</div>
+        {/* Hearts - Hidden on mobile */}
+        <div className="absolute top-80 left-1/3 floating-element text-2xl hidden md:block">❤️</div>
+        <div className="absolute bottom-20 left-1/2 floating-element text-2xl hidden md:block">💜</div>
+        <div className="absolute top-96 right-1/4 floating-element text-2xl hidden md:block">💙</div>
       </div>
 
       <div className="container mx-auto px-6 z-10 relative">

@@ -132,33 +132,101 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Stats Banner */}
-        <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-3xl p-8 text-white text-center">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-6">
-              Join 50,000+ Successful Creators Today! 🎉
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div>
-                <div className="text-3xl font-bold">$2M+</div>
-                <div className="text-white/80">Paid to Creators</div>
+        {/* Enhanced Stats Banner */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-20 -translate-y-20 animate-pulse"></div>
+            <div className="absolute top-1/2 right-0 w-32 h-32 bg-yellow-300 rounded-full translate-x-16 animate-bounce delay-300"></div>
+            <div className="absolute bottom-0 left-1/3 w-24 h-24 bg-cyan-300 rounded-full translate-y-12 animate-pulse delay-700"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-16 h-16 bg-green-300 rounded-full animate-bounce delay-1000"></div>
+          </div>
+
+          <div className="relative z-10 max-w-5xl mx-auto">
+            {/* Main Heading */}
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-4">
+                <span className="text-2xl">🚀</span>
+                <span className="text-sm font-semibold">JOIN THE REVOLUTION</span>
+                <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">4.8⭐</div>
-                <div className="text-white/80">App Store Rating</div>
+              
+              <h3 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
+                Join 2.5M+ Successful Creators Today!
+              </h3>
+              
+              <p className="text-xl text-white/90 max-w-3xl mx-auto">
+                Turn your passion into profit with GoLiveGram's creator-first platform 🎉
+              </p>
+            </div>
+
+            {/* Enhanced Stats Grid */}
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-10">
+              <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10">
+                  <div className="text-4xl md:text-5xl font-black mb-2 text-emerald-200">$2M+</div>
+                  <div className="text-white/90 font-semibold">💰 Paid to Creators</div>
+                  <div className="text-xs text-emerald-200 mt-1">+25% this month</div>
+                </div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">300%</div>
-                <div className="text-white/80">Monthly Growth</div>
+              
+              <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-yellow-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10">
+                  <div className="text-4xl md:text-5xl font-black mb-2 text-amber-200">4.8⭐</div>
+                  <div className="text-white/90 font-semibold">📱 App Store Rating</div>
+                  <div className="text-xs text-amber-200 mt-1">15K+ reviews</div>
+                </div>
+              </div>
+              
+              <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10">
+                  <div className="text-4xl md:text-5xl font-black mb-2 text-cyan-200">300%</div>
+                  <div className="text-white/90 font-semibold">📈 Monthly Growth</div>
+                  <div className="text-xs text-cyan-200 mt-1">Fastest growing</div>
+                </div>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-white text-primary-600 px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform duration-200">
-                🎬 Become a Creator
+
+            {/* Enhanced Action Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+              <button className="group relative bg-white text-purple-600 px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span className="relative z-10 flex items-center justify-center gap-3">
+                  <span className="text-2xl">🎬</span>
+                  <span>Start Creating Now</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </span>
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-primary-600 transition-colors duration-200">
-                📚 Learn More
+              
+              <button className="group relative border-3 border-white text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 hover:scale-105 overflow-hidden">
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span className="relative z-10 flex items-center justify-center gap-3">
+                  <span className="text-2xl">📚</span>
+                  <span>Learn More</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </span>
               </button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-8 pt-6 border-t border-white/20">
+              <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-white/80">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span>99.9% Uptime</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
+                  <span>24/7 Support</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-500"></div>
+                  <span>Free to Start</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

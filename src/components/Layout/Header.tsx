@@ -99,13 +99,13 @@ const Header: React.FC = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      isScrolled || isMenuOpen ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className={`flex items-center transition-all duration-300 ${
-            !isScrolled ? 'invert brightness-0' : ''
+            !isScrolled && !isMenuOpen ? 'invert brightness-0' : ''
           }`}>
             <img 
               src="/Go.svg" 
@@ -183,7 +183,9 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className={`lg:hidden p-2 transition-colors duration-300 ${
+              isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
