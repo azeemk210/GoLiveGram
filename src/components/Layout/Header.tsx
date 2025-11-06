@@ -12,13 +12,17 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Detect which section is currently in view
-      const sections = ['features', 'monetization', 'creators', 'testimonials'];
+      const sections = ['hero', 'features', 'monetization', 'creators', 'testimonials'];
       let currentSection = '';
       
-      // Find the section with the most visible area
-      let maxVisibleArea = 0;
-      
-      sections.forEach(sectionId => {
+      // Check if we're in the hero section (at the very top)
+      if (window.scrollY < 100) {
+        currentSection = 'hero';
+      } else {
+        // Find the section with the most visible area
+        let maxVisibleArea = 0;
+        
+        sections.forEach(sectionId => {
         const element = document.getElementById(sectionId);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -35,28 +39,29 @@ const Header: React.FC = () => {
             currentSection = sectionId;
           }
         }
-      });
-      
-      // Alternative method: Check which section the scroll position is in
-      if (!currentSection) {
-        const scrollPosition = window.scrollY + 200; // 200px offset from top
-        
-        sections.forEach(sectionId => {
-          const element = document.getElementById(sectionId);
-          if (element) {
-            const elementTop = element.offsetTop;
-            const elementBottom = elementTop + element.offsetHeight;
-            
-            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-              currentSection = sectionId;
-            }
-          }
         });
+        
+        // Alternative method: Check which section the scroll position is in
+        if (!currentSection) {
+          const scrollPosition = window.scrollY + 200; // 200px offset from top
+          
+          sections.forEach(sectionId => {
+            const element = document.getElementById(sectionId);
+            if (element) {
+              const elementTop = element.offsetTop;
+              const elementBottom = elementTop + element.offsetHeight;
+              
+              if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+                currentSection = sectionId;
+              }
+            }
+          });
+        }
       }
       
-      // Don't highlight anything if we're at the very top
-      if (window.scrollY < 50) {
-        currentSection = '';
+      // Override: if we're at the very top, we're in hero
+      if (window.scrollY < 100) {
+        currentSection = 'hero';
       }
       
       setActiveSection(currentSection);
@@ -99,7 +104,9 @@ const Header: React.FC = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className={`flex items-center transition-all duration-300 ${
+            !isScrolled ? 'invert brightness-0' : ''
+          }`}>
             <img 
               src="/Go.svg" 
               alt="GoLiveGram - Stream, Connect & Monetize Your Passion" 

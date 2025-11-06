@@ -1,28 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { X, ExternalLink, Play } from 'lucide-react';
 import SEOHead from './components/SEO/SEOHead';
 import Header from './components/Layout/Header';
 import Hero from './components/Sections/Hero';
-import Features from './components/Sections/Features';
-import Monetization from './components/Sections/Monetization';
-import Statistics from './components/Sections/Statistics';
-import MobilePreview from './components/Sections/MobilePreview';
-import Testimonials from './components/Sections/Testimonials';
-import CallToAction from './components/Sections/CallToAction';
-import Footer from './components/Layout/Footer';
 import FloatingElements from './components/UI/FloatingElements';
+
+// Lazy imports for performance
+const Features = React.lazy(() => import('./components/Sections/Features'));
+const Monetization = React.lazy(() => import('./components/Sections/Monetization'));
+const Statistics = React.lazy(() => import('./components/Sections/Statistics'));
+const MobilePreview = React.lazy(() => import('./components/Sections/MobilePreview'));
+const Testimonials = React.lazy(() => import('./components/Sections/Testimonials'));
+const CallToAction = React.lazy(() => import('./components/Sections/CallToAction'));
+const Footer = React.lazy(() => import('./components/Layout/Footer'));
+
+// Loading component for Suspense fallbacks
+const SectionLoader: React.FC<{ height?: string }> = ({ height = 'h-96' }) => (
+  <div className={`${height} flex items-center justify-center bg-gradient-to-r from-gray-50 to-white`}>
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
+      <p className="text-gray-600 font-medium">Loading...</p>
+    </div>
+  </div>
+);
 
 const App: React.FC = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
-  const handleImageClick = (imageSrc: string) => {
+  const handleImageClick = (imageSrc: string, triggerElement?: HTMLElement) => {
+    previousActiveElement.current = triggerElement || document.activeElement as HTMLElement;
     setLightboxImage(imageSrc);
   };
 
   const closeLightbox = () => {
     setLightboxImage(null);
+    // Restore focus to the trigger element
+    if (previousActiveElement.current) {
+      previousActiveElement.current.focus();
+    }
   };
+
+  // Enhanced keyboard handling for lightbox
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!lightboxImage) return;
+
+      if (event.key === 'Escape') {
+        closeLightbox();
+      } else if (event.key === 'Tab') {
+        // Simple focus trap - keep focus within lightbox
+        event.preventDefault();
+        const closeButton = lightboxRef.current?.querySelector('button');
+        closeButton?.focus();
+      }
+    };
+
+    if (lightboxImage) {
+      document.addEventListener('keydown', handleKeyDown);
+      // Focus the close button when lightbox opens
+      setTimeout(() => {
+        const closeButton = lightboxRef.current?.querySelector('button');
+        closeButton?.focus();
+      }, 100);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   return (
     <HelmetProvider>
@@ -32,7 +81,10 @@ const App: React.FC = () => {
         <Header />
         <main>
           <Hero />
-          <Features />
+          
+          <Suspense fallback={<SectionLoader />}>
+            <Features />
+          </Suspense>
 
           {/* Two preview images - enhanced styling with lightbox */}
           <section className="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-20">
@@ -94,7 +146,7 @@ const App: React.FC = () => {
               <div className="relative group">
                 <figure 
                   className="relative cursor-pointer transform transition-all duration-700 hover:scale-102"
-                  onClick={() => handleImageClick("/img1.jpeg")}
+                  onClick={(e) => handleImageClick("/Gemini_Generated_Image_2od3kj2od3kj2od3.png", e.currentTarget)}
                 >
                   <div className="overflow-hidden rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] bg-gradient-to-tr from-purple-500/20 to-pink-500/10 rotate-3 group-hover:rotate-1 transition-transform duration-700">
                     <img
@@ -102,6 +154,8 @@ const App: React.FC = () => {
                       alt="Creator showcase - Live streaming example"
                       className="w-full h-[550px] object-cover transform group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
+                      width="600"
+                      height="550"
                     />
                     {/* Enhanced overlay */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/30 via-transparent to-pink-500/20 mix-blend-overlay" />
@@ -124,7 +178,8 @@ const App: React.FC = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Live Creator Experience</h3>
                   <p className="text-gray-600 mb-4">See how creators engage with their audience in real-time and build authentic connections.</p>
                   <button 
-                    onClick={() => handleImageClick("/img1.jpeg")}
+                    ref={triggerRef}
+                    onClick={(e) => handleImageClick("/Gemini_Generated_Image_2od3kj2od3kj2od3.png", e.currentTarget)}
                     className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto"
                   >
                     <Play className="w-5 h-5" />
@@ -137,7 +192,7 @@ const App: React.FC = () => {
               <div className="relative group -mt-12 lg:mt-8 lg:-ml-12">
                 <figure 
                   className="relative cursor-pointer transform transition-all duration-700 hover:scale-102"
-                  onClick={() => handleImageClick("/img2.jpeg")}
+                  onClick={(e) => handleImageClick("/img2.jpeg", e.currentTarget)}
                 >
                   <div className="overflow-hidden rounded-3xl shadow-[0_35px_60px_-12px_rgba(0,0,0,0.3)] bg-gradient-to-bl from-green-500/20 to-blue-500/10 -rotate-2 group-hover:rotate-0 transition-transform duration-700">
                     <img
@@ -145,6 +200,8 @@ const App: React.FC = () => {
                       alt="Monetization dashboard - Earnings overview"
                       className="w-full h-[550px] rounded-3xl object-cover transform group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
+                      width="600"
+                      height="550"
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 via-transparent to-blue-900/30 mix-blend-overlay" />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -206,7 +263,7 @@ const App: React.FC = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Monetization Dashboard</h3>
                   <p className="text-gray-600 mb-4">Track your earnings, analyze performance, and optimize your revenue streams.</p>
                   <button 
-                    onClick={() => handleImageClick("/img2.jpeg")}
+                    onClick={(e) => handleImageClick("/img2.jpeg", e.currentTarget)}
                     className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:from-green-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto"
                   >
                     <ExternalLink className="w-5 h-5" />
@@ -218,18 +275,23 @@ const App: React.FC = () => {
           </div>
           </section>
 
-          {/* Lightbox Modal */}
+          {/* Enhanced Lightbox Modal */}
           {lightboxImage && (
             <div 
+              ref={lightboxRef}
               className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
               onClick={closeLightbox}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Image preview"
             >
-              <div className="relative max-w-4xl max-h-[90vh] w-full">
+              <div className="relative max-w-4xl max-h-[90vh] w-full animate-in fade-in zoom-in-95 duration-300">
                 <button
                   onClick={closeLightbox}
-                  className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
+                  className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10 p-2 rounded-full bg-black/20 backdrop-blur-sm hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-white/50"
+                  aria-label="Close image preview"
                 >
-                  <X className="w-8 h-8" />
+                  <X className="w-6 h-6" />
                 </button>
                 <img
                   src={lightboxImage}
@@ -237,17 +299,37 @@ const App: React.FC = () => {
                   className="w-full h-full object-contain rounded-2xl shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
                 />
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/70 text-sm bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                  Press <kbd className="bg-white/20 px-1 rounded">Esc</kbd> to close
+                </div>
               </div>
             </div>
           )}
 
-          <Monetization />
-          <Statistics />
-          <MobilePreview />
-          <Testimonials />
-          <CallToAction />
+          <Suspense fallback={<SectionLoader />}>
+            <Monetization />
+          </Suspense>
+          
+          <Suspense fallback={<SectionLoader />}>
+            <Statistics />
+          </Suspense>
+          
+          <Suspense fallback={<SectionLoader />}>
+            <MobilePreview />
+          </Suspense>
+          
+          <Suspense fallback={<SectionLoader />}>
+            <Testimonials />
+          </Suspense>
+          
+          <Suspense fallback={<SectionLoader />}>
+            <CallToAction />
+          </Suspense>
         </main>
-        <Footer />
+        
+        <Suspense fallback={<SectionLoader height="h-48" />}>
+          <Footer />
+        </Suspense>
       </div>
     </HelmetProvider>
   );

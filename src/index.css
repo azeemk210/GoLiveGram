@@ -1,6 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Respect user's motion preferences - disable animations by default if reduced motion is preferred */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable specific animations that might cause issues */
+  .animate-spin,
+  .animate-bounce,
+  .animate-pulse,
+  .animate-ping,
+  .animate-float,
+  .floating-element {
+    animation: none !important;
+  }
+  
+  /* Disable transforms that might cause motion sickness */
+  .hover\\:scale-105:hover,
+  .hover\\:scale-110:hover,
+  .hover\\:scale-102:hover,
+  .group-hover\\:scale-110,
+  .group-hover\\:scale-100 {
+    transform: none !important;
+  }
+}
+
+/* Allow safe animations even with reduced motion preference using motion-safe: prefix */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe\\:animate-bounce {
+    animation: bounce 1s infinite;
+  }
+  
+  .motion-safe\\:animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .motion-safe\\:animate-spin {
+    animation: spin 1s linear infinite;
+  }
+}
+
 .hero-bg {
   background: linear-gradient(135deg, #ee3a3a 0%, #d73333 50%, #3B82F6 100%);
   position: relative;
@@ -23,6 +69,13 @@
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   33% { transform: translateY(-30px) rotate(2deg); }
   66% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+/* Safe floating animation that respects motion preferences */
+@media (prefers-reduced-motion: no-preference) {
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
 }
 
 /* Component-specific styles */
@@ -72,10 +125,6 @@
 
 .btn-secondary:hover {
   background-color: #fef2f2;
-}
-
-.floating-element {
-  animation: float 6s ease-in-out infinite;
 }
 
 .text-gradient {
