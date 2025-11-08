@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloads';
 
 const MobilePreview: React.FC = () => {
@@ -42,13 +42,14 @@ const MobilePreview: React.FC = () => {
    * - Preload next video fully before triggering the slide
    * - No remounting (no keys), so no autoplay hiccups
    * --------------------------------------------------------- */
-  const reelSources = [
+  const reelSources = useMemo(() => [
     'https://www.pexels.com/download/video/3468587/',
     'https://www.pexels.com/download/video/16070036/',
     'https://www.pexels.com/download/video/8165478/',
     'https://www.pexels.com/download/video/29356214/',
     'https://www.pexels.com/download/video/10805308/',
-  ];
+    'https://www.pexels.com/download/video/8164763/',
+  ], []);
 
   // Indian usernames that rotate with each reel
   const indianUsernames = [
@@ -78,7 +79,7 @@ const MobilePreview: React.FC = () => {
   };
 
   // Prepare a given element with a URL and mark nextReady when buffered enough
-  const preloadOn = (el: HTMLVideoElement | null, url: string) => {
+  const preloadOn = useCallback((el: HTMLVideoElement | null, url: string) => {
     if (!el) return;
     setNextReady(false);
     // Set source and load
@@ -90,7 +91,7 @@ const MobilePreview: React.FC = () => {
     };
     // 'loadeddata' is a good compromise; 'canplaythrough' can be too strict on mobile
     el.addEventListener('loadeddata', onReady, { once: true });
-  };
+  }, []);
 
   // Initial mount: set A = currentIndex, B = nextIndex (preloaded)
   useEffect(() => {
@@ -151,7 +152,7 @@ const MobilePreview: React.FC = () => {
     return () => {
       if (intervalRef.current) window.clearInterval(intervalRef.current);
     };
-  }, [nextReady, nextIndex, reelSources.length]);
+  }, [nextReady, nextIndex, reelSources.length, preloadOn, reelSources]);
 
   return (
     <section id="creators" className="py-20 bg-gray-50">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Facebook, 
   Twitter, 
@@ -28,7 +29,7 @@ const Footer: React.FC = () => {
       { name: "Careers 🚀", href: "#careers" }
     ],
     legal: [
-      { name: "Privacy Policy", href: "#privacy" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
       { name: "Terms of Service", href: "#terms" },
       { name: "Cookie Policy", href: "#cookies" },
       { name: "GDPR", href: "#gdpr" }
@@ -206,12 +207,21 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-4 text-sm">
               {footerLinks.legal.map((link, index) => (
                 <React.Fragment key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
+                  {link.name === "Privacy Policy" ? (
+                    <Link 
+                      to={link.href}
+                      className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href}
+                      className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                   {index < footerLinks.legal.length - 1 && (
                     <span className="text-gray-600">|</span>
                   )}

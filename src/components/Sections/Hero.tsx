@@ -28,17 +28,17 @@ const Hero: React.FC = () => {
         <div className="absolute top-96 right-1/4 floating-element text-2xl hidden md:block">💙</div>
       </div>
 
-      <div className="container mx-auto px-6 z-10 relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
-            <div className="mb-6">
-              <span className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+            <div className="mb-4 sm:mb-6">
+              <span className="inline-flex items-center px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium">
                 🚀 Join 2.5M+ Active Creators
               </span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white mb-4 sm:mb-6 leading-tight">
               Go Live.
               <br />
               <span className="text-gradient bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
@@ -48,65 +48,65 @@ const Hero: React.FC = () => {
               <span className="text-gradient bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
                 Go Rich.
               </span>
-              <span className="text-4xl ml-2">💰</span>
+              <span className="text-2xl sm:text-3xl md:text-4xl ml-1 sm:ml-2">💰</span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
               Stream, Connect, and Monetize Your Passion
               <br />
-              <span className="text-yellow-300 font-semibold">
+              <span className="text-yellow-300 font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
                 Average Creator Earnings: $500-$5,000/month 📈
               </span>
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 px-2 sm:px-0">
               <button 
                 onClick={() => handleDownloadClick('ios')}
-                className="bg-black text-white px-8 py-4 rounded-2xl font-semibold text-lg flex items-center justify-center space-x-3 hover:bg-gray-800 transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-gray-800 transition-all duration-300 hover:scale-105 cursor-pointer w-full sm:w-auto"
               >
-                <Apple className="w-6 h-6" />
+                <Apple className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                 <div className="text-left">
-                  <div className="text-xs">Download for</div>
-                  <div>iOS</div>
+                  <div className="text-xs opacity-80">Download for</div>
+                  <div className="text-sm sm:text-base">iOS</div>
                 </div>
               </button>
               
               <button 
                 onClick={() => handleDownloadClick('android')}
-                className="bg-green-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg flex items-center justify-center space-x-3 hover:bg-green-700 transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-green-700 transition-all duration-300 hover:scale-105 cursor-pointer w-full sm:w-auto"
               >
-                <Play className="w-6 h-6" />
+                <Play className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                 <div className="text-left">
-                  <div className="text-xs">Download for</div>
-                  <div>Android</div>
+                  <div className="text-xs opacity-80">Download for</div>
+                  <div className="text-sm sm:text-base">Android</div>
                 </div>
               </button>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-start">
+            <div className="flex items-center justify-center lg:justify-start mb-8 sm:mb-0">
               <button 
                 onClick={() => handleDownloadClick('web')}
-                className="text-white border-2 border-white/30 px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
+                className="text-white border-2 border-white/30 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 cursor-pointer text-sm sm:text-base"
               >
-                <Smartphone className="w-5 h-5" />
+                <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 <span>Or Try Web Version 🌐</span>
               </button>
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-12 px-2 sm:px-0">
               <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">2.5M+</div>
-                <div className="text-white/80 text-sm">Active Users 👥</div>
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">2.5M+</div>
+                <div className="text-white/80 text-xs sm:text-sm">Active Users 👥</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">$2M+</div>
-                <div className="text-white/80 text-sm">Paid to Creators 💰</div>
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">$2M+</div>
+                <div className="text-white/80 text-xs sm:text-sm">Paid to Creators 💰</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">4.8★</div>
-                <div className="text-white/80 text-sm">App Store Rating ⭐</div>
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">4.8★</div>
+                <div className="text-white/80 text-xs sm:text-sm">App Store Rating ⭐</div>
               </div>
             </div>
           </div>
