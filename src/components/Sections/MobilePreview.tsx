@@ -3,6 +3,39 @@ import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloa
 
 const MobilePreview: React.FC = () => {
   /** ---------------------------------------------------------
+   * Phone 1: Live Streaming state - increasing timer and likes
+   * --------------------------------------------------------- */
+  const [liveSeconds, setLiveSeconds] = useState(134); // Start at 02:14 (134 seconds)
+  const [likesCount, setLikesCount] = useState(847);
+
+  // Live timer - increases every second
+  useEffect(() => {
+    const liveTimer = setInterval(() => {
+      setLiveSeconds(prev => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(liveTimer);
+  }, []);
+
+  // Likes - increases randomly every few seconds
+  useEffect(() => {
+    const likesTimer = setInterval(() => {
+      if (Math.random() > 0.7) { // 30% chance every 3 seconds
+        setLikesCount(prev => prev + Math.floor(Math.random() * 5) + 1);
+      }
+    }, 3000);
+
+    return () => clearInterval(likesTimer);
+  }, []);
+
+  // Format seconds to MM:SS
+  const formatLiveTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  /** ---------------------------------------------------------
    * Phone 2: TikTok-style, UNIDIRECTIONAL smooth scroll + preload
    * - Two persistent <video> layers (A/B)
    * - Always slide UP: current 0→-100%, next 100%→0
@@ -171,26 +204,32 @@ const MobilePreview: React.FC = () => {
                     />
 
                     {/* Top Bar */}
-                    <div className="absolute top-[56px] left-3 right-3 flex items-center justify-between gap-2 z-10">
-                      <div className="flex items-center gap-2">
-                        <button className="w-9 h-9 rounded-[10px] bg-black/45 backdrop-blur-sm border border-white/8 flex items-center justify-center">
-                          <svg className="w-[18px] h-[18px] stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
+                    <div className="absolute top-[56px] left-3 right-3 flex items-center justify-between gap-1 z-10">
+                      <div className="flex items-center gap-1">
+                        <button className="w-8 h-8 rounded-[8px] bg-black/45 backdrop-blur-sm border border-white/8 flex items-center justify-center">
+                          <svg className="w-4 h-4 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
                             <path d="M15 18l-6-6 6-6"/>
                           </svg>
                         </button>
-                        <div className="flex items-center gap-2 px-[10px] py-[6px] rounded-full bg-black/55 backdrop-blur-sm font-semibold text-xs text-white">
-                          <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_0_4px_rgba(255,51,85,0.18)]" />
+                        <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-black/55 backdrop-blur-sm font-semibold text-[10px] text-white">
+                          <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_0_2px_rgba(255,51,85,0.18)]" />
                           LIVE
-                          <span className="text-white/70">• 02:14</span>
+                          <span className="text-white/70">• {formatLiveTime(liveSeconds)}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="bg-black/45 backdrop-blur-sm px-[10px] py-[6px] rounded-full text-xs text-white border border-white/8 flex items-center gap-1">
-                          <svg className="w-4 h-4 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
+                      <div className="flex items-center gap-1">
+                        <div className="bg-black/45 backdrop-blur-sm px-2 py-1 rounded-full text-[10px] text-white border border-white/8 flex items-center gap-1">
+                          <svg className="w-3 h-3 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
                             <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/>
                             <circle cx="12" cy="12" r="3"/>
                           </svg>
                           1.2K
+                        </div>
+                        <div className="bg-black/45 backdrop-blur-sm px-2 py-1 rounded-full text-[10px] text-white border border-white/8 flex items-center gap-1">
+                          <svg className="w-3 h-3 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                          </svg>
+                          {likesCount}
                         </div>
                       </div>
                     </div>
@@ -227,34 +266,47 @@ const MobilePreview: React.FC = () => {
                       </button>
                     </div>
 
-                    {/* Bottom Navigation */}
-                    <div className="absolute left-0 right-0 bottom-0 h-14 px-[14px] py-[6px] flex items-center justify-between bg-gradient-to-t from-black/70 to-black/25 backdrop-blur-[10px] border-t border-white/8 z-10" aria-label="Bottom navigation">
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Home">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <path d="M3 10.5l9-7 9 7M5 10v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8"/>
+                    {/* Live Streaming Controls */}
+                    <div className="absolute left-0 right-0 bottom-0 h-14 px-[8px] py-[6px] flex items-center justify-between bg-gradient-to-t from-black/80 to-black/40 backdrop-blur-[10px] border-t border-white/10 z-10" aria-label="Live streaming controls">
+                      {/* Microphone */}
+                      <button className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/10 backdrop-blur-sm" aria-label="Microphone">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                          <line x1="12" y1="19" x2="12" y2="23"/>
+                          <line x1="8" y1="23" x2="16" y2="23"/>
                         </svg>
                       </button>
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Search">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <circle cx="11" cy="11" r="7"/>
-                          <path d="M21 21l-4.35-4.35"/>
+                      
+                      {/* Camera */}
+                      <button className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/10 backdrop-blur-sm" aria-label="Camera">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <path d="M23 7l-7 5 7 5V7z"/>
+                          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
                         </svg>
                       </button>
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Create">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <path d="M12 5v14M5 12h14"/>
+                      
+                      {/* Camera Flip */}
+                      <button className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/10 backdrop-blur-sm" aria-label="Flip Camera">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <polyline points="1 4 1 10 7 10"/>
+                          <polyline points="23 20 23 14 17 14"/>
+                          <path d="m20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
                         </svg>
                       </button>
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border bg-white/8 border-white/14 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]" aria-label="Reels - Active">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <rect x="3" y="5" width="18" height="14" rx="3"/>
-                          <path d="M10 9l5 3-5 3z"/>
+                      
+                      {/* Messages/Chat */}
+                      <button className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/10 backdrop-blur-sm" aria-label="Messages">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
                       </button>
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Profile">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <circle cx="12" cy="8" r="4"/>
-                          <path d="M4 20a8 8 0 0 1 16 0"/>
+                      
+                      {/* End Live Stream */}
+                      <button className="w-10 h-10 rounded-xl flex items-center justify-center border border-red-500/50 bg-red-500/20 backdrop-blur-sm" aria-label="End Live Stream">
+                        <svg className="w-4 h-4 stroke-red-400 stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                          <line x1="18" y1="6" x2="6" y2="18"/>
                         </svg>
                       </button>
                     </div>
