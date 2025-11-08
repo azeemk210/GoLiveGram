@@ -50,6 +50,15 @@ const MobilePreview: React.FC = () => {
     'https://www.pexels.com/download/video/10805308/',
   ];
 
+  // Indian usernames that rotate with each reel
+  const indianUsernames = [
+    { name: 'arjun_sharma', initial: 'A', gradient: 'from-purple-500 to-pink-500' },
+    { name: 'priya_patel', initial: 'P', gradient: 'from-blue-500 to-cyan-500' },
+    { name: 'rohit_singh', initial: 'R', gradient: 'from-green-500 to-emerald-500' },
+    { name: 'kavya_reddy', initial: 'K', gradient: 'from-orange-500 to-red-500' },
+    { name: 'dev_gupta', initial: 'D', gradient: 'from-indigo-500 to-purple-500' },
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);           // currently visible video index
   const [nextIndex, setNextIndex] = useState(1);                 // upcoming video index (preloaded)
   const [activeA, setActiveA] = useState(true);                  // which layer is the "current" on screen (true => A is current)
@@ -389,6 +398,76 @@ const MobilePreview: React.FC = () => {
                       style={{ zIndex: 5 }}
                     />
 
+                    {/* Top Bar - Instagram Live Viewer Style */}
+                    <div className="absolute top-[56px] left-3 right-3 flex items-center justify-between z-10">
+                      {/* Back Button */}
+                      <button className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                        <svg className="w-4 h-4 stroke-white stroke-[2] fill-none" viewBox="0 0 24 24">
+                          <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                      </button>
+
+                      {/* LIVE Indicator */}
+                      <div className="flex items-center gap-1 px-2 py-1 rounded bg-red-500 text-white text-[10px] font-bold">
+                        <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
+                        LIVE
+                      </div>
+                    </div>
+
+                    {/* Username - Bottom Left */}
+                    <div className="absolute bottom-[120px] left-4 z-10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${indianUsernames[currentIndex % indianUsernames.length].gradient} flex items-center justify-center text-white font-bold text-xs`}>
+                          {indianUsernames[currentIndex % indianUsernames.length].initial}
+                        </div>
+                        <span className="text-white font-semibold text-sm">{indianUsernames[currentIndex % indianUsernames.length].name}</span>
+                      </div>
+                    </div>
+
+                    {/* Right Side Controls - Instagram Style */}
+                    <div className="absolute bottom-[120px] right-4 z-10 flex flex-col items-center gap-4">
+                      {/* Like Button */}
+                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                      </button>
+
+                      {/* Share Button */}
+                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7Z"/>
+                        </svg>
+                      </button>
+
+                      {/* More Options */}
+                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="1"/>
+                          <circle cx="12" cy="5" r="1"/>
+                          <circle cx="12" cy="19" r="1"/>
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Comment Input - Instagram Style */}
+                    <div className="absolute bottom-[70px] left-4 right-4 z-10">
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 bg-black/40 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 flex items-center">
+                          <input 
+                            type="text" 
+                            placeholder="Add a comment..." 
+                            className="flex-1 bg-transparent text-white text-sm placeholder-white/60 outline-none"
+                          />
+                        </div>
+                        <button className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                          <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                            <path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
                     {/* Bottom Navigation */}
                     <div className="absolute left-0 right-0 bottom-0 h-14 px-[14px] py-[6px] flex items-center justify-between bg-gradient-to-t from-black/70 to-black/25 backdrop-blur-[10px] border-t border-white/8 z-10" aria-label="Bottom navigation">
                       <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Home">
@@ -424,8 +503,8 @@ const MobilePreview: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h3 className="text-xl font-bold mt-4 mb-2">Discovery Feed 🔍</h3>
-            <p className="text-gray-600">Find amazing creators and trending content</p>
+            <h3 className="text-xl font-bold mt-4 mb-2">Live Viewing �️</h3>
+            <p className="text-gray-600">Watch live streams and interact with creators</p>
           </div>
 
           {/* Phone 3: Monetization Dashboard (unchanged) */}
