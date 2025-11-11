@@ -12,7 +12,7 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Detect which section is currently in view
-      const sections = ['hero', 'features', 'monetization', 'creators', 'testimonials'];
+      const sections = ['hero', 'creators', 'features', 'monetization', 'testimonials'];
       let currentSection = '';
       
       // Check if we're in the hero section (at the very top)
@@ -122,6 +122,16 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <button 
+              onClick={() => scrollToSection('creators')}
+              className={`transition-colors font-medium cursor-pointer ${
+                activeSection === 'creators' 
+                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
+                  : 'text-gray-700 hover:text-red-500'
+              }`}
+            >
+              Creators
+            </button>
+            <button 
               onClick={() => scrollToSection('features')}
               className={`transition-colors font-medium cursor-pointer ${
                 activeSection === 'features' 
@@ -140,16 +150,6 @@ const Header: React.FC = () => {
               }`}
             >
               Monetization
-            </button>
-            <button 
-              onClick={() => scrollToSection('creators')}
-              className={`transition-colors font-medium cursor-pointer ${
-                activeSection === 'creators' 
-                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
-                  : 'text-gray-700 hover:text-red-500'
-              }`}
-            >
-              Creators
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')}
@@ -197,6 +197,16 @@ const Header: React.FC = () => {
           <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4 pt-4">
               <button 
+                onClick={() => scrollToSection('creators')}
+                className={`text-left transition-colors font-medium cursor-pointer ${
+                  activeSection === 'creators' 
+                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
+                    : 'text-gray-700 hover:text-red-500'
+                }`}
+              >
+                Creators
+              </button>
+              <button 
                 onClick={() => scrollToSection('features')}
                 className={`text-left transition-colors font-medium cursor-pointer ${
                   activeSection === 'features' 
@@ -215,16 +225,6 @@ const Header: React.FC = () => {
                 }`}
               >
                 Monetization
-              </button>
-              <button 
-                onClick={() => scrollToSection('creators')}
-                className={`text-left transition-colors font-medium cursor-pointer ${
-                  activeSection === 'creators' 
-                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
-                    : 'text-gray-700 hover:text-red-500'
-                }`}
-              >
-                Creators
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}

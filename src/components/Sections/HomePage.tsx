@@ -76,6 +76,10 @@ const HomePage: React.FC = () => {
         <Hero />
         
         <Suspense fallback={<SectionLoader />}>
+          <MobilePreview />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
           <Features />
         </Suspense>
 
@@ -305,10 +309,6 @@ const HomePage: React.FC = () => {
         
         <Suspense fallback={<SectionLoader />}>
           <Statistics />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <MobilePreview />
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
