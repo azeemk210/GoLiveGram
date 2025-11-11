@@ -271,11 +271,51 @@ const MobilePreview: React.FC = () => {
                       <div className="flex items-center gap-2">
                         <h1 className="text-white font-bold text-lg">GoLiveGram</h1>
                       </div>
+                      <div className="flex items-center gap-2">
+                        <button className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Messages">
+                          <svg className="w-4 h-4 stroke-white stroke-[2] fill-none" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                          </svg>
+                        </button>
+                        <button className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Notifications">
+                          <svg className="w-4 h-4 stroke-white stroke-[2] fill-none" viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
 
                     {/* Home Feed Content */}
                     <div className="absolute top-[100px] left-0 right-0 bottom-[70px] px-4 overflow-hidden">
                       <div className="space-y-4">
+                        {/* Stories Section */}
+                        <div className="flex gap-3 justify-between px-1">
+                          {Array.from({ length: 6 }).map((_, i) => (
+                            <div key={i} className="text-center relative">
+                              <div className={`w-14 h-14 rounded-full p-0.5 ${i === 2 ? 'bg-gradient-to-br from-red-500 to-pink-500' : 'bg-gradient-to-br from-purple-500 to-pink-500'}`}>
+                                <div className="w-full h-full rounded-full overflow-hidden">
+                                  <img
+                                    src={`https://images.unsplash.com/photo-${
+                                      ['1472099645785-5658abf4ff4e', '1507591064344-4c6ce005b128', '1494790108755-2616c6137a1d', '1500648767791-00dcc994a43e', '1438761681033-6461ffad8d80', '1507003211169-0a1dd7228f2d'][i]
+                                    }?w=150&h=150&fit=crop&crop=face`}
+                                    alt={`Story ${i + 1}`}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                              </div>
+                              {i === 2 && (
+                                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-red-500 px-1.5 py-0.5 rounded text-white text-[8px] font-bold">
+                                  LIVE
+                                </div>
+                              )}
+                              <span className="text-white text-xs mt-1 block truncate w-14">
+                                {['Your Story', 'arjun_dev', 'priya_vlogs', 'dev_gupta', 'neha_life', 'raj_music'][i]}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
                         {/* Feed Posts */}
                         <div className="space-y-4">
                           {/* Post 1 */}
@@ -289,7 +329,21 @@ const MobilePreview: React.FC = () => {
                                 <p className="text-gray-400 text-xs">2 hours ago</p>
                               </div>
                             </div>
-                            <div className="bg-gray-700 rounded-lg aspect-square mb-2"></div>
+                            <div className="relative bg-gray-700 rounded-lg aspect-square mb-2 overflow-hidden">
+                              <video
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                onError={(e) => {
+                                  // Hide broken video and show fallback
+                                  (e.currentTarget as HTMLVideoElement).style.display = 'none';
+                                }}
+                              >
+                                <source src="https://www.pexels.com/download/video/17169505/" type="video/mp4" />
+                              </video>
+                            </div>
                             <div className="flex items-center gap-4 text-white">
                               <button className="flex items-center gap-1">
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -635,8 +689,8 @@ const MobilePreview: React.FC = () => {
                         >
                           {indianUsernames[currentReelIndex % indianUsernames.length].initial}
                         </div>
-                        <span className="text-white font-semibold text-sm">
-                          {indianUsernames[currentReelIndex % indianUsernames.length].name}
+                        <span className="text-white font-bold text-sm">
+                          @{indianUsernames[currentReelIndex % indianUsernames.length].name}
                         </span>
                       </div>
                     </div>
