@@ -4,12 +4,10 @@ import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloa
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
       
       // Detect which section is currently in view
       const sections = ['hero', 'creators', 'features', 'monetization', 'testimonials'];
@@ -98,15 +96,11 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled || isMenuOpen ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    }`}>
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className={`flex items-center transition-all duration-300 ${
-            !isScrolled && !isMenuOpen ? 'invert brightness-0' : ''
-          }`}>
+          <div className="flex items-center transition-all duration-300">
             <img 
               src="/Go.svg" 
               alt="GoLiveGram - Stream, Connect & Monetize Your Passion" 
@@ -183,9 +177,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 transition-colors duration-300 ${
-              isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
-            }`}
+            className="lg:hidden p-2 transition-colors duration-300 text-gray-700"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

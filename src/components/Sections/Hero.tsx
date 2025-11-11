@@ -4,9 +4,9 @@ import { handleDownloadClick } from '../../utils/downloads';
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20">
+    <section id="hero" className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-24 md:pt-28">
       {/* Background Elements */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-10">
         {/* Extra Floating Emojis (top corners / sides) - Hidden on mobile */}
         <div className="absolute top-8 right-8 floating-element text-3xl pointer-events-none hidden md:block" aria-hidden="true">🎥</div>
         <div className="absolute top-8 left-8 floating-element text-4xl pointer-events-none hidden md:block" aria-hidden="true">💎</div>
