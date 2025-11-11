@@ -4,57 +4,57 @@ import { Star, CheckCircle } from 'lucide-react';
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Sarah K.",
-      handle: "@sarahcooks",
+      name: "Priya Sharma",
+      handle: "@priya_cooking",
       avatar: "👩‍🍳",
-      earnings: "$15,247",
+      earnings: "₹12,47,000",
       period: "First Month",
-      quote: "I made $15K in my first month! The monetization features are incredible.",
+      quote: "Main ne pehle mahine mein hi 12 lakh kamaye! GoLiveGram ke monetization features kamaal ke hain.",
       rating: 5,
       verified: true,
-      followers: "450K",
+      followers: "4.5L",
       category: "Cooking"
     },
     {
-      name: "Mike T.",
-      handle: "@mikefitness",
+      name: "Arjun Patel",
+      handle: "@arjun_fitness",
       avatar: "💪",
-      earnings: "$8,500",
+      earnings: "₹6,80,000",
       period: "Monthly Average",
-      quote: "10x more engagement than other platforms! My community loves the live features.",
+      quote: "Dusre platforms se 10 guna zyada engagement mil raha hai! Meri community live features ko bahut pasand karti hai.",
       rating: 5,
       verified: true,
-      followers: "280K",
+      followers: "2.8L",
       category: "Fitness"
     },
     {
-      name: "Emma L.",
-      handle: "@emmacreates",
+      name: "Kavya Reddy",
+      handle: "@kavya_art",
       avatar: "🎨",
-      earnings: "$12,000",
+      earnings: "₹9,60,000",
       period: "Last Month",
-      quote: "The brand partnership opportunities are amazing. Finally earning what I deserve!",
+      quote: "Brand partnerships ke opportunities amazing hain. Finally jo deserve karta hun wo mil raha hai!",
       rating: 5,
       verified: true,
-      followers: "350K",
-      category: "Art"
+      followers: "3.5L",
+      category: "Art & Design"
     },
     {
-      name: "Alex R.",
-      handle: "@alextech",
+      name: "Rohit Gupta",
+      handle: "@rohit_tech",
       avatar: "💻",
-      earnings: "$20,000",
+      earnings: "₹16,00,000",
       period: "Monthly Record",
-      quote: "Best creator platform I've ever used. The analytics help me optimize everything.",
+      quote: "Sabse best creator platform hai jo maine use kiya hai. Analytics se sab kuch optimize kar sakta hun.",
       rating: 5,
       verified: true,
-      followers: "520K",
+      followers: "5.2L",
       category: "Technology"
     }
   ];
 
   const brandPartners = [
-    "Nike", "Coca-Cola", "Samsung", "Netflix", "McDonald's", "Spotify"
+    "Flipkart", "Zomato", "Paytm", "Myntra", "BigBasket", "Swiggy"
   ];
 
   return (
@@ -152,11 +152,11 @@ const Testimonials: React.FC = () => {
               </div>
               
               <h3 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
-                Join 2.5M+ Successful Creators Today!
+                Join 25L+ Successful Indian Creators!
               </h3>
               
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
-                Turn your passion into profit with GoLiveGram's creator-first platform 🎉
+                Apne passion ko profit mein convert karo GoLiveGram ke creator-first platform ke saath 🎉
               </p>
             </div>
 
@@ -165,9 +165,9 @@ const Testimonials: React.FC = () => {
               <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
-                  <div className="text-4xl md:text-5xl font-black mb-2 text-emerald-200">$2M+</div>
-                  <div className="text-white/90 font-semibold">💰 Paid to Creators</div>
-                  <div className="text-xs text-emerald-200 mt-1">+25% this month</div>
+                  <div className="text-4xl md:text-5xl font-black mb-2 text-emerald-200">₹16Cr+</div>
+                  <div className="text-white/90 font-semibold">💰 Creators Ko Mila</div>
+                  <div className="text-xs text-emerald-200 mt-1">+25% is mahine</div>
                 </div>
               </div>
               
@@ -175,8 +175,8 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-yellow-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
                   <div className="text-4xl md:text-5xl font-black mb-2 text-amber-200">4.8⭐</div>
-                  <div className="text-white/90 font-semibold">📱 App Store Rating</div>
-                  <div className="text-xs text-amber-200 mt-1">15K+ reviews</div>
+                  <div className="text-white/90 font-semibold">📱 Play Store Rating</div>
+                  <div className="text-xs text-amber-200 mt-1">1.5L+ reviews</div>
                 </div>
               </div>
               
@@ -184,8 +184,8 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
                   <div className="text-4xl md:text-5xl font-black mb-2 text-cyan-200">300%</div>
-                  <div className="text-white/90 font-semibold">📈 Monthly Growth</div>
-                  <div className="text-xs text-cyan-200 mt-1">Fastest growing</div>
+                  <div className="text-white/90 font-semibold">📈 Mahina Growth</div>
+                  <div className="text-xs text-cyan-200 mt-1">Sabse tez badhne wala</div>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span className="relative z-10 flex items-center justify-center gap-3">
                   <span className="text-2xl">🎬</span>
-                  <span>Start Creating Now</span>
+                  <span>Abhi Shuru Karo</span>
                   <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
                 </span>
               </button>
@@ -205,7 +205,7 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span className="relative z-10 flex items-center justify-center gap-3">
                   <span className="text-2xl">📚</span>
-                  <span>Learn More</span>
+                  <span>Aur Jaaniye</span>
                   <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
                 </span>
               </button>

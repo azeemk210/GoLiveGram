@@ -807,37 +807,37 @@ const MobilePreview: React.FC = () => {
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col text-white p-4 pt-16">
                       <div className="text-center mb-6">
-                        <h2 className="text-2xl font-bold mb-2">Earnings 💰</h2>
-                        <p className="text-white/70 text-sm">Your creator income</p>
+                        <h2 className="text-2xl font-bold mb-2">Kamai 💰</h2>
+                        <p className="text-white/70 text-sm">Aapki creator ki kamai</p>
                       </div>
 
                       <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-2xl p-4 mb-6 backdrop-blur-sm">
-                        <div className="text-green-400 font-bold text-3xl mb-1">$1,247</div>
-                        <div className="text-green-300 text-sm">This Month</div>
-                        <div className="text-green-200 text-xs mt-1">↗️ +23% from last month</div>
+                        <div className="text-green-400 font-bold text-3xl mb-1">₹99,760</div>
+                        <div className="text-green-300 text-sm">Is Mahine</div>
+                        <div className="text-green-200 text-xs mt-1">↗️ +23% pichle mahine se</div>
                       </div>
 
                       <div className="space-y-3 mb-6">
                         <div className="flex justify-between items-center p-3 bg-white/5 rounded-xl backdrop-blur-sm">
                           <span className="text-sm">🎁 Gifts</span>
-                          <span className="font-semibold">$567</span>
+                          <span className="font-semibold">₹45,360</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-white/5 rounded-xl backdrop-blur-sm">
                           <span className="text-sm">👑 Subscriptions</span>
-                          <span className="font-semibold">$480</span>
+                          <span className="font-semibold">₹38,400</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-white/5 rounded-xl backdrop-blur-sm">
                           <span className="text-sm">💸 Donations</span>
-                          <span className="font-semibold">$200</span>
+                          <span className="font-semibold">₹16,000</span>
                         </div>
                       </div>
 
                       <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 py-3 rounded-2xl text-sm font-semibold mb-4 shadow-lg">
-                        💳 Withdraw Earnings
+                        💳 Paise Nikalen
                       </button>
 
                       <div className="text-center p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-xl backdrop-blur-sm">
-                        <div className="text-yellow-400 text-sm font-medium">🏆 Achievement Unlocked: Rising Star</div>
+                        <div className="text-yellow-400 text-sm font-medium">🏆 Achievement Unlocked: Nayi Shuruvat</div>
                       </div>
 
                       <div className="flex-grow" />
@@ -878,8 +878,8 @@ const MobilePreview: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h3 className="text-xl font-bold mt-4 mb-2">Earnings Dashboard 💰</h3>
-            <p className="text-gray-600">Track your revenue and growth metrics</p>
+            <h3 className="text-xl font-bold mt-4 mb-2">Kamai Dashboard 💰</h3>
+            <p className="text-gray-600">Apni income aur growth ko track kariye</p>
           </div>
         </div>
 
