@@ -341,7 +341,7 @@ const MobilePreview: React.FC = () => {
                                   (e.currentTarget as HTMLVideoElement).style.display = 'none';
                                 }}
                               >
-                                <source src="https://www.pexels.com/download/video/17169505/" type="video/mp4" />
+                                <source src="https://www.pexels.com/download/video/2795742/" type="video/mp4" />
                               </video>
                             </div>
                             <div className="flex items-center gap-4 text-white">
@@ -597,21 +597,36 @@ const MobilePreview: React.FC = () => {
                         
                         let translateY = 0;
                         let zIndex = 1;
+                        let opacity = 1;
                         
                         if (isCurrentReel) {
-                          translateY = 0;
+                          if (isReelTransitioning) {
+                            translateY = -100; // Current video slides up and out
+                            opacity = 0.8;
+                          } else {
+                            translateY = 0; // Current video in normal position
+                          }
                           zIndex = 3;
-                        } else if (isPreviousReel) {
-                          translateY = -100;
-                          zIndex = 2;
                         } else if (isNextReel) {
-                          translateY = 100;
+                          if (isReelTransitioning) {
+                            translateY = 0; // Next video slides up into view
+                            opacity = 1;
+                          } else {
+                            translateY = 100; // Next video waits below
+                            opacity = 0;
+                          }
                           zIndex = 2;
+                        } else if (isPreviousReel) {
+                          translateY = -100; // Previous videos stay above
+                          opacity = 0;
+                          zIndex = 1;
                         } else if (index < currentReelIndex) {
-                          translateY = -100;
+                          translateY = -100; // All previous videos above
+                          opacity = 0;
                           zIndex = 1;
                         } else {
-                          translateY = 100;
+                          translateY = 100; // All future videos below
+                          opacity = 0;
                           zIndex = 1;
                         }
 
@@ -621,8 +636,9 @@ const MobilePreview: React.FC = () => {
                             className="absolute inset-0 w-full h-full"
                             style={{
                               transform: `translateY(${translateY}%)`,
+                              opacity: opacity,
                               transition: isReelTransitioning 
-                                ? 'transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+                                ? 'transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 300ms ease' 
                                 : 'none',
                               zIndex: zIndex,
                             }}
@@ -667,14 +683,21 @@ const MobilePreview: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Swipe Up Indicator */}
+                    {/* Swipe Up Indicator with Transition State */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
-                      <div className="animate-pulse">
-                        <div className="flex flex-col items-center text-white bg-black/40 backdrop-blur-sm rounded-full px-4 py-3">
-                          <svg className="w-6 h-6 mb-1 animate-bounce text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className={`transition-all duration-300 ${isReelTransitioning ? 'scale-110' : 'scale-100 animate-pulse'}`}>
+                        <div className="flex flex-col items-center text-white bg-black/40 backdrop-blur-sm rounded-full px-4 py-3 border border-white/10">
+                          <svg 
+                            className={`w-6 h-6 mb-1 text-white ${isReelTransitioning ? 'animate-spin' : 'animate-bounce'}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5 5 5M7 19l5-5 5 5" />
                           </svg>
-                          <span className="text-xs font-bold text-white">Swipe up</span>
+                          <span className="text-xs font-bold text-white">
+                            {isReelTransitioning ? 'Switching...' : 'Swipe up'}
+                          </span>
                         </div>
                       </div>
                     </div>
