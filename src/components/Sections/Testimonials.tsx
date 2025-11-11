@@ -9,7 +9,7 @@ const Testimonials: React.FC = () => {
       avatar: "👩‍🍳",
       earnings: "₹12,47,000",
       period: "First Month",
-      quote: "Main ne pehle mahine mein hi 12 lakh kamaye! GoLiveGram ke monetization features kamaal ke hain.",
+      quote: "I made 12 lakhs in my first month! GoLiveGram's monetization features are incredible.",
       rating: 5,
       verified: true,
       followers: "4.5L",
@@ -18,10 +18,10 @@ const Testimonials: React.FC = () => {
     {
       name: "Arjun Patel",
       handle: "@arjun_fitness",
-      avatar: "�‍�💪",
+      avatar: "�‍💪",
       earnings: "₹6,80,000",
       period: "Monthly Average",
-      quote: "Dusre platforms se 10 guna zyada engagement mil raha hai! Meri community live features ko bahut pasand karti hai.",
+      quote: "Getting 10x more engagement than other platforms! My community loves the live features.",
       rating: 5,
       verified: true,
       followers: "2.8L",
@@ -33,7 +33,7 @@ const Testimonials: React.FC = () => {
       avatar: "👩‍🎨",
       earnings: "₹9,60,000",
       period: "Last Month",
-      quote: "Brand partnerships ke opportunities amazing hain. Finally jo deserve karta hun wo mil raha hai!",
+      quote: "The brand partnership opportunities are amazing. Finally earning what I deserve!",
       rating: 5,
       verified: true,
       followers: "3.5L",
@@ -45,7 +45,7 @@ const Testimonials: React.FC = () => {
       avatar: "👨‍💻",
       earnings: "₹16,00,000",
       period: "Monthly Record",
-      quote: "Sabse best creator platform hai jo maine use kiya hai. Analytics se sab kuch optimize kar sakta hun.",
+      quote: "Best creator platform I've ever used. The analytics help me optimize everything perfectly.",
       rating: 5,
       verified: true,
       followers: "5.2L",
@@ -156,7 +156,7 @@ const Testimonials: React.FC = () => {
               </h3>
               
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
-                Apne passion ko profit mein convert karo GoLiveGram ke creator-first platform ke saath 🎉
+                Turn your passion into profit with GoLiveGram's creator-first platform 🎉
               </p>
             </div>
 
@@ -166,8 +166,8 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
                   <div className="text-4xl md:text-5xl font-black mb-2 text-emerald-200">₹16Cr+</div>
-                  <div className="text-white/90 font-semibold">💰 Creators Ko Mila</div>
-                  <div className="text-xs text-emerald-200 mt-1">+25% is mahine</div>
+                  <div className="text-white/90 font-semibold">💰 Paid to Creators</div>
+                  <div className="text-xs text-emerald-200 mt-1">+25% this month</div>
                 </div>
               </div>
               
@@ -184,8 +184,8 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
                   <div className="text-4xl md:text-5xl font-black mb-2 text-cyan-200">300%</div>
-                  <div className="text-white/90 font-semibold">📈 Mahina Growth</div>
-                  <div className="text-xs text-cyan-200 mt-1">Sabse tez badhne wala</div>
+                  <div className="text-white/90 font-semibold">📈 Monthly Growth</div>
+                  <div className="text-xs text-cyan-200 mt-1">Fastest growing</div>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span className="relative z-10 flex items-center justify-center gap-3">
                   <span className="text-2xl">🎬</span>
-                  <span>Abhi Shuru Karo</span>
+                  <span>Start Creating Now</span>
                   <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
                 </span>
               </button>
@@ -205,7 +205,7 @@ const Testimonials: React.FC = () => {
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span className="relative z-10 flex items-center justify-center gap-3">
                   <span className="text-2xl">📚</span>
-                  <span>Aur Jaaniye</span>
+                  <span>Learn More</span>
                   <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
                 </span>
               </button>
