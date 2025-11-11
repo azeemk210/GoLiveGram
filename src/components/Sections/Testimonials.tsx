@@ -18,7 +18,7 @@ const Testimonials: React.FC = () => {
     {
       name: "Arjun Patel",
       handle: "@arjun_fitness",
-      avatar: "💪",
+      avatar: "�‍�💪",
       earnings: "₹6,80,000",
       period: "Monthly Average",
       quote: "Dusre platforms se 10 guna zyada engagement mil raha hai! Meri community live features ko bahut pasand karti hai.",
@@ -30,7 +30,7 @@ const Testimonials: React.FC = () => {
     {
       name: "Kavya Reddy",
       handle: "@kavya_art",
-      avatar: "🎨",
+      avatar: "👩‍🎨",
       earnings: "₹9,60,000",
       period: "Last Month",
       quote: "Brand partnerships ke opportunities amazing hain. Finally jo deserve karta hun wo mil raha hai!",
@@ -42,7 +42,7 @@ const Testimonials: React.FC = () => {
     {
       name: "Rohit Gupta",
       handle: "@rohit_tech",
-      avatar: "💻",
+      avatar: "👨‍💻",
       earnings: "₹16,00,000",
       period: "Monthly Record",
       quote: "Sabse best creator platform hai jo maine use kiya hai. Analytics se sab kuch optimize kar sakta hun.",
