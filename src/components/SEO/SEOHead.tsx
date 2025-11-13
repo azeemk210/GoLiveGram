@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEOHead: React.FC = () => {
   const siteUrl = 'https://golivegram.com';
   const title = 'GoLiveGram - Stream, Connect & Monetize Your Passion | Live Streaming App';
-  const description = 'Join 2.5M+ creators earning $500-$5000/month on GoLiveGram. Go live, build community, and turn your passion into profit with multiple monetization streams. Download now!';
+  const description = 'Join 2.5M+ creators earning ₹500-₹5000/month on GoLiveGram. Go live, build community, and turn your passion into profit with multiple monetization streams. Download now!';
   const keywords = 'live streaming app, monetize streaming, creator economy, go live, earn money streaming, social media app, content creator, video streaming, live broadcast, influencer marketing';
   
   const structuredData = {

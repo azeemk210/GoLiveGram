@@ -70,7 +70,7 @@ const CallToAction: React.FC = () => {
               Join 50,000+ Successful Creators
             </h3>
             <p className="text-white/90 mb-6">
-              Average earnings: $500-$5000/month 💰📈
+              Average earnings: ₹500-₹5000/month 💰📈
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-yellow-500 text-black px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform duration-200">
@@ -112,7 +112,7 @@ const CallToAction: React.FC = () => {
             <div className="text-3xl animate-pulse">🔥</div>
           </div>
           <p className="text-red-100 mb-4">
-            Join now and get priority access to brand partnerships + $100 bonus credits
+            Join now and get priority access to brand partnerships + ₹100 bonus credits
           </p>
           <div className="flex items-center justify-center space-x-2 text-red-200">
             <Rocket className="w-5 h-5" />
@@ -133,7 +133,7 @@ const CallToAction: React.FC = () => {
               <div className="text-white/80 text-sm">App Store Rating</div>
             </div>
             <div>
-              <div className="text-3xl font-bold">$2M+</div>
+              <div className="text-3xl font-bold">₹2M+</div>
               <div className="text-white/80 text-sm">Creator Earnings</div>
             </div>
             <div>

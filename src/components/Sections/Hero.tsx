@@ -4,9 +4,9 @@ import { handleDownloadClick } from '../../utils/downloads';
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-24 md:pt-28">
+    <section id="hero" className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20 xs:pt-24 md:pt-28 w-full max-w-full">
       {/* Background Elements */}
-      <div className="absolute inset-0 z-10">
+      <div className="absolute inset-0 z-10 pt-50">
         {/* Extra Floating Emojis (top corners / sides) - Hidden on mobile */}
         <div className="absolute top-8 right-8 floating-element text-3xl pointer-events-none hidden md:block" aria-hidden="true">🎥</div>
         <div className="absolute top-8 left-8 floating-element text-4xl pointer-events-none hidden md:block" aria-hidden="true">💎</div>
@@ -28,17 +28,17 @@ const Hero: React.FC = () => {
         <div className="absolute top-96 right-1/4 floating-element text-2xl hidden md:block">💙</div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 z-10 relative w-full max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left order-1 lg:order-1">
             <div className="mb-4 sm:mb-6">
               <span className="inline-flex items-center px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium">
                 🚀 Join 2.5M+ Active Creators
               </span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white mb-4 sm:mb-6 leading-tight">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-4 sm:mb-6 leading-tight break-words">
               Go Live.
               <br />
               <span className="text-gradient bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
@@ -48,19 +48,19 @@ const Hero: React.FC = () => {
               <span className="text-gradient bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
                 Go Rich.
               </span>
-              <span className="text-2xl sm:text-3xl md:text-4xl ml-1 sm:ml-2">💰</span>
+              <span className="text-xl xs:text-2xl sm:text-3xl md:text-4xl ml-1 sm:ml-2">💰</span>
             </h1>
             
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed px-1 xs:px-2 sm:px-0 break-words">
               Stream, Connect, and Monetize Your Passion
               <br />
               <span className="text-yellow-300 font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
-                Average Creator Earnings: $500-$5,000/month 📈
+                Average Creator Earnings: ₹500-₹5,000/month 📈
               </span>
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 px-2 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 px-1 xs:px-2 sm:px-0 w-full max-w-full">
               <button 
                 onClick={() => handleDownloadClick('ios')}
                 className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-gray-800 transition-all duration-300 hover:scale-105 cursor-pointer w-full sm:w-auto"
@@ -95,28 +95,28 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-12 px-2 sm:px-0">
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">2.5M+</div>
-                <div className="text-white/80 text-xs sm:text-sm">Active Users 👥</div>
+            <div className="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 mt-6 xs:mt-8 sm:mt-12 px-1 xs:px-2 sm:px-0 w-full max-w-full">
+              <div className="text-center min-w-0">
+                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 truncate">2.5M+</div>
+                <div className="text-white/80 text-xs sm:text-sm leading-tight">Active Users 👥</div>
               </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">$2M+</div>
-                <div className="text-white/80 text-xs sm:text-sm">Paid to Creators 💰</div>
+              <div className="text-center min-w-0">
+                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 truncate">₹2M+</div>
+                <div className="text-white/80 text-xs sm:text-sm leading-tight">Paid to Creators 💰</div>
               </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">4.8★</div>
-                <div className="text-white/80 text-xs sm:text-sm">App Store Rating ⭐</div>
+              <div className="text-center min-w-0">
+                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 truncate">4.8★</div>
+                <div className="text-white/80 text-xs sm:text-sm leading-tight">App Store Rating ⭐</div>
               </div>
             </div>
           </div>
 
           {/* Right Content - iPhone 16 Mockups */}
-          <div className="relative">
-            <div className="flex gap-6 justify-center items-center">
-              <div className="relative z-10 transform rotate-[10deg] scale-90">
+          <div className="relative w-full flex flex-col lg:flex-row gap-4 md:gap-6 justify-center items-center order-2 lg:order-2 mb-8 lg:mb-0">
+            {/* First iPhone Mockup */}
+            <div className="relative z-50 transform rotate-[8deg] scale-75 sm:scale-80 md:scale-85 lg:scale-90">
                 {/* iPhone 16 Shell */}
-                <div className="w-[342px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
+                <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[300px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                   <div 
                     className="relative w-full h-full bg-black rounded-[44px] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_2px_0_rgba(255,255,255,0.04)_inset,0_-2px_0_rgba(255,255,255,0.02)_inset]"
                     style={{ isolation: 'isolate' }}
@@ -260,10 +260,10 @@ const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Second iPhone 16 Mockup */}
-              <div className="relative z-10 transform rotate-[-5deg] scale-90">
+            {/* Second iPhone Mockup */}
+            <div className="relative z-50 transform rotate-[-5deg] scale-75 sm:scale-80 md:scale-85 lg:scale-90">
                 {/* iPhone 16 Shell */}
-                <div className="w-[342px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
+                <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[300px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                   <div 
                     className="relative w-full h-full bg-black rounded-[44px] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_2px_0_rgba(255,255,255,0.04)_inset,0_-2px_0_rgba(255,255,255,0.02)_inset]"
                     style={{ isolation: 'isolate' }}
@@ -393,7 +393,6 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
       
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">

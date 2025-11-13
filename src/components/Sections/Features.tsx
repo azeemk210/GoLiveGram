@@ -44,7 +44,7 @@ const Features: React.FC = () => {
       title: "Turn Passion Into Profit",
       description: "Multiple revenue streams for creators. From virtual gifts to brand partnerships, monetize your content effectively.",
       visual: "💵📊🚀",
-      highlight: "$500-$5K/month"
+      highlight: "₹500-₹5K/month"
     },
     {
       icon: <Smartphone className="w-12 h-12 text-pink-500" />,
