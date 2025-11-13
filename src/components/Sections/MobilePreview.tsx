@@ -238,22 +238,22 @@ const MobilePreview: React.FC = () => {
   }, [currentReelIndex, isReelTransitioning, safePlay, safePause]);
 
   return (
-    <section ref={sectionRef} id="creators" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-6">
+    <section ref={sectionRef} id="creators" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-heading font-bold text-gray-900 mb-4 sm:mb-6">
             See GoLiveGram in Action 📱
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 px-4">
             Experience the power of our platform across all devices
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
           {/* Phone 0: Home Feed */}
           <div className="text-center">
             <div className="relative z-10">
-              <div className="w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
+              <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[240px] xl:w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                 <div
                   className="relative w-full h-full bg-black rounded-[44px] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_2px_0_rgba(255,255,255,0.04)_inset,0_-2px_0_rgba(255,255,255,0.02)_inset]"
                   style={{ isolation: 'isolate' }}
@@ -293,22 +293,17 @@ const MobilePreview: React.FC = () => {
                         <div className="flex gap-3 justify-between px-1">
                           {Array.from({ length: 6 }).map((_, i) => (
                             <div key={i} className="text-center relative">
-                              <div className={`w-14 h-14 rounded-full p-0.5 ${i === 2 ? 'bg-gradient-to-br from-red-500 to-pink-500' : 'bg-gradient-to-br from-purple-500 to-pink-500'}`}>
+                              <div className="w-14 h-14 rounded-full p-0.5 bg-gradient-to-br from-purple-500 to-pink-500">
                                 <div className="w-full h-full rounded-full overflow-hidden">
                                   <img
                                     src={`https://images.unsplash.com/photo-${
-                                      ['1472099645785-5658abf4ff4e', '1507591064344-4c6ce005b128', '1494790108755-2616c6137a1d', '1500648767791-00dcc994a43e', '1438761681033-6461ffad8d80', '1507003211169-0a1dd7228f2d'][i]
+                                      ['1534528741775-53994a69daeb', '1507591064344-4c6ce005b128', '1489424731084-a5d8b219a5bb', '1500648767791-00dcc994a43e', '1438761681033-6461ffad8d80', '1507003211169-0a1dd7228f2d'][i]
                                     }?w=150&h=150&fit=crop&crop=face`}
                                     alt={`Story ${i + 1}`}
                                     className="w-full h-full object-cover"
                                   />
                                 </div>
                               </div>
-                              {i === 2 && (
-                                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-red-500 px-1.5 py-0.5 rounded text-white text-[8px] font-bold">
-                                  LIVE
-                                </div>
-                              )}
                               <span className="text-white text-xs mt-1 block truncate w-14">
                                 {['Your Story', 'arjun_dev', 'priya_vlogs', 'dev_gupta', 'neha_life', 'raj_music'][i]}
                               </span>
@@ -370,8 +365,8 @@ const MobilePreview: React.FC = () => {
                                 <p className="text-white font-semibold text-sm">priya_vlogs</p>
                                 <p className="text-gray-400 text-xs">Live • 1.2K watching</p>
                               </div>
-                              <div className="ml-auto">
-                                <div className="bg-red-500 px-2 py-1 rounded text-white text-xs font-bold">LIVE</div>
+                              <div className="ml-auto flex-shrink-0">
+                                <div className="bg-red-500 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-white text-[10px] sm:text-xs font-bold whitespace-nowrap flex items-center justify-center">LIVE</div>
                               </div>
                             </div>
                             <div className="bg-gray-700 rounded-lg aspect-video mb-2"></div>
@@ -381,7 +376,7 @@ const MobilePreview: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Bottom Navigation */}
+                    {/* Bottom Nav */}
                     <div className="absolute left-0 right-0 bottom-0 h-14 px-[14px] py-[6px] flex items-center justify-between bg-gradient-to-t from-black/70 to-black/25 backdrop-blur-[10px] border-t border-white/8 z-10" aria-label="Bottom navigation">
                       <button className="w-11 h-11 rounded-xl flex items-center justify-center border bg-white/8 border-white/14 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]" aria-label="Home - Active">
                         <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
@@ -425,7 +420,7 @@ const MobilePreview: React.FC = () => {
           {/* Phone 1: Live Streaming */}
           <div className="text-center">
             <div className="relative z-10">
-              <div className="w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
+              <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[240px] xl:w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                 <div
                   className="relative w-full h-full bg-black rounded-[44px] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_2px_0_rgba(255,255,255,0.04)_inset,0_-2px_0_rgba(255,255,255,0.02)_inset]"
                   style={{ isolation: 'isolate' }}
@@ -479,24 +474,19 @@ const MobilePreview: React.FC = () => {
                     {/* Top Bar */}
                     <div className="absolute top-[56px] left-3 right-3 flex items-center justify-between gap-1 z-10">
                       <div className="flex items-center gap-1">
-                        <button className="w-8 h-8 rounded-[8px] bg-black/45 backdrop-blur-sm border border-white/8 flex items-center justify-center" aria-label="Back">
-                          <svg className="w-4 h-4 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                            <path d="M15 18l-6-6 6-6" />
-                          </svg>
-                        </button>
-                        <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-black/55 backdrop-blur-sm font-semibold text-[10px] text-white">
-                          <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_0_2px_rgba(255,51,85,0.18)]" />
-                          LIVE
-                          <span className="text-white/70">• {formatLiveTime(liveSeconds)}</span>
+                        <div className="flex items-center justify-center gap-1 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full bg-black/55 backdrop-blur-sm font-semibold text-[8px] sm:text-[10px] text-white whitespace-nowrap">
+                          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-red-500 shadow-[0_0_0_1px_rgba(255,51,85,0.18)] sm:shadow-[0_0_0_2px_rgba(255,51,85,0.18)] flex-shrink-0" />
+                          <span className="flex-shrink-0">LIVE</span>
+                          <span className="text-white/70 flex-shrink-0">• {formatLiveTime(liveSeconds)}</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-1">
-                        <div className="bg-black/45 backdrop-blur-sm px-2 py-1 rounded-full text-[10px] text-white border border-white/8 flex items-center gap-1" aria-label="Viewers">
-                          <svg className="w-3 h-3 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
+                        <div className="bg-black/45 backdrop-blur-sm px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[8px] sm:text-[10px] text-white border border-white/8 flex items-center justify-center gap-1 whitespace-nowrap" aria-label="Viewers">
+                          <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-white stroke-[1.8] fill-none flex-shrink-0" viewBox="0 0 24 24">
                             <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" />
                             <circle cx="12" cy="12" r="3" />
                           </svg>
-                          1.2K
+                          <span className="flex-shrink-0">1.2K</span>
                         </div>
                         <div className="bg-black/45 backdrop-blur-sm px-2 py-1 rounded-full text-[10px] text-white border border-white/8 flex items-center gap-1" aria-label="Likes">
                           <svg className="w-3 h-3 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
@@ -577,7 +567,7 @@ const MobilePreview: React.FC = () => {
           {/* Phone 2: Reels with Swipe Gestures */}
           <div className="text-center">
             <div className="relative z-10">
-              <div className="w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
+              <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[240px] xl:w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                 <div
                   className="relative w-full h-full bg-black rounded-[44px] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_2px_0_rgba(255,255,255,0.04)_inset,0_-2px_0_rgba(255,255,255,0.02)_inset]"
                   style={{ isolation: 'isolate' }}
@@ -791,7 +781,7 @@ const MobilePreview: React.FC = () => {
           {/* Phone 3: Monetization Dashboard */}
           <div className="text-center">
             <div className="relative z-10">
-              <div className="w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
+              <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[240px] xl:w-[280px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                 <div
                   className="relative w-full h-full bg-black rounded-[44px] p-3 shadow-[0_30px_60px_rgba(0,0,0,0.5),0_2px_0_rgba(255,255,255,0.04)_inset,0_-2px_0_rgba(255,255,255,0.02)_inset]"
                   style={{ isolation: 'isolate' }}
@@ -850,21 +840,23 @@ const MobilePreview: React.FC = () => {
                           <path d="M3 10.5l9-7 9 7M5 10v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8" />
                         </svg>
                       </button>
+                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Live">
+                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
+                          <circle cx="11" cy="11" r="8" />
+                          <path d="M21 21l-4.35-4.35" />
+                          <circle cx="11" cy="11" r="3" fill="white" />
+                        </svg>
+                      </button>
                       <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Search">
                         <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
                           <circle cx="11" cy="11" r="7" />
                           <path d="M21 21l-4.35-4.35" />
                         </svg>
                       </button>
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Create">
+                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Camera - Go Live">
                         <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <path d="M12 5v14M5 12h14" />
-                        </svg>
-                      </button>
-                      <button className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/6 bg-black/25" aria-label="Reels">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.8] fill-none" viewBox="0 0 24 24">
-                          <rect x="3" y="5" width="18" height="14" rx="3" />
-                          <path d="M10 9l5 3-5 3z" />
+                          <path d="M23 7l-7 5 7 5V7z" />
+                          <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
                         </svg>
                       </button>
                       <button className="w-11 h-11 rounded-xl flex items-center justify-center border bg-white/8 border-white/14 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]" aria-label="Profile - Active">
