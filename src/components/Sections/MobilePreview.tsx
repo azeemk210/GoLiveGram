@@ -693,7 +693,7 @@ const MobilePreview: React.FC = () => {
                     </div>
 
                     {/* Username */}
-                    <div className="absolute bottom-[80px] left-4 z-10">
+                    <div className="absolute bottom-[70px] left-4 z-10">
                       <div className="flex items-center gap-2 mb-2">
                         <div
                           className={`w-8 h-8 rounded-full bg-gradient-to-br ${
@@ -709,27 +709,27 @@ const MobilePreview: React.FC = () => {
                     </div>
 
                     {/* Right Controls */}
-                    <div className="absolute bottom-[80px] right-4 z-10 flex flex-col items-center gap-4">
-                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Like">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                    <div className="absolute bottom-[80px] right-4 z-10 flex flex-col items-center gap-3">
+                      <button className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Like">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
                           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                         </svg>
                       </button>
                       
-                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Comment">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                      <button className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Comment">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
                           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                         </svg>
                       </button>
                       
-                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Share">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                      <button className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="Share">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
                           <path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7Z" />
                         </svg>
                       </button>
                       
-                      <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="More options">
-                        <svg className="w-5 h-5 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
+                      <button className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center" aria-label="More options">
+                        <svg className="w-4 h-4 stroke-white stroke-[1.5] fill-none" viewBox="0 0 24 24">
                           <circle cx="12" cy="12" r="1" />
                           <circle cx="12" cy="5" r="1" />
                           <circle cx="12" cy="19" r="1" />
