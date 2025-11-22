@@ -667,9 +667,9 @@ const MobilePreview: React.FC = () => {
                           <path d="M15 18l-6-6 6-6" />
                         </svg>
                       </button>
-                      <div className="flex items-center gap-1 px-2 py-1 rounded bg-red-500 text-white text-[10px] font-bold">
-                        <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
-                        LIVE
+                      <div className="flex items-center gap-1 px-[8px] py-[4px] rounded-full bg-black/60 backdrop-blur-sm font-medium text-[10px] text-white">
+                        <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_0_3px_rgba(255,51,85,0.2)]"></div>
+                        <span className="font-bold">LIVE</span>
                       </div>
                     </div>
 
@@ -694,15 +694,15 @@ const MobilePreview: React.FC = () => {
 
                     {/* Username */}
                     <div className="absolute bottom-[70px] left-4 z-10">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-1.5 mb-2">
                         <div
-                          className={`w-8 h-8 rounded-full bg-gradient-to-br ${
+                          className={`w-6 h-6 rounded-full bg-gradient-to-br ${
                             indianUsernames[currentReelIndex % indianUsernames.length].gradient
-                          } flex items-center justify-center text-white font-bold text-xs`}
+                          } flex items-center justify-center text-white font-bold text-[10px]`}
                         >
                           {indianUsernames[currentReelIndex % indianUsernames.length].initial}
                         </div>
-                        <span className="text-white font-bold text-sm">
+                        <span className="text-white font-bold text-xs">
                           @{indianUsernames[currentReelIndex % indianUsernames.length].name}
                         </span>
                       </div>
@@ -797,14 +797,14 @@ const MobilePreview: React.FC = () => {
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col text-white p-4 pt-16">
                       <div className="text-center mb-6">
-                        <h2 className="text-2xl font-bold mb-2">Kamai 💰</h2>
-                        <p className="text-white/70 text-sm">Aapki creator ki kamai</p>
+                        <h2 className="text-2xl font-bold mb-2">Earnings 💰</h2>
+                        <p className="text-white/70 text-sm">Your earning as content creator</p>
                       </div>
 
                       <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-2xl p-4 mb-6 backdrop-blur-sm">
                         <div className="text-green-400 font-bold text-3xl mb-1">₹99,760</div>
-                        <div className="text-green-300 text-sm">Is Mahine</div>
-                        <div className="text-green-200 text-xs mt-1">↗️ +23% pichle mahine se</div>
+                        <div className="text-green-300 text-sm">This month</div>
+                        <div className="text-green-200 text-xs mt-1">↗️ +23% from last month</div>
                       </div>
 
                       <div className="space-y-3 mb-6">
@@ -823,7 +823,7 @@ const MobilePreview: React.FC = () => {
                       </div>
 
                       <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 py-3 rounded-2xl text-sm font-semibold mb-4 shadow-lg">
-                        💳 Paise Nikalen
+                        💳 Withdraw Amount
                       </button>
 
                       <div className="text-center p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-xl backdrop-blur-sm">

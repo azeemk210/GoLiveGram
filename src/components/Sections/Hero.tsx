@@ -51,10 +51,10 @@ const Hero: React.FC = () => {
               <span className="text-xl xs:text-2xl sm:text-3xl md:text-4xl ml-1 sm:ml-2">💰</span>
             </h1>
             
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed px-1 xs:px-2 sm:px-0 break-words">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed px-1 xs:px-2 sm:px-0 break-words">
               Stream, Connect, and Monetize Your Passion
               <br />
-              <span className="text-yellow-300 font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
+              <span className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
                 Average Creator Earnings: ₹500-₹5,000/month 📈
               </span>
             </p>
@@ -157,9 +157,10 @@ const Hero: React.FC = () => {
                           </button>
                           <div className="flex items-center gap-2 px-[10px] py-[6px] rounded-full bg-black/55 backdrop-blur-sm font-semibold text-xs text-white">
                             <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_0_4px_rgba(255,51,85,0.18)]" />
-                            LIVE
-                            <span className="text-white/70">• 00:09</span>
+                            <span>LIVE</span>
+                            <span className="text-white/70">00:09</span>
                           </div>
+
                         </div>
                         <div className="flex items-center gap-2">
                           <div className="bg-black/45 backdrop-blur-sm px-[10px] py-[6px] rounded-full text-xs text-white border border-white/8 flex items-center gap-1">
