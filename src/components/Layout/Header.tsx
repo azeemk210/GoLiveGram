@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Smartphone, Download } from 'lucide-react';
+import { Menu, X, Smartphone, Download, LogIn } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloads';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
@@ -143,6 +145,13 @@ const Header: React.FC = () => {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
             <button 
+              onClick={() => navigate('/login')}
+              className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors font-medium cursor-pointer"
+            >
+              <LogIn className="w-4 h-4" />
+              <span>Login</span>
+            </button>
+            <button 
               onClick={() => handleDownloadClick('web')}
               className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors font-medium cursor-pointer"
             >
@@ -212,6 +221,16 @@ const Header: React.FC = () => {
                 Success Stories
               </button>
               <div className="pt-4 space-y-2">
+                <button 
+                  onClick={() => {
+                    navigate('/login');
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full btn-secondary flex items-center justify-center space-x-2 cursor-pointer bg-gray-50 border-gray-200"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>Login</span>
+                </button>
                 <button 
                   onClick={() => handleDownloadClick('web')}
                   className="w-full btn-secondary flex items-center justify-center space-x-2 cursor-pointer"

@@ -10,6 +10,7 @@ const Footer = React.lazy(() => import('./components/Layout/Footer'));
 const PrivacyPolicy = React.lazy(() => import('./components/Sections/PrivacyPolicy'));
 const TermsOfService = React.lazy(() => import('./components/Sections/TermsOfService'));
 const Careers = React.lazy(() => import('./components/Sections/Careers'));
+const Login = React.lazy(() => import('./components/Sections/Login'));
 
 // Loading component for Suspense fallbacks
 const SectionLoader: React.FC<{ height?: string }> = ({ height = 'h-96' }) => (
@@ -39,6 +40,7 @@ const App: React.FC = () => {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/careers" element={<Careers />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </div>
         </Suspense>
