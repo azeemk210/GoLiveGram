@@ -4,12 +4,11 @@ import {
   MessageCircle, 
   Search, 
   DollarSign, 
-  Smartphone, 
   Monitor,
-  Zap,
   Users,
   Star,
-  TrendingUp
+  TrendingUp,
+  Camera
 } from 'lucide-react';
 
 const Features: React.FC = () => {
@@ -47,12 +46,12 @@ const Features: React.FC = () => {
       highlight: "₹500-₹5K/month"
     },
     {
-      icon: <Smartphone className="w-12 h-12 text-pink-500" />,
-      emoji: "📱",
-      title: "Viral Short Videos",
-      description: "Create and share Instagram-style reels. Vertical video feed with engagement metrics that help content go viral.",
-      visual: "▶️🎬💫",
-      highlight: "Viral Potential"
+      icon: <Camera className="w-12 h-12 text-orange-500" />,
+      emoji: "📸",
+      title: "Snap & Earn",
+      description: "Send snaps to friends and earn up to ₹500-₹1000 per day! Share moments and get rewarded. *T&C apply",
+      visual: "💰✨🎁",
+      highlight: "₹500-₹1K/day"
     },
     {
       icon: <Monitor className="w-12 h-12 text-indigo-500" />,
@@ -106,19 +105,6 @@ const Features: React.FC = () => {
               <p className="text-gray-600 mb-4 leading-relaxed">
                 {feature.description}
               </p>
-              
-              <div className="flex items-center justify-between">
-                <div className="text-2xl space-x-2">
-                  {feature.visual.split('').map((emoji, i) => (
-                    <span key={i} className="inline-block animate-pulse" style={{animationDelay: `${i * 0.2}s`}}>
-                      {emoji}
-                    </span>
-                  ))}
-                </div>
-                <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Zap className="w-4 h-4" />
-                </div>
-              </div>
             </div>
           ))}
         </div>
@@ -129,9 +115,8 @@ const Features: React.FC = () => {
             <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">2.5M+</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">100K+</h3>
             <p className="text-gray-600">Active Community Members</p>
-            <div className="mt-4 text-2xl">👥🌍</div>
           </div>
 
           <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
@@ -140,7 +125,6 @@ const Features: React.FC = () => {
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">4.8/5</h3>
             <p className="text-gray-600">App Store Rating</p>
-            <div className="mt-4 text-2xl">⭐🏆</div>
           </div>
 
           <div className="text-center p-8 bg-white rounded-2xl shadow-lg">
@@ -149,7 +133,6 @@ const Features: React.FC = () => {
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">300%</h3>
             <p className="text-gray-600">Monthly Growth Rate</p>
-            <div className="mt-4 text-2xl">📈🚀</div>
           </div>
         </div>
 

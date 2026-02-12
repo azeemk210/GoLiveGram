@@ -2,7 +2,7 @@
 
 // App Store URLs (replace with actual URLs when app is published)
 export const APP_STORE_URLS = {
-  ios: 'https://play.google.com/store/apps/details?id=com.golivegram.app',
+  ios: 'https://apps.apple.com/us/app/golivegram/id6755330284',
   android: 'https://play.google.com/store/apps/details?id=com.golivegram.app',
   web: 'https://play.google.com/store/apps/details?id=com.golivegram.app', // Web app URL
 };

@@ -1,32 +1,42 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloads';
 
+// Optimize Unsplash URLs with better parameters
+const optimizeUnsplashUrl = (url: string, size = 80) => {
+  // Add Unsplash optimization parameters:
+  // - Reduce size for avatars (80x80 instead of 150x150)
+  // - Add auto=format (serves WebP when supported)
+  // - Add q=75 (quality optimization)
+  // - Add fm=webp (force WebP format for better compression)
+  return url.replace(/w=150&h=150/, `w=${size}&h=${size}&auto=format&q=75&fm=webp`);
+};
+
 const MobilePreview: React.FC = () => {
   /** ---------------------------------------------------------
    * Data that shouldn't recreate on each render
    * --------------------------------------------------------- */
   const liveComments = useMemo(
     () => [
-      { avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', handle: '@arjun_travels', message: 'Amazing view! 😍' },
-      { avatar: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face', handle: '@priya_vlogs', message: 'Where is this place?' },
-      { avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face', handle: '@rahul_explorer', message: 'Following for more!' },
-      { avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face', handle: '@kavya_lifestyle', message: 'Love the energy! ✨' },
-      { avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face', handle: '@dev_wanderer', message: 'Best stream ever!' },
-      { avatar: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=150&h=150&fit=crop&crop=face', handle: '@neha_creator', message: 'Can you show more?' },
-      { avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150&h=150&fit=crop&crop=face', handle: '@vikram_live', message: 'This is so cool! 🔥' },
-      { avatar: 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face', handle: '@tanvi_travels', message: 'Incredible shots! 📸' },
-      { avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&h=150&fit=crop&crop=face', handle: '@harsh_fitness', message: 'Keep going! 💪' },
-      { avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop&crop=face', handle: '@isha_foodie', message: 'Making me hungry! 🍕' },
-      { avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face', handle: '@jay_photographer', message: 'Perfect lighting!' },
-      { avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face', handle: '@lata_dancer', message: 'Dance with me! 💃' },
-      { avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150&h=150&fit=crop&crop=face', handle: '@om_yoga', message: 'So peaceful 🧘‍♂️' },
-      { avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face', handle: '@queen_maya', message: 'Living the dream! ✨' },
-      { avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face', handle: '@karan_explorer', message: 'Hidden gem! 💎' },
-      { avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', handle: '@riya_wanderlust', message: 'Take me there! ✈️' },
-      { avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face', handle: '@zara_creative', message: 'So inspiring! 🎨' },
-      { avatar: 'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face', handle: '@rohan_tech', message: 'Amazing quality! 📱' },
-      { avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b194?w=150&h=150&fit=crop&crop=face', handle: '@ananya_chef', message: 'This looks delicious!' },
-      { avatar: 'https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?w=150&h=150&fit=crop&crop=face', handle: '@aditi_lifestyle', message: 'Love this vibe! 💫' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'), handle: '@arjun_travels', message: 'Amazing view! 😍' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face'), handle: '@priya_vlogs', message: 'Where is this place?' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'), handle: '@rahul_explorer', message: 'Following for more!' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face'), handle: '@kavya_lifestyle', message: 'Love the energy! ✨' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face'), handle: '@dev_wanderer', message: 'Best stream ever!' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=150&h=150&fit=crop&crop=face'), handle: '@neha_creator', message: 'Can you show more?' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150&h=150&fit=crop&crop=face'), handle: '@vikram_live', message: 'This is so cool! 🔥' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face'), handle: '@tanvi_travels', message: 'Incredible shots! 📸' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&h=150&fit=crop&crop=face'), handle: '@harsh_fitness', message: 'Keep going! 💪' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop&crop=face'), handle: '@isha_foodie', message: 'Making me hungry! 🍕' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'), handle: '@jay_photographer', message: 'Perfect lighting!' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face'), handle: '@lata_dancer', message: 'Dance with me! 💃' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150&h=150&fit=crop&crop=face'), handle: '@om_yoga', message: 'So peaceful 🧘‍♂️' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face'), handle: '@queen_maya', message: 'Living the dream! ✨' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face'), handle: '@karan_explorer', message: 'Hidden gem! 💎' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'), handle: '@riya_wanderlust', message: 'Take me there! ✈️' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face'), handle: '@zara_creative', message: 'So inspiring! 🎨' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face'), handle: '@rohan_tech', message: 'Amazing quality! 📱' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1494790108755-2616b612b194?w=150&h=150&fit=crop&crop=face'), handle: '@ananya_chef', message: 'This looks delicious!' },
+      { avatar: optimizeUnsplashUrl('https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?w=150&h=150&fit=crop&crop=face'), handle: '@aditi_lifestyle', message: 'Love this vibe! 💫' },
     ],
     []
   );
@@ -236,6 +246,30 @@ const MobilePreview: React.FC = () => {
       }, 100);
     }
   }, [currentReelIndex, isReelTransitioning, safePlay, safePause]);
+
+  // Ensure all videos are paused initially and the first video starts playing when the component mounts
+  useEffect(() => {
+    // Ensure all videos are paused initially
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+
+    // Play the first video when the component mounts
+    if (videoRefs.current[0]) {
+      safePlay(videoRefs.current[0]);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Ensure the current video plays when the index changes
+    const currentVideo = videoRefs.current[currentReelIndex];
+    if (currentVideo) {
+      safePlay(currentVideo);
+    }
+  }, [currentReelIndex]);
 
   return (
     <section ref={sectionRef} id="creators" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
@@ -510,8 +544,10 @@ const MobilePreview: React.FC = () => {
                               alt={`${comment.handle} avatar`}
                               className="w-6 h-6 rounded-full object-cover shadow-[0_1px_3px_rgba(0,0,0,0.3)] border border-white/20 flex-shrink-0"
                               loading="lazy"
+                              decoding="async"
                               width={24}
                               height={24}
+                              referrerPolicy="no-referrer"
                             />
                             <div className="bg-transparent text-white flex-1 min-w-0 flex items-center gap-1">
                               <span className="font-semibold text-[10px] text-white/90 flex-shrink-0">{comment.handle}</span>

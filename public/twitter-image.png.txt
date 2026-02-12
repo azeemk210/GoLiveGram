@@ -1,3 +1,0 @@
-# Twitter Card image placeholder - Replace with actual 1200x600 PNG file
-# Optimized for Twitter's card format
-# Should match the Open Graph image but optimized for Twitter's requirements
