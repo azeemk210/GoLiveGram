@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Users, Eye, Clock, TrendingUp, Zap, Heart, DollarSign, Award } from 'lucide-react';
+import { Users, Eye, TrendingUp, Zap, Heart, Award } from 'lucide-react';
 import { SITE_METRICS } from '../../config/siteMetrics';
 
 const Statistics = () => {
   const [activeCreators, setActiveCreators] = useState(0);
   const [totalViewers, setTotalViewers] = useState(0);
-  const [paidToCreatorsUSD, setPaidToCreatorsUSD] = useState(0);
   const [appRating, setAppRating] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,7 +37,6 @@ const Statistics = () => {
 
     animateCounter(SITE_METRICS.activeCreators, setActiveCreators);
     animateCounter((SITE_METRICS).totalViewers ?? 1500000, setTotalViewers);
-    animateCounter(SITE_METRICS.paidToCreatorsUSD, setPaidToCreatorsUSD);
     animateCounter(SITE_METRICS.appRating, setAppRating, 1000, 1);
   }, [isVisible]);
 
@@ -47,148 +45,100 @@ const Statistics = () => {
     : num >= 1_000 ? (num/1_000).toFixed(0) + "K"
     : num.toString();
 
-  const formatCurrencyShort = (num: number): string =>
-    num >= 1_000_000 ? "$" + (num/1_000_000).toFixed(1).replace(/\.0$/, "") + "M"
-    : num >= 1_000 ? "$" + (num/1_000).toFixed(0) + "K"
-    : "$" + num;
-
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 md:py-16 bg-gradient-to-br from-primary-600 via-primary-500 to-secondary-600 text-white overflow-hidden"
+      className="relative py-12 md:py-16 bg-gray-50 overflow-hidden"
     >
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Header */}
         <div className="text-center mb-10 md:mb-12">
-          <div className="inline-flex items-center gap-3 bg-white/15 backdrop-blur-sm rounded-full px-5 py-2 mb-4">
-            <TrendingUp className="w-4 h-4 text-green-200" />
-            <span className="text-sm font-medium text-white/90">GoLiveGram Impact</span>
-            <div className="w-1.5 h-1.5 bg-green-300 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-3 bg-blue-50 rounded-full px-5 py-2 mb-4">
+            <TrendingUp className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-medium text-blue-600">Platform Stats</span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-2 bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
-            Empowering Creators Worldwide
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-2 text-gray-900">
+            Building Communities Together
           </h2>
 
-          <p className="text-base md:text-lg text-white/85 max-w-2xl mx-auto">
-            Real numbers from real creators building their dreams on GoLiveGram 🚀
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            Join thousands of creators sharing their passions with engaged audiences
           </p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           
           {/* Card Component */}
           {[
             {
-              icon: <Users className="w-7 h-7 text-purple-600" />,
-              accent: "purple",
+              icon: <Users className="w-7 h-7 text-blue-600" />,
               number: formatNumber(activeCreators) + "+",
               label: "Active Creators",
-              tag: "+15% monthly",
+              tag: "Growing daily",
               tagIcon: <TrendingUp className="w-4 h-4" />,
-              tagColor: "text-emerald-600"
-            },
-            {
-              icon: <Eye className="w-7 h-7 text-blue-600" />,
-              accent: "blue",
-              number: formatNumber(totalViewers) + "+",
-              label: "Total Viewers",
-              tag: "Watching now",
-              tagIcon: <Zap className="w-4 h-4" />,
               tagColor: "text-blue-600"
             },
             {
-              icon: <DollarSign className="w-7 h-7 text-emerald-600" />,
-              accent: "emerald",
-              number: formatCurrencyShort(paidToCreatorsUSD) + "+",
-              label: "Paid to Creators",
-              tag: "Total earned",
-              tagIcon: <Clock className="w-4 h-4" />,
-              tagColor: "text-emerald-600"
+              icon: <Eye className="w-7 h-7 text-indigo-600" />,
+              number: formatNumber(totalViewers) + "+",
+              label: "Monthly Viewers",
+              tag: "Watching live",
+              tagIcon: <Zap className="w-4 h-4" />,
+              tagColor: "text-indigo-600"
             },
             {
-              icon: <Award className="w-7 h-7 text-amber-600" />,
-              accent: "amber",
+              icon: <Award className="w-7 h-7 text-orange-600" />,
               number: appRating.toFixed(1) + "★",
               label: "App Rating",
-              tag: "Loved by users",
+              tag: "User rated",
               tagIcon: <Heart className="w-4 h-4" />,
-              tagColor: "text-amber-600"
+              tagColor: "text-orange-600"
             },
             {
-              icon: <Users className="w-7 h-7 text-fuchsia-600" />,
-              accent: "fuchsia",
+              icon: <Heart className="w-7 h-7 text-pink-600" />,
               number: formatNumber(SITE_METRICS.ratingCount) + "+",
-              label: "Happy Reviews",
-              tag: "Community love",
+              label: "Reviews",
+              tag: "Community feedback",
               tagIcon: <Heart className="w-4 h-4" />,
-              tagColor: "text-fuchsia-600"
+              tagColor: "text-pink-600"
             }
           ].map((stat, i) => (
             <article
               key={i}
-              className={`group relative rounded-2xl overflow-hidden text-white shadow-xl p-5 md:p-6 hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer ${
-                stat.accent === 'purple' 
-                  ? 'bg-gradient-to-br from-purple-600 via-purple-500 to-pink-500 hover:from-purple-500 hover:to-pink-400' 
-                  : stat.accent === 'blue'
-                  ? 'bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-400 hover:from-blue-500 hover:to-cyan-400'
-                  : stat.accent === 'emerald'
-                  ? 'bg-gradient-to-br from-emerald-600 via-green-500 to-teal-400 hover:from-emerald-500 hover:to-teal-300'
-                  : stat.accent === 'amber'
-                  ? 'bg-gradient-to-br from-amber-500 via-orange-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300'
-                  : 'bg-gradient-to-br from-fuchsia-600 via-pink-500 to-rose-400 hover:from-fuchsia-500 hover:to-rose-300'
-              }`}
+              className="group relative rounded-2xl overflow-hidden bg-white shadow-md p-5 md:p-6 hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
-              {/* Animated Background Pattern */}
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full -translate-x-16 -translate-y-16 animate-pulse"></div>
-                <div className="absolute bottom-0 right-0 w-24 h-24 bg-white rounded-full translate-x-12 translate-y-12 animate-pulse delay-700"></div>
-              </div>
-              
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="rounded-xl bg-white/20 backdrop-blur-sm p-3 ring-2 ring-white/30 group-hover:ring-white/50 transition-all">
-                    {React.cloneElement(stat.icon, { className: 'w-7 h-7 text-white' })}
+                  <div className="rounded-xl bg-gray-50 p-3">
+                    {React.cloneElement(stat.icon, { className: stat.icon.props.className })}
                   </div>
-                  <Heart className="w-5 h-5 text-white/70 group-hover:text-white group-hover:scale-110 transition-all" />
+                  <Heart className="w-5 h-5 text-gray-300 group-hover:text-red-400 transition-all" />
                 </div>
                 
-                <div className="text-3xl md:text-4xl font-extrabold text-white mb-1 group-hover:scale-105 transition-transform" aria-live="polite">
+                <div className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" aria-live="polite">
                   {stat.number}
                 </div>
                 
-                <div className="text-white/90 text-sm font-semibold mb-3 group-hover:text-white transition-colors">
+                <div className="text-gray-600 text-sm font-semibold mb-3">
                   {stat.label}
                 </div>
                 
-                <div className="flex items-center gap-2 text-xs font-medium text-white/80 group-hover:text-white/95 transition-colors">
+                <div className={`flex items-center gap-2 text-xs font-medium ${stat.tagColor} bg-gray-50 px-3 py-1.5 rounded-full w-fit`}>
                   {React.cloneElement(stat.tagIcon, { className: 'w-4 h-4' })}
                   <span>{stat.tag}</span>
                 </div>
               </div>
-              
-              {/* Hover Glow Effect */}
-              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                stat.accent === 'purple' 
-                  ? 'bg-gradient-to-br from-purple-400/20 to-pink-400/20' 
-                  : stat.accent === 'blue'
-                  ? 'bg-gradient-to-br from-blue-400/20 to-cyan-400/20'
-                  : stat.accent === 'emerald'
-                  ? 'bg-gradient-to-br from-emerald-400/20 to-teal-400/20'
-                  : stat.accent === 'amber'
-                  ? 'bg-gradient-to-br from-amber-400/20 to-yellow-400/20'
-                  : 'bg-gradient-to-br from-fuchsia-400/20 to-rose-400/20'
-              }`}></div>
             </article>
           ))}
         </div>
 
         {/* Footer Note */}
-        <div className="mt-10 md:mt-12 text-center text-white/80 text-sm flex justify-center gap-2 items-center">
-          <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse" />
-          Updated in real-time
+        <div className="mt-10 md:mt-12 text-center text-gray-500 text-sm flex justify-center gap-2 items-center">
+          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+          Updated regularly
         </div>
       </div>
     </section>

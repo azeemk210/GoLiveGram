@@ -93,23 +93,17 @@ const Monetization: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <div
-            className="inline-flex items-center px-4 py-2 bg-green-100 rounded-full text-green-600 font-medium mb-4"
+            className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full text-blue-600 font-medium mb-4"
             role="status"
             aria-live="polite"
           >
-            <span className="w-5 h-5 mr-2" aria-hidden="true">💰</span>
-            Monetization Hub
+            Creator Tools
           </div>
           <h2 id="monetization-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-4 sm:mb-6">
-            Multiple Ways to{' '}
-            <span className="text-gradient bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
-              Monetize
-            </span>
+            Support Your Creative Work
           </h2>
           <p className="text-sm sm:text-base lg:text-xl text-gray-600 max-w-3xl mx-auto mb-6 sm:mb-8">
-            Turn Your Creativity Into Cold Hard Cash! 💵
-            <br />
-            <span className="text-green-600 font-semibold">Average Creator Earnings: ₹500–₹5,000 / month 📈</span>
+            Multiple ways for your community to support your content
           </p>
         </div>
 
@@ -214,8 +208,8 @@ const Monetization: React.FC = () => {
         {/* Trust Row */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-8 sm:mb-12" aria-hidden="false">
           <div className="text-xs sm:text-sm text-gray-600">Trusted by</div>
-          <div className="bg-gray-50 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold">2M+ creators</div>
-          <div className="bg-gray-50 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold">₹2M+ paid out</div>
+          <div className="bg-gray-50 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold">100K+ creators</div>
+          <div className="bg-gray-50 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold">₹1L+ paid out</div>
           <div className="bg-gray-50 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold">300% YoY growth</div>
         </div>
 
@@ -236,7 +230,7 @@ const Monetization: React.FC = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
               <div className="bg-white/20 rounded-full px-3 sm:px-6 py-1 sm:py-2">
-                <span className="font-semibold text-xs sm:text-sm lg:text-base">💰 ₹2M+ paid to creators</span>
+                <span className="font-semibold text-xs sm:text-sm lg:text-base">💰 ₹1L+ paid to creators</span>
               </div>
               <div className="bg-white/20 rounded-full px-3 sm:px-6 py-1 sm:py-2">
                 <span className="font-semibold text-xs sm:text-sm lg:text-base">📈 300% monthly growth</span>

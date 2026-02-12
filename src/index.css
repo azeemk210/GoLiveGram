@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* Fonts loaded via preconnect + inline font-face in HTML for better performance */
 @import "tailwindcss";
+
+/* Font loading optimization - use system fonts as fallback */
+:root {
+  font-display: swap;
+}
 
 /* Respect user's motion preferences - disable animations by default if reduced motion is preferred */
 @media (prefers-reduced-motion: reduce) {
@@ -48,7 +53,7 @@
 }
 
 .hero-bg {
-  background: linear-gradient(135deg, #ee3a3a 0%, #d73333 50%, #3B82F6 100%);
+  background: linear-gradient(135deg, #FF6E40 0%, #FF9E80 15%, #FFAB91 30%, transparent 60%), #ffffff;
   position: relative;
   overflow: hidden;
 }
@@ -60,15 +65,29 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(238, 58, 58, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(215, 51, 51, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 10% 50%, rgba(255, 110, 64, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 5% 30%, rgba(255, 158, 128, 0.12) 0%, transparent 40%);
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   33% { transform: translateY(-30px) rotate(2deg); }
   66% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
 }
 
 /* Safe floating animation that respects motion preferences */

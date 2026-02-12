@@ -133,7 +133,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Enhanced Stats Banner */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 text-white text-center shadow-2xl">
+        <div className="relative overflow-hidden bg-white border-2 border-gray-200 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 text-center shadow-lg">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 opacity-20 hidden sm:block">
             <div className="absolute top-0 left-0 w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-white rounded-full -translate-x-10 sm:-translate-x-16 lg:-translate-x-20 -translate-y-10 sm:-translate-y-16 lg:-translate-y-20 animate-pulse"></div>
@@ -151,12 +151,12 @@ const Testimonials: React.FC = () => {
                 <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
               </div>
               
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4 bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent leading-tight">
-                Join 25L+ Successful Indian Creators!
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4 text-gray-900 leading-tight">
+                Join 25L+ Creators Worldwide
               </h3>
               
-              <p className="text-base sm:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto px-4">
-                Turn your passion into profit with GoLiveGram's creator-first platform 🎉
+              <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                Share your passion with GoLiveGram's creator-first platform
               </p>
             </div>
 
@@ -165,7 +165,7 @@ const Testimonials: React.FC = () => {
               <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl lg:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 text-emerald-200">₹16Cr+</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 text-emerald-200">₹1L+</div>
                   <div className="text-white/90 font-semibold text-sm sm:text-base">💰 Paid to Creators</div>
                   <div className="text-xs text-emerald-200 mt-1">+25% this month</div>
                 </div>
@@ -176,7 +176,7 @@ const Testimonials: React.FC = () => {
                 <div className="relative z-10">
                   <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 text-amber-200">4.8⭐</div>
                   <div className="text-white/90 font-semibold text-sm sm:text-base">📱 Play Store Rating</div>
-                  <div className="text-xs text-amber-200 mt-1">1.5L+ reviews</div>
+                  <div className="text-xs text-amber-200 mt-1">1.5K+ reviews</div>
                 </div>
               </div>
               
@@ -188,27 +188,6 @@ const Testimonials: React.FC = () => {
                   <div className="text-xs text-cyan-200 mt-1">Fastest growing</div>
                 </div>
               </div>
-            </div>
-
-            {/* Enhanced Action Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 lg:gap-6">
-              <button className="group relative bg-white text-purple-600 px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-full font-bold text-sm sm:text-base lg:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
-                  <span className="text-lg sm:text-xl lg:text-2xl">🎬</span>
-                  <span>Start Creating Now</span>
-                  <span className="text-base sm:text-lg lg:text-xl group-hover:translate-x-1 transition-transform">→</span>
-                </span>
-              </button>
-              
-              <button className="group relative border-2 sm:border-3 border-white text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-full font-bold text-sm sm:text-base lg:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 hover:scale-105 overflow-hidden">
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
-                  <span className="text-lg sm:text-xl lg:text-2xl">📚</span>
-                  <span>Learn More</span>
-                  <span className="text-base sm:text-lg lg:text-xl group-hover:translate-x-1 transition-transform">→</span>
-                </span>
-              </button>
             </div>
 
             {/* Trust Indicators */}

@@ -1,19 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /cgi-bin/
 
-# Sitemaps
-Sitemap: https://golivegram.com/sitemap.xml
-
-# Crawl-delay for slower bots
-User-agent: AhrefsBot
-Crawl-delay: 10
-
-User-agent: MJ12bot  
-Crawl-delay: 10
-
-# Block common spam bots
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
+Sitemap: https://www.golivegram.com/sitemap.xml

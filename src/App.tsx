@@ -8,6 +8,8 @@ import Header from './components/Layout/Header';
 const HomePage = React.lazy(() => import('./components/Sections/HomePage'));
 const Footer = React.lazy(() => import('./components/Layout/Footer'));
 const PrivacyPolicy = React.lazy(() => import('./components/Sections/PrivacyPolicy'));
+const TermsOfService = React.lazy(() => import('./components/Sections/TermsOfService'));
+const Careers = React.lazy(() => import('./components/Sections/Careers'));
 
 // Loading component for Suspense fallbacks
 const SectionLoader: React.FC<{ height?: string }> = ({ height = 'h-96' }) => (
@@ -23,28 +25,23 @@ const App: React.FC = () => {
   return (
     <HelmetProvider>
       <Router>
-        <div className="min-h-screen bg-white overflow-x-hidden">
-          <SEOHead />
-          
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Header />
-                <Suspense fallback={<SectionLoader />}>
+        <Suspense fallback={<SectionLoader />}> {/* Consolidated Suspense wrapper */}
+          <div className="min-h-screen bg-white overflow-x-hidden">
+            <SEOHead />
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Header />
                   <HomePage />
-                </Suspense>
-                <Suspense fallback={<SectionLoader height="h-48" />}>
                   <Footer />
-                </Suspense>
-              </>
-            } />
-            <Route path="/privacy-policy" element={
-              <Suspense fallback={<SectionLoader />}>
-                <PrivacyPolicy />
-              </Suspense>
-            } />
-          </Routes>
-        </div>
+                </>
+              } />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/careers" element={<Careers />} />
+            </Routes>
+          </div>
+        </Suspense>
       </Router>
     </HelmetProvider>
   );

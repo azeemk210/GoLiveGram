@@ -10,7 +10,7 @@ interface DownloadOptions {
 
 // Platform URLs - these would typically come from your config
 const PLATFORM_URLS = {
-  ios: 'https://apps.apple.com/app/golivegram/id123456789',
+  ios: 'https://apps.apple.com/us/app/golivegram/id6755330284',
   android: 'https://play.google.com/store/apps/details?id=com.golivegram.app',
   web: 'https://app.golivegram.com',
 } as const;

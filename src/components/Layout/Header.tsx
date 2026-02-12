@@ -7,82 +7,55 @@ const Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    
     const handleScroll = () => {
+      // Clear previous timeout to debounce
+      clearTimeout(timeoutId);
       
-      // Detect which section is currently in view
-      const sections = ['hero', 'creators', 'features', 'monetization', 'testimonials'];
-      let currentSection = '';
-      
-      // Check if we're in the hero section (at the very top)
-      if (window.scrollY < 100) {
-        currentSection = 'hero';
-      } else {
-        // Find the section with the most visible area
-        let maxVisibleArea = 0;
+      // Debounce scroll handler to reduce main-thread work
+      timeoutId = setTimeout(() => {
+        const sections = ['hero', 'creators', 'features', 'monetization', 'testimonials'];
+        let currentSection = '';
         
-        sections.forEach(sectionId => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          
-          // Calculate visible area of this section
-          const visibleTop = Math.max(0, rect.top);
-          const visibleBottom = Math.min(window.innerHeight, rect.bottom);
-          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-          const visibleArea = visibleHeight * rect.width;
-          
-          // If this section has more visible area than previous sections
-          if (visibleArea > maxVisibleArea && visibleHeight > 50) { // At least 50px visible
-            maxVisibleArea = visibleArea;
-            currentSection = sectionId;
+        // Quick check for top of page
+        if (window.scrollY < 100) {
+          currentSection = 'hero';
+          setActiveSection(currentSection);
+          return;
+        }
+        
+        // Calculate scroll position with offset
+        const scrollPosition = window.scrollY + 200;
+        
+        // Find active section
+        for (const sectionId of sections) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const elementTop = element.offsetTop;
+            const elementBottom = elementTop + element.offsetHeight;
+            
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+              currentSection = sectionId;
+              break;
+            }
           }
         }
-        });
         
-        // Alternative method: Check which section the scroll position is in
-        if (!currentSection) {
-          const scrollPosition = window.scrollY + 200; // 200px offset from top
-          
-          sections.forEach(sectionId => {
-            const element = document.getElementById(sectionId);
-            if (element) {
-              const elementTop = element.offsetTop;
-              const elementBottom = elementTop + element.offsetHeight;
-              
-              if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-                currentSection = sectionId;
-              }
-            }
-          });
-        }
-      }
-      
-      // Override: if we're at the very top, we're in hero
-      if (window.scrollY < 100) {
-        currentSection = 'hero';
-      }
-      
-      setActiveSection(currentSection);
-      
-      // Debug logging
-      console.log('Scroll Y:', window.scrollY, 'Active section:', currentSection);
-      
-      // Log section positions for debugging
-      sections.forEach(sectionId => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          console.log(`${sectionId}: top=${Math.round(rect.top)}, bottom=${Math.round(rect.bottom)}, visible=${rect.top < window.innerHeight && rect.bottom > 0}`);
-        }
-      });
+        setActiveSection(currentSection);
+      }, 100); // 100ms debounce
     };
     
     // Initial call
     handleScroll();
     
-    // Add scroll listener
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Add scroll listener with passive flag for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -100,10 +73,16 @@ const Header: React.FC = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center transition-all duration-300">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center transition-all duration-300 cursor-pointer"
+            aria-label="Go to top of page"
+          >
             <img 
               src="/Go.svg" 
               alt="GoLiveGram - Stream, Connect & Monetize Your Passion" 
+              width="160"
+              height="40"
               className="h-10 w-auto hover:scale-105 transition-transform duration-200"
               style={{ maxWidth: '160px' }}
               onError={(e) => {
@@ -111,12 +90,13 @@ const Header: React.FC = () => {
                 target.src = '/Go.png';
               }}
             />
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('creators')}
+              aria-label="Navigate to Creators section"
               className={`transition-colors font-medium cursor-pointer ${
                 activeSection === 'creators' 
                   ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
@@ -127,6 +107,7 @@ const Header: React.FC = () => {
             </button>
             <button 
               onClick={() => scrollToSection('features')}
+              aria-label="Navigate to Features section"
               className={`transition-colors font-medium cursor-pointer ${
                 activeSection === 'features' 
                   ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
@@ -137,6 +118,7 @@ const Header: React.FC = () => {
             </button>
             <button 
               onClick={() => scrollToSection('monetization')}
+              aria-label="Navigate to Monetization section"
               className={`transition-colors font-medium cursor-pointer ${
                 activeSection === 'monetization' 
                   ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
@@ -147,6 +129,7 @@ const Header: React.FC = () => {
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')}
+              aria-label="Navigate to Testimonials section"
               className={`transition-colors font-medium cursor-pointer ${
                 activeSection === 'testimonials' 
                   ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 

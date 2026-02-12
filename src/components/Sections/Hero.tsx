@@ -1,31 +1,26 @@
-import React from 'react';
-import { Play, Users, TrendingUp, Smartphone, Apple } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Smartphone } from 'lucide-react';
 import { handleDownloadClick } from '../../utils/downloads';
 
 const Hero: React.FC = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate animation progress (0 to 1)
+  const progress = Math.min(scrollY / 800, 1);
+  
   return (
     <section id="hero" className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20 xs:pt-24 md:pt-28 w-full max-w-full">
       {/* Background Elements */}
       <div className="absolute inset-0 z-10 pt-50">
-        {/* Extra Floating Emojis (top corners / sides) - Hidden on mobile */}
-        <div className="absolute top-8 right-8 floating-element text-3xl pointer-events-none hidden md:block" aria-hidden="true">🎥</div>
-        <div className="absolute top-8 left-8 floating-element text-4xl pointer-events-none hidden md:block" aria-hidden="true">💎</div>
-        <div className="absolute top-32 right-32 floating-element text-3xl pointer-events-none motion-safe:animate-bounce hidden md:block" aria-hidden="true">🔥</div>
-        <div className="absolute top-16 left-1/4 floating-element text-3xl pointer-events-none hidden md:block" aria-hidden="true">🌟</div>
-        {/* Floating Money Icons - Hidden on mobile */}
-        <div className="absolute top-20 left-10 floating-element text-4xl hidden md:block">💰</div>
-        <div className="absolute top-40 right-20 floating-element text-3xl animate-pulse hidden md:block">💵</div>
-        <div className="absolute bottom-40 left-20 floating-element text-2xl hidden md:block">💸</div>
-        
-        {/* Streaming Icons - Hidden on mobile */}
-        <div className="absolute top-60 left-1/4 floating-element text-3xl hidden md:block">📺</div>
-        <div className="absolute top-32 right-1/3 floating-element text-2xl hidden md:block">⚡</div>
-        <div className="absolute bottom-60 right-10 floating-element text-3xl hidden md:block">📡</div>
-        
-        {/* Hearts - Hidden on mobile */}
-        <div className="absolute top-80 left-1/3 floating-element text-2xl hidden md:block">❤️</div>
-        <div className="absolute bottom-20 left-1/2 floating-element text-2xl hidden md:block">💜</div>
-        <div className="absolute top-96 right-1/4 floating-element text-2xl hidden md:block">💙</div>
+        {/* Clean professional background - no floating emojis */}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 z-10 relative w-full max-w-7xl">
@@ -33,53 +28,62 @@ const Hero: React.FC = () => {
           {/* Left Content */}
           <div className="text-center lg:text-left order-1 lg:order-1">
             <div className="mb-4 sm:mb-6">
-              <span className="inline-flex items-center px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium">
-                🚀 Join 2.5M+ Active Creators
+              <span className="inline-flex items-center px-3 sm:px-4 py-2 bg-gray-100 rounded-full text-gray-900 text-xs sm:text-sm font-medium">
+                Join 100K+ Active Creators
               </span>
             </div>
             
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-4 sm:mb-6 leading-tight break-words">
-              Go Live.
+            <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-4 sm:mb-6 leading-tight break-words">
+              Stream Your Passion.
               <br />
-              <span className="text-gradient bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                Go Viral.
+              <span className="text-gray-900">
+                Build Your Audience.
               </span>
               <br />
-              <span className="text-gradient bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
-                Go Rich.
+              <span className="text-gray-900">
+                Grow Your Business.
               </span>
-              <span className="text-xl xs:text-2xl sm:text-3xl md:text-4xl ml-1 sm:ml-2">💰</span>
             </h1>
             
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed px-1 xs:px-2 sm:px-0 break-words">
-              Stream, Connect, and Monetize Your Passion
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 sm:mb-8 leading-relaxed px-1 xs:px-2 sm:px-0 break-words">
+              Share Your Passion with the World
               <br />
-              <span className="text-white font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
-                Average Creator Earnings: ₹500-₹5,000/month 📈
+              <span className="text-gray-900 font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
+                Live stream, build community, and connect with millions
               </span>
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 px-1 xs:px-2 sm:px-0 w-full max-w-full">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 px-4 sm:px-0 w-full max-w-full">
               <button 
                 onClick={() => handleDownloadClick('ios')}
-                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-gray-800 transition-all duration-300 hover:scale-105 cursor-pointer w-full sm:w-auto"
+                aria-label="Download GoLiveGram on the App Store"
+                className="bg-white text-black border border-gray-300 px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-gray-50 transition-all duration-300 cursor-pointer w-full sm:w-auto shadow-sm"
               >
-                <Apple className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
                 <div className="text-left">
-                  <div className="text-xs opacity-80">Download for</div>
-                  <div className="text-sm sm:text-base">iOS</div>
+                  <div className="text-[10px] sm:text-xs font-medium">Download on the</div>
+                  <div className="text-base sm:text-lg font-bold -mt-0.5">App Store</div>
                 </div>
               </button>
               
               <button 
                 onClick={() => handleDownloadClick('android')}
-                className="bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-green-700 transition-all duration-300 hover:scale-105 cursor-pointer w-full sm:w-auto"
+                aria-label="Download GoLiveGram on Google Play"
+                className="bg-white text-black border border-gray-300 px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:bg-gray-50 transition-all duration-300 cursor-pointer w-full sm:w-auto shadow-sm"
               >
-                <Play className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                <img 
+                  src="/google-play-store-icon.webp" 
+                  alt="Google Play" 
+                  width="24"
+                  height="24"
+                  className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+                />
                 <div className="text-left">
-                  <div className="text-xs opacity-80">Download for</div>
-                  <div className="text-sm sm:text-base">Android</div>
+                  <div className="text-[10px] sm:text-xs font-medium">GET IT ON</div>
+                  <div className="text-base sm:text-lg font-bold -mt-0.5">Google Play</div>
                 </div>
               </button>
             </div>
@@ -87,26 +91,27 @@ const Hero: React.FC = () => {
             <div className="flex items-center justify-center lg:justify-start mb-8 sm:mb-0">
               <button 
                 onClick={() => handleDownloadClick('web')}
-                className="text-white border-2 border-white/30 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 cursor-pointer text-sm sm:text-base"
+                aria-label="Try GoLiveGram web version"
+                className="text-gray-700 border-2 border-gray-300 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 cursor-pointer text-sm sm:text-base"
               >
                 <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                <span>Or Try Web Version 🌐</span>
+                <span>Or Try Web Version</span>
               </button>
             </div>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 mt-6 xs:mt-8 sm:mt-12 px-1 xs:px-2 sm:px-0 w-full max-w-full">
               <div className="text-center min-w-0">
-                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 truncate">2.5M+</div>
-                <div className="text-white/80 text-xs sm:text-sm leading-tight">Active Users 👥</div>
+                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 truncate">100K+</div>
+                <div className="text-gray-600 text-xs sm:text-sm leading-tight">Active Users</div>
               </div>
               <div className="text-center min-w-0">
-                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 truncate">₹2M+</div>
-                <div className="text-white/80 text-xs sm:text-sm leading-tight">Paid to Creators 💰</div>
+                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 truncate">₹1L+</div>
+                <div className="text-gray-600 text-xs sm:text-sm leading-tight">Paid to Creators</div>
               </div>
               <div className="text-center min-w-0">
-                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 truncate">4.8★</div>
-                <div className="text-white/80 text-xs sm:text-sm leading-tight">App Store Rating ⭐</div>
+                <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 truncate">4.8★</div>
+                <div className="text-gray-600 text-xs sm:text-sm leading-tight">App Store Rating</div>
               </div>
             </div>
           </div>
@@ -114,7 +119,13 @@ const Hero: React.FC = () => {
           {/* Right Content - iPhone 16 Mockups */}
           <div className="relative w-full flex flex-col lg:flex-row gap-4 md:gap-6 justify-center items-center order-2 lg:order-2 mb-8 lg:mb-0">
             {/* First iPhone Mockup */}
-            <div className="relative z-50 transform rotate-[8deg] scale-75 sm:scale-80 md:scale-85 lg:scale-90">
+            <div 
+              className="relative z-50 transform scale-75 sm:scale-80 md:scale-85 lg:scale-90 transition-all duration-1000 ease-out"
+              style={{
+                transform: `rotate(${8 - progress * 15}deg) translateX(${progress * -100}px) translateY(${progress * 50}px) scale(${0.75 + progress * 0.05})`,
+                opacity: 1 - progress * 0.7
+              }}
+            >
                 {/* iPhone 16 Shell */}
                 <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[300px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                   <div 
@@ -246,23 +257,16 @@ const Hero: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Floating Elements around phone */}
-                <div className="absolute -top-10 -left-10 bg-white rounded-full p-4 shadow-lg floating-element">
-                  <TrendingUp className="w-6 h-6 text-green-500" />
-                </div>
-                
-                <div className="absolute -bottom-10 -right-10 bg-white rounded-full p-4 shadow-lg floating-element">
-                  <Users className="w-6 h-6 text-blue-500" />
-                </div>
-                
-                <div className="absolute top-1/2 -right-16 bg-yellow-400 rounded-full p-3 shadow-lg floating-element">
-                  <span className="text-2xl">💎</span>
-                </div>
               </div>
 
             {/* Second iPhone Mockup */}
-            <div className="relative z-50 transform rotate-[-5deg] scale-75 sm:scale-80 md:scale-85 lg:scale-90">
+            <div 
+              className="relative z-50 transform scale-75 sm:scale-80 md:scale-85 lg:scale-90 transition-all duration-1000 ease-out"
+              style={{
+                transform: `rotate(${-5 + progress * 8}deg) translateX(${progress * 50}px) scale(${0.75 + progress * 0.15})`,
+                opacity: 0.5 + progress * 0.5
+              }}
+            >
                 {/* iPhone 16 Shell */}
                 <div className="w-[240px] sm:w-[260px] md:w-[280px] lg:w-[300px] mx-auto" style={{ aspectRatio: '9 / 19.5' }}>
                   <div 

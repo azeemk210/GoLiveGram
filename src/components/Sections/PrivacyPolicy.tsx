@@ -149,9 +149,7 @@ const PrivacyPolicy: React.FC = () => {
                 If you have any questions about this Privacy Policy or our privacy practices, please contact us:
               </p>
               <div className="bg-gray-50 p-4 md:p-6 rounded-lg">
-                <p className="text-sm md:text-base text-gray-700 mb-2"><strong>Email:</strong> privacy@golivegram.com</p>
-                <p className="text-sm md:text-base text-gray-700 mb-2"><strong>Address:</strong> GoLiveGram Inc., [Your Address]</p>
-                <p className="text-sm md:text-base text-gray-700"><strong>Phone:</strong> [Your Phone Number]</p>
+                <p className="text-sm md:text-base text-gray-700 mb-2"><strong>Email:</strong> support@golivegram.com</p>
               </div>
             </section>
             </div>
