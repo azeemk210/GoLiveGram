@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import {
-  Video,
   PhoneCall,
   Image as ImageIcon,
   CheckCircle2,
@@ -13,16 +12,10 @@ import {
 } from 'lucide-react';
 
 const FeatureItem = ({ feature, index }: { feature: any, index: number }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const isEven = index % 2 === 0;
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
+    <div
       className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-24 mb-24 last:mb-0 max-w-7xl mx-auto`}
     >
       {/* Content Side */}
@@ -64,12 +57,11 @@ const FeatureItem = ({ feature, index }: { feature: any, index: number }) => {
         <div className="relative">
           <div className="bg-white p-4 rounded-[40px] shadow-2xl border border-gray-100">
             <div className="relative rounded-[32px] overflow-hidden bg-gray-100 aspect-[4/3]">
-              <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Placeholder while loading */}
               <img
                 src={feature.image}
                 alt={feature.title}
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading="eager"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop';
                 }}
@@ -91,7 +83,7 @@ const FeatureItem = ({ feature, index }: { feature: any, index: number }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
