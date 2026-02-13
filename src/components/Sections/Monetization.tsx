@@ -6,7 +6,9 @@ import {
   DollarSign,
   Lock,
   Zap,
-  Target
+  Target,
+  LayoutGrid,
+  Camera
 } from 'lucide-react';
 import FloatingMoney from '../UI/FloatingMoney';
 import DownloadCta from '../DownloadCta';
@@ -32,6 +34,26 @@ const revenueStreams: RevenueStream[] = [
     badge: 'Popular',
     examples: ['Rose 🌹 — ₹0.50', 'Diamond 💎 — ₹5.00', 'Crown 👑 — ₹10.00'],
     earnings: '₹50–500 / day',
+    color: 'pink'
+  },
+  {
+    icon: <Zap className="w-6 h-6 sm:w-8 sm:h-8" />,
+    emoji: '⚡',
+    title: 'Story Views Rewards',
+    description: 'Get paid automatically for every view your stories receive within 24 hours.',
+    badge: 'New',
+    examples: ['1K Views — ₹50', '5K Views — ₹250', '10K Views — ₹500'],
+    earnings: '₹50–5,000 / story',
+    color: 'yellow'
+  },
+  {
+    icon: <Camera className="w-6 h-6 sm:w-8 sm:h-8" />,
+    emoji: '📸',
+    title: 'Snap & Earn',
+    description: 'Send direct snaps to friends and followers and earn instantly for every snap sent.',
+    badge: 'Instant',
+    examples: ['Daily Snap — ₹1.00', 'Group Blast — ₹5.00', 'Snap Streak — ₹10.00'],
+    earnings: '₹20–200 / day',
     color: 'pink'
   },
   {
@@ -73,6 +95,16 @@ const revenueStreams: RevenueStream[] = [
     examples: ['Behind the Scenes', 'Paid Tutorials', 'Members Q&A'],
     earnings: '₹200–2,000 / month',
     color: 'purple'
+  },
+  {
+    icon: <LayoutGrid className="w-6 h-6 sm:w-8 sm:h-8" />,
+    emoji: '🖼️',
+    title: 'Gallery Unlocks',
+    description: 'Post high-quality collections from your gallery and let fans unlock them with coins.',
+    badge: 'Trending',
+    examples: ['Photo Sets — 50 Coins', 'Travel Vlogs — 100 Coins', 'Model Portfolio — 200 Coins'],
+    earnings: '₹100–1,500 / post',
+    color: 'blue'
   },
   {
     icon: <Target className="w-6 h-6 sm:w-8 sm:h-8" />,

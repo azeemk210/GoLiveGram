@@ -10,50 +10,50 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
-    
+
     const handleScroll = () => {
       // Clear previous timeout to debounce
       clearTimeout(timeoutId);
-      
+
       // Debounce scroll handler to reduce main-thread work
       timeoutId = setTimeout(() => {
         const sections = ['hero', 'creators', 'features', 'monetization', 'testimonials'];
         let currentSection = '';
-        
+
         // Quick check for top of page
         if (window.scrollY < 100) {
           currentSection = 'hero';
           setActiveSection(currentSection);
           return;
         }
-        
+
         // Calculate scroll position with offset
         const scrollPosition = window.scrollY + 200;
-        
+
         // Find active section
         for (const sectionId of sections) {
           const element = document.getElementById(sectionId);
           if (element) {
             const elementTop = element.offsetTop;
             const elementBottom = elementTop + element.offsetHeight;
-            
+
             if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
               currentSection = sectionId;
               break;
             }
           }
         }
-        
+
         setActiveSection(currentSection);
       }, 100); // 100ms debounce
     };
-    
+
     // Initial call
     handleScroll();
-    
+
     // Add scroll listener with passive flag for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       clearTimeout(timeoutId);
       window.removeEventListener('scroll', handleScroll);
@@ -75,68 +75,64 @@ const Header: React.FC = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <button 
+          <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center transition-all duration-300 cursor-pointer"
             aria-label="Go to top of page"
           >
-            <img 
-              src="/Go.svg" 
-              alt="GoLiveGram - Stream, Connect & Monetize Your Passion" 
-              width="160"
-              height="40"
-              className="h-10 w-auto hover:scale-105 transition-transform duration-200"
-              style={{ maxWidth: '160px' }}
+            <img
+              src="/logo.svg"
+              alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
+              width="320"
+              height="50"
+              className="h-12 w-auto"
+              style={{ maxWidth: '320px', mixBlendMode: 'multiply' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = '/Go.png';
+                target.src = '/logo.svg';
               }}
             />
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <button 
+            <button
               onClick={() => scrollToSection('creators')}
               aria-label="Navigate to Creators section"
-              className={`transition-colors font-medium cursor-pointer ${
-                activeSection === 'creators' 
-                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
-                  : 'text-gray-700 hover:text-red-500'
-              }`}
+              className={`transition-colors font-medium cursor-pointer ${activeSection === 'creators'
+                ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold'
+                : 'text-gray-700 hover:text-red-500'
+                }`}
             >
               Creators
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('features')}
               aria-label="Navigate to Features section"
-              className={`transition-colors font-medium cursor-pointer ${
-                activeSection === 'features' 
-                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
-                  : 'text-gray-700 hover:text-red-500'
-              }`}
+              className={`transition-colors font-medium cursor-pointer ${activeSection === 'features'
+                ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold'
+                : 'text-gray-700 hover:text-red-500'
+                }`}
             >
               Features
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('monetization')}
               aria-label="Navigate to Monetization section"
-              className={`transition-colors font-medium cursor-pointer ${
-                activeSection === 'monetization' 
-                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
-                  : 'text-gray-700 hover:text-red-500'
-              }`}
+              className={`transition-colors font-medium cursor-pointer ${activeSection === 'monetization'
+                ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold'
+                : 'text-gray-700 hover:text-red-500'
+                }`}
             >
               Monetization
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('testimonials')}
               aria-label="Navigate to Testimonials section"
-              className={`transition-colors font-medium cursor-pointer ${
-                activeSection === 'testimonials' 
-                  ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold' 
-                  : 'text-gray-700 hover:text-red-500'
-              }`}
+              className={`transition-colors font-medium cursor-pointer ${activeSection === 'testimonials'
+                ? 'text-red-600 border-b-2 border-red-600 pb-1 font-bold'
+                : 'text-gray-700 hover:text-red-500'
+                }`}
             >
               Success Stories
             </button>
@@ -144,21 +140,21 @@ const Header: React.FC = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => navigate('/login')}
-              className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors font-medium cursor-pointer"
+              className="btn-secondary !py-1 !px-4 text-sm flex items-center space-x-2 cursor-pointer"
             >
               <LogIn className="w-4 h-4" />
               <span>Login</span>
             </button>
-            <button 
+            <button
               onClick={() => handleDownloadClick('web')}
               className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors font-medium cursor-pointer"
             >
               <Smartphone className="w-4 h-4" />
               <span>Try Web Version</span>
             </button>
-            <button 
+            <button
               onClick={() => handleDownloadClick(getRecommendedPlatform())}
               className="btn-primary flex items-center space-x-2 cursor-pointer"
             >
@@ -180,65 +176,61 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4 pt-4">
-              <button 
+              <button
                 onClick={() => scrollToSection('creators')}
-                className={`text-left transition-colors font-medium cursor-pointer ${
-                  activeSection === 'creators' 
-                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
-                    : 'text-gray-700 hover:text-red-500'
-                }`}
+                className={`text-left transition-colors font-medium cursor-pointer ${activeSection === 'creators'
+                  ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded'
+                  : 'text-gray-700 hover:text-red-500'
+                  }`}
               >
                 Creators
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('features')}
-                className={`text-left transition-colors font-medium cursor-pointer ${
-                  activeSection === 'features' 
-                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
-                    : 'text-gray-700 hover:text-red-500'
-                }`}
+                className={`text-left transition-colors font-medium cursor-pointer ${activeSection === 'features'
+                  ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded'
+                  : 'text-gray-700 hover:text-red-500'
+                  }`}
               >
                 Features
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('monetization')}
-                className={`text-left transition-colors font-medium cursor-pointer ${
-                  activeSection === 'monetization' 
-                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
-                    : 'text-gray-700 hover:text-red-500'
-                }`}
+                className={`text-left transition-colors font-medium cursor-pointer ${activeSection === 'monetization'
+                  ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded'
+                  : 'text-gray-700 hover:text-red-500'
+                  }`}
               >
                 Monetization
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('testimonials')}
-                className={`text-left transition-colors font-medium cursor-pointer ${
-                  activeSection === 'testimonials' 
-                    ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded' 
-                    : 'text-gray-700 hover:text-red-500'
-                }`}
+                className={`text-left transition-colors font-medium cursor-pointer ${activeSection === 'testimonials'
+                  ? 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded'
+                  : 'text-gray-700 hover:text-red-500'
+                  }`}
               >
                 Success Stories
               </button>
               <div className="pt-4 space-y-2">
-                <button 
+                <button
                   onClick={() => {
                     navigate('/login');
                     setIsMenuOpen(false);
                   }}
-                  className="w-full btn-secondary flex items-center justify-center space-x-2 cursor-pointer bg-gray-50 border-gray-200"
+                  className="w-full btn-secondary !py-2 !px-4 text-sm flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <LogIn className="w-4 h-4" />
                   <span>Login</span>
                 </button>
-                <button 
+                <button
                   onClick={() => handleDownloadClick('web')}
                   className="w-full btn-secondary flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <Smartphone className="w-4 h-4" />
                   <span>Try Web Version</span>
                 </button>
-                <button 
+                <button
                   onClick={() => handleDownloadClick(getRecommendedPlatform())}
                   className="w-full btn-primary flex items-center justify-center space-x-2 cursor-pointer"
                 >

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SVG Transparency Test</title>
+
+    <style>
+        /* checkerboard background like Photoshop transparency */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(45deg, #cfcfcf 25%, transparent 25%) -20px 0,
+                linear-gradient(-45deg, #cfcfcf 25%, transparent 25%) -20px 0,
+                linear-gradient(45deg, transparent 75%, #cfcfcf 75%),
+                linear-gradient(-45deg, transparent 75%, #cfcfcf 75%);
+            background-size: 40px 40px;
+            background-color: #eeeeee;
+        }
+
+        .card {
+            padding: 40px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        /* logo size */
+        .card img {
+            width: 260px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+        <img src="logo.svg" alt="logo">
+    </div>
+
+</body>
+
+</html>

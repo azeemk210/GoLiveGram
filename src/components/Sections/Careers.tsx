@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Briefcase, 
-  MapPin, 
-  Clock, 
-  DollarSign, 
+import {
+  Briefcase,
+  MapPin,
+  Clock,
+  DollarSign,
   Upload,
   CheckCircle,
   Code,
@@ -214,19 +214,19 @@ const Careers: React.FC = () => {
       {/* Header */}
       <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="inline-flex items-center hover:scale-105 transition-transform duration-200"
             aria-label="Go back to GoLiveGram homepage"
           >
-            <img 
-              src="/Go.svg" 
-              alt="GoLiveGram - Stream, Connect & Monetize Your Passion" 
+            <img
+              src="/logo.svg"
+              alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
               className="h-10 w-auto hover:scale-105 transition-transform duration-200"
-              style={{ maxWidth: '160px' }}
+              style={{ maxWidth: '260px', mixBlendMode: 'multiply' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = '/Go.png';
+                target.src = '/logo.svg';
               }}
             />
           </Link>
@@ -242,7 +242,7 @@ const Careers: React.FC = () => {
               Help us empower millions of creators worldwide
             </p>
             <p className="text-lg opacity-90">
-              We're building the future of live streaming and creator monetization. 
+              We're building the future of live streaming and creator monetization.
               Join our passionate team and make a real impact.
             </p>
           </div>
@@ -290,10 +290,10 @@ const Careers: React.FC = () => {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Open Positions</h2>
-          
+
           <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {jobOpenings.map((job) => (
-              <div 
+              <div
                 key={job.id}
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-200 cursor-pointer"
                 onClick={() => setSelectedJob(job)}
@@ -309,7 +309,7 @@ const Careers: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center text-gray-600 text-sm">
                     <MapPin className="w-4 h-4 mr-2" />
@@ -324,10 +324,10 @@ const Careers: React.FC = () => {
                     {job.salary}
                   </div>
                 </div>
-                
+
                 <p className="text-gray-700 mb-4 line-clamp-2">{job.description}</p>
-                
-                <button 
+
+                <button
                   className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-200"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -344,11 +344,11 @@ const Careers: React.FC = () => {
 
       {/* Application Modal */}
       {selectedJob && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto"
           onClick={() => setSelectedJob(null)}
         >
-          <div 
+          <div
             className="bg-white rounded-xl max-w-4xl w-full my-8 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
@@ -376,16 +376,16 @@ const Careers: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => setSelectedJob(null)}
                   className="text-gray-400 hover:text-gray-600 text-2xl"
                 >
                   ×
                 </button>
               </div>
-              
+
               <p className="text-gray-700 mb-6">{selectedJob.description}</p>
-              
+
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-3">Responsibilities</h3>
                 <ul className="list-disc pl-5 space-y-2 text-gray-700">
@@ -394,7 +394,7 @@ const Careers: React.FC = () => {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-semibold mb-3">Requirements</h3>
                 <ul className="list-disc pl-5 space-y-2 text-gray-700">
@@ -408,7 +408,7 @@ const Careers: React.FC = () => {
             {/* Application Form */}
             <div className="p-6 md:p-8">
               <h3 className="text-2xl font-bold mb-6">Apply for this Position</h3>
-              
+
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -432,7 +432,7 @@ const Careers: React.FC = () => {
                         placeholder="John Doe"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
                         Email Address *
@@ -464,7 +464,7 @@ const Careers: React.FC = () => {
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
                         LinkedIn Profile
@@ -564,8 +564,8 @@ const Careers: React.FC = () => {
 
       {/* Back to Home */}
       <div className="py-12 text-center">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-200 shadow-lg"
         >
           ← Back to Home
