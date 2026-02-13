@@ -81,7 +81,7 @@ const Header: React.FC = () => {
             aria-label="Go to top of page"
           >
             <img
-              src="/logo.svg"
+              src="/test_1.svg"
               alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
               width="320"
               height="50"
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
               style={{ maxWidth: '320px', mixBlendMode: 'multiply' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = '/logo.svg';
+                target.src = '/test_1.svg';
               }}
             />
           </button>

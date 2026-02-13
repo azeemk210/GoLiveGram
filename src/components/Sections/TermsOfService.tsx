@@ -13,13 +13,13 @@ const TermsOfService: React.FC = () => {
             aria-label="Go back to GoLiveGram homepage"
           >
             <img
-              src="/logo.svg"
+              src="/test_1.svg"
               alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
               className="h-10 w-auto hover:scale-105 transition-transform duration-200"
               style={{ maxWidth: '260px', mixBlendMode: 'multiply' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = '/logo.svg';
+                target.src = '/test_1.svg';
               }}
             />
           </Link>
