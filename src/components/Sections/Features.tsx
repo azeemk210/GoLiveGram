@@ -61,24 +61,23 @@ const FeatureItem = ({ feature, index }: { feature: any, index: number }) => {
       <div className="flex-1 w-full lg:max-w-xl relative">
         <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-20 blur-3xl rounded-[60px] transform ${isEven ? 'translate-x-12 translate-y-12' : '-translate-x-12 -translate-y-12'}`}></div>
 
-        <div className="relative group perspective-1000">
-          <div className="bg-white p-4 rounded-[40px] shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-12 border border-gray-100">
+        <div className="relative">
+          <div className="bg-white p-4 rounded-[40px] shadow-2xl border border-gray-100">
             <div className="relative rounded-[32px] overflow-hidden bg-gray-100 aspect-[4/3]">
               <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Placeholder while loading */}
               <img
                 src={feature.image}
                 alt={feature.title}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                className="w-full h-full object-cover"
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop';
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
             {/* Floating Stats Card */}
-            <div className={`absolute -bottom-6 ${isEven ? '-left-6' : '-right-6'} bg-white p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 transform transition-transform duration-500 group-hover:translate-y-[-10px]`}>
+            <div className={`absolute -bottom-6 ${isEven ? '-left-6' : '-right-6'} bg-white p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100`}>
               <div className="flex items-center gap-4">
                 <div className={`w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center shrink-0`}>
                   <TrendingUp className="w-6 h-6 text-green-600" />
