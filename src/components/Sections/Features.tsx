@@ -103,7 +103,7 @@ const Features: React.FC = () => {
       description: "Share your life highlights and get rewarded for your reach. Every view translates into earnings.",
       icon: <ImageIcon />,
       color: "from-orange-500 to-red-600",
-      image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=1200",
+      image: "/post_stories.jpg",
       badge: "Highest Earning",
       highlight: "Earn for every view",
       points: ["Real-time Earning Stats", "Global Audience Reach", "HD Story Support", "Instant Payouts"]
