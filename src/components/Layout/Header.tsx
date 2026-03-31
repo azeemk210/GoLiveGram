@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Smartphone, Download, LogIn } from 'lucide-react';
+import { Menu, X, Smartphone, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { handleDownloadClick, getRecommendedPlatform } from '../../utils/downloads';
+import { handleDownloadClick, getRecommendedPlatform, openAppStore, openPlayStore } from '../../utils/downloads';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isStoreDialogOpen, setIsStoreDialogOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const Header: React.FC = () => {
             aria-label="Go to top of page"
           >
             <img
-              src="/test_1.svg"
+              src="/livegram.svg"
               alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
               width="320"
               height="50"
@@ -89,7 +90,7 @@ const Header: React.FC = () => {
               style={{ maxWidth: '320px', mixBlendMode: 'multiply' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = '/test_1.svg';
+                target.src = '/livegram.svg';
               }}
             />
           </button>
@@ -141,13 +142,6 @@ const Header: React.FC = () => {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
             <button
-              onClick={() => navigate('/login')}
-              className="btn-secondary !py-1 !px-4 text-sm flex items-center space-x-2 cursor-pointer"
-            >
-              <LogIn className="w-4 h-4" />
-              <span>Login</span>
-            </button>
-            <button
               onClick={() => handleDownloadClick('web')}
               className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors font-medium cursor-pointer"
             >
@@ -155,7 +149,7 @@ const Header: React.FC = () => {
               <span>Try Web Version</span>
             </button>
             <button
-              onClick={() => handleDownloadClick(getRecommendedPlatform())}
+              onClick={() => setIsStoreDialogOpen(true)}
               className="btn-primary flex items-center space-x-2 cursor-pointer"
             >
               <Download className="w-4 h-4" />
@@ -214,16 +208,6 @@ const Header: React.FC = () => {
               </button>
               <div className="pt-4 space-y-2">
                 <button
-                  onClick={() => {
-                    navigate('/login');
-                    setIsMenuOpen(false);
-                  }}
-                  className="w-full btn-secondary !py-2 !px-4 text-sm flex items-center justify-center space-x-2 cursor-pointer"
-                >
-                  <LogIn className="w-4 h-4" />
-                  <span>Login</span>
-                </button>
-                <button
                   onClick={() => handleDownloadClick('web')}
                   className="w-full btn-secondary flex items-center justify-center space-x-2 cursor-pointer"
                 >
@@ -231,11 +215,60 @@ const Header: React.FC = () => {
                   <span>Try Web Version</span>
                 </button>
                 <button
-                  onClick={() => handleDownloadClick(getRecommendedPlatform())}
+                  onClick={() => {
+                    setIsStoreDialogOpen(true);
+                    setIsMenuOpen(false);
+                  }}
                   className="w-full btn-primary flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download App</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isStoreDialogOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+            <div className="w-[90%] max-w-sm rounded-lg bg-white p-6 shadow-xl" style={{ marginTop: '80vh' }}>
+              <div className="mb-4 flex items-center justify-between">
+                <h3 className="text-lg font-semibold">Select Store</h3>
+                <button
+                  onClick={() => setIsStoreDialogOpen(false)}
+                  className="text-gray-500 hover:text-gray-800"
+                  aria-label="Close store selector"
+                >
+                  ✕
+                </button>
+              </div>
+              <p className="mb-5 text-sm text-gray-600">
+                Choose where you want to download GoLiveGram:
+              </p>
+              <div className="space-y-3">
+                <button
+                  onClick={() => {
+                    openAppStore();
+                    setIsStoreDialogOpen(false);
+                  }}
+                  className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                >
+                  App Store (iPhone)
+                </button>
+                <button
+                  onClick={() => {
+                    openPlayStore();
+                    setIsStoreDialogOpen(false);
+                  }}
+                  className="w-full rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700"
+                >
+                  Play Store (Android)
+                </button>
+                <button
+                  onClick={() => setIsStoreDialogOpen(false)}
+                  className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                >
+                  Cancel
                 </button>
               </div>
             </div>

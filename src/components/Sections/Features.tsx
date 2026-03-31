@@ -56,11 +56,11 @@ const FeatureItem = ({ feature, index }: { feature: any, index: number }) => {
 
         <div className="relative">
           <div className="bg-white p-4 rounded-[40px] shadow-2xl border border-gray-100">
-            <div className="relative rounded-[32px] overflow-hidden bg-gray-100 aspect-[4/3]">
+            <div className={`relative rounded-[32px] overflow-hidden bg-gray-100 ${feature.isFullSize ? '' : 'aspect-[4/3]'}`}>
               <img
                 src={feature.image}
                 alt={feature.title}
-                className="w-full h-full object-cover"
+                className={`w-full ${feature.isFullSize ? 'h-auto block' : 'h-full object-cover'}`}
                 loading="eager"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop';
@@ -104,17 +104,18 @@ const Features: React.FC = () => {
       description: "Send private snaps to your friends and followers and get rewarded for candid moments.",
       icon: <Camera />,
       color: "from-yellow-400 to-orange-500",
-      image: "https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&q=80&w=1200",
+      image: "/snap_earn.jpg",
       badge: "Instant Profit",
       highlight: "Earn per Snap",
       points: ["Daily Snap Bonuses", "Disappearing Rewards", "Interactive Reactions", "Streak Multipliers"]
     },
     {
-      title: "Gallery Showcase",
-      description: "Select your finest moments directly from your gallery and showcase them with professional flair.",
+      title: "Post from Gallery",
+      description: "Your memories already matter — now they can earn too.",
       icon: <LayoutGrid />,
       color: "from-purple-500 to-indigo-600",
-      image: "https://images.unsplash.com/photo-1554048612-387768052bf7?auto=format&fit=crop&q=80&w=1200",
+      image: "/gallery_showcase.png",
+      isFullSize: true,
       badge: "Showcase",
       highlight: "Permanent Content",
       points: ["HD Gallery Uploads", "Personal Branding", "High Quality Media", "Portfolio Mode"]
@@ -124,7 +125,8 @@ const Features: React.FC = () => {
       description: "Stay connected with high-fidelity, private audio calls. Experience crystal clear voice quality.",
       icon: <PhoneCall />,
       color: "from-blue-500 to-indigo-600",
-      image: "https://images.unsplash.com/photo-1520333789090-1afc82db536a?auto=format&fit=crop&q=80&w=1200",
+      image: "/private_calls.png",
+      isFullSize: true,
       badge: "High Fidelity",
       highlight: "Crystal Clear Voice",
       points: ["Private 1v1 Calls", "Ultra-low Latency", "Secure Connection", "Voice Effects"]

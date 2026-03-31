@@ -4,7 +4,7 @@
 export const APP_STORE_URLS = {
   ios: 'https://apps.apple.com/us/app/golivegram/id6755330284',
   android: 'https://play.google.com/store/apps/details?id=com.golivegram.app',
-  web: 'https://play.google.com/store/apps/details?id=com.golivegram.app', // Web app URL
+  web: 'https://www.golivegram.com/webapp/login/', // Web app URL
 };
 
 // Temporary URLs for development/demo (remove when real app is ready)
@@ -21,38 +21,51 @@ export const getDownloadUrl = (platform: 'ios' | 'android' | 'web'): string => {
   return USE_DEMO_URLS ? DEMO_URLS[platform] : APP_STORE_URLS[platform];
 };
 
-// Handle download click with analytics tracking
-export const handleDownloadClick = (platform: 'ios' | 'android' | 'web') => {
-  const url = getDownloadUrl(platform);
-  
-  // Track download attempt with Google Analytics
+const trackDownloadAttempt = (platform: 'ios' | 'android' | 'web') => {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', 'app_download_attempt', {
       app_platform: platform,
       value: 1,
     });
   }
-  
-  // Track with Facebook Pixel
   if (typeof window !== 'undefined' && (window as any).fbq) {
     (window as any).fbq('track', 'Lead', {
       content_name: `GoLiveGram ${platform} Download`,
-      value: 1.00,
-      currency: 'USD'
+      value: 1.0,
+      currency: 'USD',
     });
   }
-  
-  // Handle web app differently
-  if (platform === 'web') {
-    if (USE_DEMO_URLS) {
-      alert('🚀 Web app coming soon! Download our mobile app for the full GoLiveGram experience.');
-      return;
-    }
-    // Open web app in same tab
-    window.location.href = url;
-  } else {
-    // Open app store in new tab
+};
+
+export const openAppStore = () => {
+  const url = APP_STORE_URLS.ios;
+  if (typeof window !== 'undefined') {
     window.open(url, '_blank', 'noopener,noreferrer');
+  }
+  trackDownloadAttempt('ios');
+};
+
+export const openPlayStore = () => {
+  const url = APP_STORE_URLS.android;
+  if (typeof window !== 'undefined') {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+  trackDownloadAttempt('android');
+};
+
+// Handle download click with analytics tracking
+export const handleDownloadClick = (platform: 'ios' | 'android' | 'web') => {
+  const url = getDownloadUrl(platform);
+  
+  // Track download attempt with analytics
+  trackDownloadAttempt(platform);
+
+  if (typeof window !== 'undefined') {
+    if (platform === 'web') {
+      window.location.href = url;
+    } else {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   }
 };
 
