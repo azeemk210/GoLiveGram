@@ -1,212 +1,157 @@
 import React from 'react';
-import { Star, CheckCircle } from 'lucide-react';
+
+const reviews = [
+  {
+    text: "GoLiveGram ne meri zindagi badal di! Maine 2 mahine pehle se streaming start ki aur already 4 lakhs ka rewards ho gaya. Monetization features bilkul easy hain!",
+    name: "Priya Sharma",
+    stars: 5
+  },
+  {
+    text: "Best platform for fitness creators. My community engagement increased by 300% compared to other apps. Highly recommended!",
+    name: "Arjun Patel",
+    stars: 5
+  },
+  {
+    text: "Brand partnerships kamaal ki hain. Mene 5+ major brands ke saath collaborate kiya aur ₹8 lakhs rewards hogai is mahine.",
+    name: "Kavya Reddy",
+    stars: 5
+  },
+  {
+    text: "As a tech content creator, the analytics dashboard is incredibly detailed. I can optimize my content strategy perfectly with the insights provided.",
+    name: "Rohit Gupta",
+    stars: 4
+  },
+  {
+    text: "App kitna smooth hai, koi lag nahi, aur payment system bilkul reliable hai. Go live karna aur apne audience se connect karna bahut easy hai!",
+    name: "Neha Singh",
+    stars: 5
+  },
+  {
+    text: "Pehle 0 followers the, ab 2 lakhs followers ho gaye sirf 1 saal mein. GoLiveGram ka algorithm quality content ko promote karti hai!",
+    name: "Ravi Kumar",
+    stars: 4
+  },
+  {
+    text: "Customer support team ka response time just kamal hai. Jab bhi koi issue aata hai, minutes mein reply aa jata hai. Professional-grade support!",
+    name: "Anjali Gupta",
+    stars: 5
+  },
+  {
+    text: "Finally a platform where creators get priority. The payout system is transparent and I get my money every month like clockwork.",
+    name: "Vikas Patel",
+    stars: 4
+  },
+  {
+    text: "Mein music online sikhati hoon aur GoLiveGram ka streaming quality pristine hai. Mere students ko sabhi interactive features bahut pasand hain.",
+    name: "Sneha Kapoor",
+    stars: 5
+  },
+  {
+    text: "Shopping integration ab add ho gaya, toh ab main live stream ke during hi product sell kar sakta hoon. Game changer bilkul!",
+    name: "Deepak Sharma",
+    stars: 3
+  },
+  {
+    text: "Beauty creation ke liye best platform! Video quality aur lighting bilkul superior hai. Followers ki quality bhi bohot acha raehta hai.",
+    name: "Ritika Verma",
+    stars: 5
+  },
+  {
+    text: "I switched from other platforms and regret not doing it sooner. The rewards are 5x better here. Worth every bit!",
+    name: "Mohan Singh",
+    stars: 4
+  },
+  {
+    text: "Yahan par community bohot supportive hai. Mene real friends bhi banaye through creator network. Sirf paise nahi, true connection milti hai!",
+    name: "Shreya Nair",
+    stars: 5
+  },
+  {
+    text: "Gaming streams bilkul smooth hain. Zero lag, amazing filters, aur audience interaction feature unmatched hai.",
+    name: "Aditya Reddy",
+    stars: 4
+  },
+  {
+    text: "Naye creators ke liye guides aur tutorials bohot helpful hain. Pehle din se hi monetization start kar sakte ho easily!",
+    name: "Pooja Desai",
+    stars: 3
+  },
+  {
+    text: "I earned ₹50,000 in my first week! The viral potential here is real. My content gets discovered so naturally.",
+    name: "Ishan Tiwari",
+    stars: 5
+  },
+  {
+    text: "Donation system bilkul perfect hai streaming ke time. Loyal followers ko support karna bahut easy ho gaya!",
+    name: "Divya Chatterjee",
+    stars: 4
+  },
+  {
+    text: "I host productivity workshops and GoLiveGram's scheduling features are perfect. My recurring viewers never miss a session.",
+    name: "Suresh Kumar",
+    stars: 5
+  },
+  {
+    text: "Safety features kamaal ke hain. Mujhe secure feel hota hai is platform par. Blocking aur moderation tools bilkul effective hain.",
+    name: "Ananya Wagh",
+    stars: 4
+  },
+  {
+    text: "Mera career ka best investment! Ab GoLiveGram hi mera main income source hai. Day job se bhi zyada earn kar rahe hain!",
+    name: "Vikram Deshmukh",
+    stars: 5
+  }
+];
+
+const row1 = reviews.slice(0, 10);
+const row2 = reviews.slice(10, 20);
+
+const TestimonialCard = ({ text, name, stars }: { text: string; name: string; stars: number }) => (
+  <div className="testimonial-card-new">
+    <div className="testimonial-card-stars">
+      {Array.from({ length: stars }).map((_, i) => (
+        <span key={i}>★</span>
+      ))}
+    </div>
+    <p className="testimonial-card-text">{text}</p>
+    <p className="testimonial-card-name">{name}</p>
+  </div>
+);
 
 const Testimonials: React.FC = () => {
-  const testimonials = [
-    {
-      name: "Priya Sharma",
-      handle: "@priya_cooking",
-      avatar: "👩‍🍳",
-      earnings: "₹12,47,000",
-      period: "First Month",
-      quote: "I made 12 lakhs in my first month! GoLiveGram's monetization features are incredible.",
-      rating: 5,
-      verified: true,
-      followers: "4.5L",
-      category: "Cooking"
-    },
-    {
-      name: "Arjun Patel",
-      handle: "@arjun_fitness",
-      avatar: "�‍💪",
-      earnings: "₹6,80,000",
-      period: "Monthly Average",
-      quote: "Getting 10x more engagement than other platforms! My community loves the live features.",
-      rating: 5,
-      verified: true,
-      followers: "2.8L",
-      category: "Fitness"
-    },
-    {
-      name: "Kavya Reddy",
-      handle: "@kavya_art",
-      avatar: "👩‍🎨",
-      earnings: "₹9,60,000",
-      period: "Last Month",
-      quote: "The brand partnership opportunities are amazing. Finally earning what I deserve!",
-      rating: 5,
-      verified: true,
-      followers: "3.5L",
-      category: "Art & Design"
-    },
-    {
-      name: "Rohit Gupta",
-      handle: "@rohit_tech",
-      avatar: "👨‍💻",
-      earnings: "₹16,00,000",
-      period: "Monthly Record",
-      quote: "Best creator platform I've ever used. The analytics help me optimize everything perfectly.",
-      rating: 5,
-      verified: true,
-      followers: "5.2L",
-      category: "Technology"
-    }
-  ];
-
-  const brandPartners = [
-    "Flipkart", "Zomato", "Paytm", "Myntra", "BigBasket", "Swiggy"
-  ];
-
   return (
-    <section id="testimonials" className="py-12 sm:py-16 lg:py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-yellow-100 rounded-full text-yellow-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">
-            🌟 Success Stories
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-heading font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-            Real Creators,
-            <span className="text-gradient bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent"> Real Success</span>
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Join thousands of creators who are already building their empire on GoLiveGram 🚀
-          </p>
-        </div>
+    <section id="testimonials" className="py-20 bg-white overflow-hidden">
+      {/* Section Header */}
+      <div className="max-w-6xl mx-auto px-4 text-center mb-12">
+        <span className="inline-block text-xs bg-white text-red-600 px-3 py-1 rounded-full font-medium mb-4 border border-black">
+          Reviews
+        </span>
+        <h2 className="text-fluid-h2 font-bold text-black mb-3">
+          What Creators Are Saying
+        </h2>
+        <p className="text-fluid-body text-black max-w-prose mx-auto">
+          Thousands of creators trust GoLiveGram every day.
+        </p>
+      </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-50 rounded-2xl p-6 lg:p-8 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start space-x-4 mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center text-lg sm:text-2xl flex-shrink-0">
-                  {testimonial.avatar}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <h4 className="font-bold text-gray-900 text-sm sm:text-base truncate">{testimonial.name}</h4>
-                    {testimonial.verified && (
-                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
-                    )}
-                  </div>
-                  <div className="text-gray-600 text-xs sm:text-sm mb-1 truncate">{testimonial.handle}</div>
-                  <div className="text-xs text-gray-500 truncate">
-                    {testimonial.followers} followers • {testimonial.category}
-                  </div>
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <div className="text-lg sm:text-2xl font-bold text-green-600">{testimonial.earnings}</div>
-                  <div className="text-xs text-gray-500">{testimonial.period}</div>
-                </div>
-              </div>
-              
-              <blockquote className="text-gray-700 italic mb-4 text-sm sm:text-base lg:text-lg leading-relaxed">
-                "{testimonial.quote}"
-              </blockquote>
-              
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div className="flex items-center space-x-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <div className="text-xs sm:text-sm text-gray-500">
-                  Verified Creator ✅
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Brand Partners */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 lg:mb-8">
-            Trusted by Top Brands 🏢
-          </h3>
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 opacity-60">
-            {brandPartners.map((brand, index) => (
-              <div key={index} className="bg-gray-100 px-4 py-2 sm:px-6 sm:py-3 rounded-full">
-                <span className="font-semibold text-gray-700 text-sm sm:text-base">{brand}</span>
-              </div>
+      {/* Row 1 — scrolls left */}
+      <div className="max-w-6xl mx-auto mb-4 px-4">
+        <div className="testimonial-marquee-row">
+          <div className="testimonial-marquee-track testimonial-marquee-track--left">
+            {[...row1, ...row1].map((r, i) => (
+              <TestimonialCard key={`r1-${i}`} text={r.text} name={r.name} stars={r.stars} />
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Enhanced Stats Banner */}
-        <div className="relative overflow-hidden bg-white border-2 border-gray-200 rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 text-center shadow-lg">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 opacity-20 hidden sm:block">
-            <div className="absolute top-0 left-0 w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-white rounded-full -translate-x-10 sm:-translate-x-16 lg:-translate-x-20 -translate-y-10 sm:-translate-y-16 lg:-translate-y-20 animate-pulse"></div>
-            <div className="absolute top-1/2 right-0 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-yellow-300 rounded-full translate-x-8 sm:translate-x-12 lg:translate-x-16 animate-bounce delay-300"></div>
-            <div className="absolute bottom-0 left-1/3 w-12 h-12 sm:w-18 sm:h-18 lg:w-24 lg:h-24 bg-cyan-300 rounded-full translate-y-6 sm:translate-y-9 lg:translate-y-12 animate-pulse delay-700"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-green-300 rounded-full animate-bounce delay-1000"></div>
-          </div>
-
-          <div className="relative z-10 max-w-5xl mx-auto">
-            {/* Main Heading */}
-            <div className="mb-6 lg:mb-8">
-              <div className="inline-flex items-center gap-2 sm:gap-3 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-3 sm:mb-4">
-                <span className="text-lg sm:text-2xl">🚀</span>
-                <span className="text-xs sm:text-sm font-semibold">JOIN THE REVOLUTION</span>
-                <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
-              </div>
-              
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4 text-gray-900 leading-tight">
-                Join 25L+ Creators Worldwide
-              </h3>
-              
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                Share your passion with GoLiveGram's creator-first platform
-              </p>
-            </div>
-
-            {/* Enhanced Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 lg:mb-10">
-              <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl lg:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-green-400/20 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative z-10">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 text-emerald-200">₹1L+</div>
-                  <div className="text-white/90 font-semibold text-sm sm:text-base">💰 Paid to Creators</div>
-                  <div className="text-xs text-emerald-200 mt-1">+25% this month</div>
-                </div>
-              </div>
-              
-              <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl lg:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-yellow-400/20 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative z-10">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 text-amber-200">4.8⭐</div>
-                  <div className="text-white/90 font-semibold text-sm sm:text-base">📱 Play Store Rating</div>
-                  <div className="text-xs text-amber-200 mt-1">1.5K+ reviews</div>
-                </div>
-              </div>
-              
-              <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl lg:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 sm:col-span-2 lg:col-span-1">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative z-10">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 text-cyan-200">300%</div>
-                  <div className="text-white/90 font-semibold text-sm sm:text-base">📈 Monthly Growth</div>
-                  <div className="text-xs text-cyan-200 mt-1">Fastest growing</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
-              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs sm:text-sm text-white/80">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span>99.9% Uptime</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
-                  <span>24/7 Support</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-500"></div>
-                  <span>Free to Start</span>
-                </div>
-              </div>
-            </div>
+      {/* Row 2 — scrolls right */}
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="testimonial-marquee-row">
+          <div className="testimonial-marquee-track testimonial-marquee-track--right">
+            {[...row2, ...row2].map((r, i) => (
+              <TestimonialCard key={`r2-${i}`} text={r.text} name={r.name} stars={r.stars} />
+            ))}
           </div>
         </div>
       </div>

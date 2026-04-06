@@ -1,33 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../Layout/Header';
+import Footer from '../Layout/Footer';
 
 const TermsOfService: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Clean Header with Logo Only */}
-      <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-          <Link
-            to="/"
-            className="inline-flex items-center hover:scale-105 transition-transform duration-200"
-            aria-label="Go back to GoLiveGram homepage"
-          >
-            <img
-              src="/test_1.svg"
-              alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
-              className="h-10 w-auto hover:scale-105 transition-transform duration-200"
-              style={{ maxWidth: '260px', mixBlendMode: 'multiply' }}
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = '/test_1.svg';
-              }}
-            />
-          </Link>
-        </div>
-      </header>
-
-      {/* Terms of Service Content */}
-      <main className="py-4 sm:py-8 md:py-12">
+    <>
+      <Header />
+      <main className="min-h-screen bg-white pt-24 pb-0">
+        <div className="py-4 sm:py-8 md:py-12">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 lg:p-12">
@@ -96,7 +77,7 @@ const TermsOfService: React.FC = () => {
 
                   <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">4.2 Revenue Share</h3>
                   <p className="text-sm md:text-base text-gray-700 mb-3 md:mb-4">
-                    GoLiveGram takes a percentage of earnings from monetization features to cover platform costs and payment
+                    GoLiveGram takes a percentage of rewards from monetization features to cover platform costs and payment
                     processing fees. The exact revenue split is detailed in your Creator Dashboard and may vary by region and
                     payment method. We reserve the right to adjust our revenue share model with 30 days' notice.
                   </p>
@@ -157,7 +138,7 @@ const TermsOfService: React.FC = () => {
                   <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">9.1 By You</h3>
                   <p className="text-sm md:text-base text-gray-700 mb-3 md:mb-4">
                     You may terminate your account at any time through your account settings. Upon termination, you will lose
-                    access to all features and any unpaid earnings below the minimum payout threshold.
+                    access to all features and any unpaid rewards below the minimum payout threshold.
                   </p>
 
                   <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">9.2 By Us</h3>
@@ -174,7 +155,7 @@ const TermsOfService: React.FC = () => {
                   <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">10.1 Service Availability</h3>
                   <p className="text-sm md:text-base text-gray-700 mb-3 md:mb-4">
                     We strive to provide reliable service but cannot guarantee uninterrupted access. The Platform is provided
-                    "as is" without warranties of any kind. We are not liable for any loss of data, earnings, or other damages
+                    "as is" without warranties of any kind. We are not liable for any loss of data, rewards, or other damages
                     resulting from service interruptions.
                   </p>
 
@@ -242,17 +223,10 @@ const TermsOfService: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
-
-      {/* Simple Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-12">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} GoLiveGram. All rights reserved.
-          </p>
         </div>
-      </footer>
-    </div>
+      </main>
+      <Footer />
+    </>
   );
 };
 

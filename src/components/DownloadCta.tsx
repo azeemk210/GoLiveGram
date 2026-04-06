@@ -24,12 +24,14 @@ const DownloadCta: React.FC<DownloadCtaProps> = ({
     handleDownload({ platform, source, campaign });
   };
 
-  const baseClasses = "inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-500 hover:to-secondary-500 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary-500/25 focus:outline-none focus:ring-4 focus:ring-primary-500/50";
+  const baseClasses = "inline-flex items-center justify-center gap-3 px-8 py-4 bg-black text-white border border-white font-semibold rounded-xl transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2";
+  const baseStyle = { outlineColor: '#ee3a3a' };
 
   return (
     <button
       onClick={handleClick}
       className={`${baseClasses} ${className}`}
+      style={baseStyle}
       type="button"
       aria-label={`Download for ${platform}`}
     >

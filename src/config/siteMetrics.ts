@@ -1,5 +1,5 @@
 export const SITE_METRICS = {
-  activeCreators: 125_000,
+  activeCreators: 10_000,
   totalViewers: 2_800_000,
   appRating: 4.6,
   paidToCreatorsUSD: 2_000_000,

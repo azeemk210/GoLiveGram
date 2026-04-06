@@ -1,147 +1,96 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  PhoneCall,
-  Image as ImageIcon,
-  CheckCircle2,
-  TrendingUp,
-  Star,
-  Users,
-  LayoutGrid,
-  Camera
-} from 'lucide-react';
-
-const FeatureItem = ({ feature, index }: { feature: any, index: number }) => {
-  const isEven = index % 2 === 0;
-
-  return (
-    <div
-      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-24 mb-24 last:mb-0 max-w-7xl mx-auto`}
-    >
-      {/* Content Side */}
-      <div className="flex-1 space-y-8 lg:max-w-xl">
-        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300`}>
-          {React.cloneElement(feature.icon as React.ReactElement<any>, { className: 'w-8 h-8' })}
-        </div>
-
-        <div className="space-y-6">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-red-50 border border-red-100">
-            <span className="text-xs font-bold text-red-600 uppercase tracking-widest">{feature.badge}</span>
-          </div>
-
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-gray-900 leading-[1.1]">
-            {feature.title}
-          </h3>
-
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed font-medium">
-            {feature.description}
-          </p>
-        </div>
-
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {feature.points.map((point: string, idx: number) => (
-            <li key={idx} className="flex items-center space-x-3 text-gray-700 bg-gray-50 p-4 rounded-xl border border-gray-100 hover:border-red-200 transition-colors group">
-              <div className="bg-white p-1 rounded-full shadow-sm group-hover:scale-110 transition-transform">
-                <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0" />
-              </div>
-              <span className="font-semibold text-base">{point}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Visual Side */}
-      <div className="flex-1 w-full lg:max-w-xl relative">
-        <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-20 blur-3xl rounded-[60px] transform ${isEven ? 'translate-x-12 translate-y-12' : '-translate-x-12 -translate-y-12'}`}></div>
-
-        <div className="relative">
-          <div className="bg-white p-4 rounded-[40px] shadow-2xl border border-gray-100">
-            <div className={`relative rounded-[32px] overflow-hidden bg-gray-100 ${feature.isFullSize ? '' : 'aspect-[4/3]'}`}>
-              <img
-                src={feature.image}
-                alt={feature.title}
-                className={`w-full ${feature.isFullSize ? 'h-auto block' : 'h-full object-cover'}`}
-                loading="eager"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop';
-                }}
-              />
-            </div>
-
-            {/* Floating Stats Card */}
-            <div className={`absolute -bottom-6 ${isEven ? '-left-6' : '-right-6'} bg-white p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100`}>
-              <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center shrink-0`}>
-                  <TrendingUp className="w-6 h-6 text-green-600" />
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Impact</div>
-                  <div className="text-lg font-black text-gray-900 leading-none">{feature.highlight}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { Star, CheckCircle2, XCircle, AlertCircle, Zap, TrendingUp, Trophy, Lightbulb } from 'lucide-react';
 
 const Features: React.FC = () => {
-  const features = [
+  const comparisonRows = [
     {
-      title: "Post Stories & Earn per View",
-      description: "Share your life highlights and get rewarded for your reach. Every view translates into earnings.",
-      icon: <ImageIcon />,
-      color: "from-orange-500 to-red-600",
-      image: "/post_stories.jpg",
-      badge: "Highest Earning",
-      highlight: "Earn for every view",
-      points: ["Real-time Earning Stats", "Global Audience Reach", "HD Story Support", "Instant Payouts"]
+      feature: '💰 Monetization',
+      golivegram: 'Early rewarding for all creators',
+      golivegram_status: 'check',
+      other: 'Only for large creators',
+      other_status: 'x',
     },
     {
-      title: "Snap & Earn Rewards",
-      description: "Send private snaps to your friends and followers and get rewarded for candid moments.",
-      icon: <Camera />,
-      color: "from-yellow-400 to-orange-500",
-      image: "/snap_earn.jpg",
-      badge: "Instant Profit",
-      highlight: "Earn per Snap",
-      points: ["Daily Snap Bonuses", "Disappearing Rewards", "Interactive Reactions", "Streak Multipliers"]
+      feature: '📊 Rewards Dashboard',
+      golivegram: 'Transparent & built-in',
+      golivegram_status: 'check',
+      other: 'Limited / unclear',
+      other_status: 'x',
     },
     {
-      title: "Post from Gallery",
-      description: "Your memories already matter — now they can earn too.",
-      icon: <LayoutGrid />,
-      color: "from-purple-500 to-indigo-600",
-      image: "/gallery_showcase.png",
-      isFullSize: true,
-      badge: "Showcase",
-      highlight: "Permanent Content",
-      points: ["HD Gallery Uploads", "Personal Branding", "High Quality Media", "Portfolio Mode"]
+      feature: '🤝 Brand Collaboration',
+      golivegram: 'Built-in marketplace',
+      golivegram_status: 'check',
+      other: 'External platforms required',
+      other_status: 'x',
     },
     {
-      title: "Audio Calls",
-      description: "Stay connected with high-fidelity, private audio calls. Experience crystal clear voice quality.",
-      icon: <PhoneCall />,
-      color: "from-blue-500 to-indigo-600",
-      image: "/private_calls.png",
-      isFullSize: true,
-      badge: "High Fidelity",
-      highlight: "Crystal Clear Voice",
-      points: ["Private 1v1 Calls", "Ultra-low Latency", "Secure Connection", "Voice Effects"]
-    }
+      feature: '🛍️ In-App Commerce',
+      golivegram: 'Creator selling enabled',
+      golivegram_status: 'check',
+      other: 'Limited / region-based',
+      other_status: 'warning',
+    },
+    {
+      feature: '🎯 Campaign Rewards',
+      golivegram: 'Tasks, challenges, rewards',
+      golivegram_status: 'check',
+      other: 'Rare or unavailable',
+      other_status: 'x',
+    },
+    {
+      feature: '🏆 Creator Levels',
+      golivegram: 'Structured growth system',
+      golivegram_status: 'check',
+      other: 'No structured progression',
+      other_status: 'x',
+    },
+    {
+      feature: '🔍 Discoverability',
+      golivegram: 'Boost for new creators',
+      golivegram_status: 'check',
+      other: 'High competition',
+      other_status: 'x',
+    },
+    {
+      feature: '🔐 Content Verification',
+      golivegram: 'AI + manual payout checks',
+      golivegram_status: 'check',
+      other: 'Not payout-focused',
+      other_status: 'x',
+    },
+    {
+      feature: '🎬 Short Videos',
+      golivegram: 'Yes',
+      golivegram_status: 'check',
+      other: 'Yes',
+      other_status: 'check',
+    },
+    {
+      feature: '🎥 Live Streaming',
+      golivegram: 'Yes (Rewarding enabled)',
+      golivegram_status: 'check',
+      other: 'Yes (Limited rewarding)',
+      other_status: 'check',
+    },
   ];
 
+  const getIcon = (status: string) => {
+    if (status === 'check') return <CheckCircle2 className="w-4 xs:w-5 h-4 xs:h-5 text-green-600 shrink-0" />;
+    if (status === 'warning') return <AlertCircle className="w-4 xs:w-5 h-4 xs:h-5 text-yellow-600 shrink-0" />;
+    return <XCircle className="w-4 xs:w-5 h-4 xs:h-5 text-red-600 shrink-0" />;
+  };
+
   return (
-    <section id="features" className="py-24 lg:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="features" className="pt-24 lg:pt-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
         {/* Section Header */}
-        <div className="max-w-4xl mx-auto text-center mb-24">
+        <div className="max-w-6xl mx-auto text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-bold uppercase tracking-widest mb-6 border border-red-100"
+            className="inline-flex items-center px-4 py-2 bg-white text-red-600 rounded-full text-sm font-bold uppercase tracking-widest mb-6 border border-black"
           >
             <Star className="w-4 h-4 mr-2" />
             Core Features
@@ -151,57 +100,200 @@ const Features: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-gray-900 mb-8 leading-tight tracking-tight"
+            className="text-fluid-h2 font-heading font-black text-black mb-8 leading-none tracking-tight"
           >
-            Built for the <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">Next Generation</span>
+            Built for the Next Generation
           </motion.h2>
-
-          <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium max-w-2xl mx-auto">
-            GoLiveGram provides the tools you need to build, grow, and monetize your community like never before.
-          </p>
         </div>
 
-        {/* Diagonal Layout Features */}
-        <div className="relative mb-32">
-          {features.map((feature, index) => (
-            <FeatureItem key={index} feature={feature} index={index} />
-          ))}
+        <div className="max-w-[76rem] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-lg sm:rounded-2xl md:rounded-[32px] border border-black shadow-xl overflow-hidden"
+          >
+            <div className="overflow-x-auto">
+              <table className="w-full text-center sm:text-left">
+                <thead>
+                  <tr className="bg-black border-b border-black">
+                    <th className="px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 py-2 xs:py-3 sm:py-4 text-[12px] sm:text-[15px] md:text-[20px] lg:text-[20px] font-bold uppercase tracking-wider text-white leading-tight text-center sm:text-left">Features</th>
+                    <th className="px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 py-2 xs:py-3 sm:py-4 text-[12px] sm:text-[15px] md:text-[20px] lg:text-[20px] font-bold uppercase tracking-wider text-white leading-tight text-left">GoLiveGram</th>
+                    <th className="px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 py-2 xs:py-3 sm:py-4 text-[12px] sm:text-[15px] md:text-[20px] lg:text-[20px] font-bold uppercase tracking-wider text-white leading-tight text-left">Other Platform</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map((row, index) => (
+                    <tr key={index} className="border-b border-black last:border-b-0 hover:bg-white transition-colors">
+                      <td className="px-2 xs:px-3 sm:px-4 md:px-6 py-3 xs:py-4 sm:py-5 text-xs xs:text-sm sm:text-base font-semibold text-black text-center sm:text-left">{row.feature}</td>
+                      <td className="px-2 xs:px-3 sm:px-4 md:px-6 py-3 xs:py-4 sm:py-5 text-xs xs:text-sm sm:text-base text-black text-left">
+                        <div className="inline-flex items-center gap-2 flex-row">
+                          {getIcon(row.golivegram_status)}
+                          <span className="text-xs xs:text-sm sm:text-base md:text-lg">{row.golivegram}</span>
+                        </div>
+                      </td>
+                      <td className="px-2 xs:px-3 sm:px-4 md:px-6 py-3 xs:py-4 sm:py-5 text-xs xs:text-sm sm:text-base text-black text-left">
+                        <div className="inline-flex items-center gap-2 flex-row">
+                          {getIcon(row.other_status)}
+                          <span className="text-xs xs:text-sm sm:text-base md:text-lg">{row.other}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="px-2 xs:px-3 sm:px-4 md:px-6 py-3 xs:py-4 sm:py-4 bg-white border-t border-black text-xs xs:text-sm text-black flex items-center gap-2">
+              <Star className="w-3 xs:w-4 h-3 xs:h-4 text-red-600 flex-shrink-0" />
+              <span>GoLiveGram outperforms on monetization, creator tools, and growth opportunities. See why creators are choosing us.</span>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Feature Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {/* Competitive Advantages Section */}
+        <div className="mt-24 lg:mt-32">
           <motion.div
-            whileHover={{ y: -5 }}
-            className="p-8 bg-gray-50 rounded-[32px] border border-gray-100 text-center hover:shadow-xl transition-all duration-300"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
           >
-            <div className="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-6">
-              <Users className="w-8 h-8 text-red-600" />
-            </div>
-            <div className="text-4xl font-black text-gray-900 mb-2">100K+</div>
-            <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Active Community</p>
+            <h3 className="text-fluid-h2 font-heading font-black text-black mb-6">
+              🚀 Key Competitive Advantages
+            </h3>
           </motion.div>
 
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="p-8 bg-gradient-to-br from-red-600 to-red-700 rounded-[32px] text-center shadow-xl shadow-red-200"
-          >
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-              <Star className="w-8 h-8 text-white" />
+          {/* Advantages Grid */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16">
+              {/* Advantage 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(107, 114, 128, 0.15)' }}
+                className="h-full p-6 sm:p-8 border-2 border-gray-300 rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-black">
+                    <Zap className="w-5 h-5 text-red-600" />
+                  </div>
+                  <h4 className="font-bold text-black text-sm sm:text-base">Early Monetization</h4>
+                </div>
+                <p className="text-xs sm:text-sm text-black leading-relaxed">
+                  Start rewarding from the beginning — no need to wait for a large audience.
+                </p>
+              </motion.div>
+
+              {/* Advantage 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(107, 114, 128, 0.15)' }}
+                className="h-full p-6 sm:p-8 border-2 border-gray-300 rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-black">
+                    <TrendingUp className="w-5 h-5 text-red-600" />
+                  </div>
+                  <h4 className="font-bold text-black text-sm sm:text-base">Transparent Rewards</h4>
+                </div>
+                <p className="text-xs sm:text-sm text-black leading-relaxed">
+                  Track views, rewards, and performance in one clear, built-in dashboard.
+                </p>
+              </motion.div>
+
+              {/* Advantage 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(107, 114, 128, 0.15)' }}
+                className="h-full p-6 sm:p-8 border-2 border-gray-300 rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-black">
+                    <Trophy className="w-5 h-5 text-red-600" />
+                  </div>
+                  <h4 className="font-bold text-black text-sm sm:text-base">Creator Growth</h4>
+                </div>
+                <p className="text-xs sm:text-sm text-black leading-relaxed">
+                  Clear progression: Bronze → Silver → Gold → Platinum with visible benefits.
+                </p>
+              </motion.div>
+
+              {/* Advantage 4 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(107, 114, 128, 0.15)' }}
+                className="h-full p-6 sm:p-8 border-2 border-gray-300 rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-black">
+                    <Lightbulb className="w-5 h-5 text-red-600" />
+                  </div>
+                  <h4 className="font-bold text-black text-sm sm:text-base">All-in-One Platform</h4>
+                </div>
+                <p className="text-xs sm:text-sm text-black leading-relaxed">
+                  Collaborations, affiliates, and selling — all inside one platform.
+                </p>
+              </motion.div>
             </div>
-            <div className="text-4xl font-black text-white mb-2">4.8/5</div>
-            <p className="text-sm text-red-100 font-bold uppercase tracking-wider">App Store Rating</p>
+          </div>
+
+          {/* USP Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="bg-white border-2 border-gray-300 rounded-lg p-8 md:p-12 mb-16 max-w-6xl mx-auto"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {/* What Makes It Different */}
+              <div>
+                <h4 className="text-lg font-bold text-black mb-4 flex items-center gap-2">
+                  <span className="text-red-600">💡</span>
+                  What Makes It Different
+                </h4>
+                <ul className="space-y-2 text-sm text-black">
+                  <li>✓ Creator-first approach (not follower-first)</li>
+                  <li>✓ Monetization + social combined</li>
+                  <li>✓ Focus on talent, not just reach</li>
+                  <li>✓ Real opportunities for emerging creators</li>
+                </ul>
+              </div>
+
+              {/* Traditional Platforms */}
+              <div>
+                <h4 className="text-lg font-bold text-black mb-4 flex items-center gap-2">
+                  <span className="text-gray-600">📊</span>
+                  Traditional Platforms
+                </h4>
+                <ul className="space-y-2 text-sm text-black">
+                  <li>• Audience growth first</li>
+                  <li>• Monetization later</li>
+                  <li>• Limited visibility for new creators</li>
+                  <li>• External tools required</li>
+                </ul>
+              </div>
+
+              {/* GoLiveGram Approach */}
+              <div>
+                <h4 className="text-lg font-bold text-black mb-4 flex items-center gap-2">
+                  <span className="text-red-600">🚀</span>
+                  GoLiveGram Approach
+                </h4>
+                <ul className="space-y-2 text-sm text-black">
+                  <li>✓ Rewarding from day 1</li>
+                  <li>✓ Fair exposure for new creators</li>
+                  <li>✓ Transparent tracking</li>
+                  <li>✓ Everything built-in</li>
+                </ul>
+              </div>
+            </div>
           </motion.div>
 
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="p-8 bg-gray-50 rounded-[32px] border border-gray-100 text-center hover:shadow-xl transition-all duration-300"
-          >
-            <div className="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-6">
-              <TrendingUp className="w-8 h-8 text-blue-600" />
-            </div>
-            <div className="text-4xl font-black text-gray-900 mb-2">300%</div>
-            <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Monthly Growth</p>
-          </motion.div>
         </div>
       </div>
     </section>

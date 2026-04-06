@@ -5,18 +5,19 @@ import FloatingElements from '../UI/FloatingElements';
 
 // Lazy imports for performance
 const Features = React.lazy(() => import('./Features'));
-const Monetization = React.lazy(() => import('./Monetization'));
 const Statistics = React.lazy(() => import('./Statistics'));
 const MobilePreview = React.lazy(() => import('./MobilePreview'));
+const Monetization = React.lazy(() => import('./Monetization'));
 const Testimonials = React.lazy(() => import('./Testimonials'));
+const ConnectWithUs = React.lazy(() => import('./ConnectWithUs'));
 const CallToAction = React.lazy(() => import('./CallToAction'));
 
 // Loading component for Suspense fallbacks
 const SectionLoader: React.FC<{ height?: string }> = ({ height = 'h-96' }) => (
-  <div className={`${height} flex items-center justify-center bg-gradient-to-r from-gray-100 to-gray-200`}> {/* Updated background */}
+  <div className={`${height} flex items-center justify-center bg-white`}>
     <div className="flex flex-col items-center space-y-4">
-      <div className="w-10 h-10 border-4 border-blue-300 border-t-blue-600 rounded-full animate-spin"></div> {/* Updated spinner */}
-      <p className="text-gray-700 font-semibold">Please wait, loading content...</p> {/* Updated message */}
+      <div className="w-10 h-10 border-4 border-black border-t-transparent rounded-full animate-spin opacity-50"></div>
+      <p className="text-black font-semibold">Please wait, loading content...</p>
     </div>
   </div>
 );
@@ -64,7 +65,9 @@ const HomePage: React.FC = () => {
       </Suspense>
 
       <Suspense fallback={<SectionLoader />}>
-        <Monetization />
+        <div id="monetization">
+          <Monetization />
+        </div>
       </Suspense>
       
       <Suspense fallback={<SectionLoader />}>
@@ -73,6 +76,10 @@ const HomePage: React.FC = () => {
       
       <Suspense fallback={<SectionLoader />}>
         <Testimonials />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <ConnectWithUs />
       </Suspense>
       
       <Suspense fallback={<SectionLoader />}>

@@ -4,7 +4,7 @@
 export const APP_STORE_URLS = {
   ios: 'https://apps.apple.com/us/app/golivegram/id6755330284',
   android: 'https://play.google.com/store/apps/details?id=com.golivegram.app',
-  web: 'https://www.golivegram.com/webapp/login/', // Web app URL
+  web: 'https://www.golivegram.com/webapp/login/', // Web login URL
 };
 
 // Temporary URLs for development/demo (remove when real app is ready)

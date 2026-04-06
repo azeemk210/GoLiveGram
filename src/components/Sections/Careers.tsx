@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../Layout/Header';
+import Footer from '../Layout/Footer';
 import {
   Briefcase,
   MapPin,
@@ -176,6 +178,146 @@ const Careers: React.FC = () => {
         'Experience in streaming or creator economy is a plus',
         'Empathetic and patient approach to problem-solving'
       ]
+    },
+    {
+      id: '6',
+      title: 'Senior Frontend Developer (React)',
+      department: 'Engineering',
+      location: 'Remote / San Francisco, CA',
+      type: 'Full-time',
+      salary: '$130k - $190k',
+      icon: <Code className="w-6 h-6" />,
+      description: 'Lead frontend development efforts for our web platform serving millions of creators worldwide. Build high-performance, responsive web applications using modern React technologies.',
+      responsibilities: [
+        'Design and implement scalable frontend architecture using React and TypeScript',
+        'Develop responsive, accessible web interfaces',
+        'Optimize web application performance and bundle size',
+        'Mentor junior engineers and conduct code reviews',
+        'Collaborate with designers and product team on feature implementation',
+        'Implement state management solutions using Context API or Redux',
+        'Lead frontend performance optimization initiatives'
+      ],
+      requirements: [
+        '6+ years of professional frontend development experience',
+        'Expert-level proficiency in React, TypeScript, and modern JavaScript',
+        'Strong knowledge of HTML5, CSS3, and responsive design',
+        'Experience with state management tools (Redux, Zustand, etc.)',
+        'Knowledge of web performance optimization techniques',
+        'Familiarity with testing frameworks (Jest, React Testing Library)',
+        'Experience with Git and agile development practices'
+      ]
+    },
+    {
+      id: '7',
+      title: 'Full Stack Developer (Node.js + React)',
+      department: 'Engineering',
+      location: 'Remote',
+      type: 'Full-time',
+      salary: '$110k - $160k',
+      icon: <Code className="w-6 h-6" />,
+      description: 'Build end-to-end features for our web application. Work on both frontend (React) and backend (Node.js) to create seamless user experiences for our creator community.',
+      responsibilities: [
+        'Develop full-stack features using Node.js and React',
+        'Design and implement RESTful APIs and GraphQL endpoints',
+        'Optimize database queries and improve system performance',
+        'Implement authentication and security best practices',
+        'Collaborate with team members on system architecture',
+        'Write clean, testable code with comprehensive documentation',
+        'Deploy and monitor applications in production'
+      ],
+      requirements: [
+        '4+ years of full-stack development experience',
+        'Strong proficiency in Node.js and Express.js',
+        'Solid React and TypeScript skills',
+        'Experience with databases (PostgreSQL, MongoDB)',
+        'Knowledge of RESTful API design and GraphQL',
+        'Familiarity with Docker and deployment tools',
+        'Understanding of microservices architecture is a plus'
+      ]
+    },
+    {
+      id: '8',
+      title: 'Mobile App Developer (Flutter/Swift)',
+      department: 'Engineering',
+      location: 'Remote / Bangalore, India',
+      type: 'Full-time',
+      salary: '$80k - $130k',
+      icon: <Code className="w-6 h-6" />,
+      description: 'Develop cross-platform mobile applications for iOS and Android using Flutter. Help creators reach their audiences across all devices.',
+      responsibilities: [
+        'Build cross-platform mobile apps using Flutter',
+        'Develop iOS-specific features using Swift when needed',
+        'Implement real-time features for live streaming',
+        'Optimize app performance and reduce load times',
+        'Collaborate with product and design teams',
+        'Conduct code reviews and maintain code quality',
+        'Test and debug mobile applications across devices'
+      ],
+      requirements: [
+        '4+ years of mobile application development',
+        'Strong experience with Flutter and Dart',
+        'Knowledge of Swift, Kotlin, or native mobile development',
+        'Experience with Firebase and cloud services',
+        'Understanding of mobile UI/UX principles',
+        'Experience with version control (Git)',
+        'Familiarity with app store deployment process'
+      ]
+    },
+    {
+      id: '9',
+      title: 'Web Application Developer (Next.js)',
+      department: 'Engineering',
+      location: 'Remote',
+      type: 'Full-time',
+      salary: '$100k - $150k',
+      icon: <Code className="w-6 h-6" />,
+      description: 'Build scalable web applications using Next.js for our rapidly growing platform. Focus on performance, SEO, and user experience.',
+      responsibilities: [
+        'Develop server-side rendering applications with Next.js',
+        'Implement SSR, SSG, and ISR strategies',
+        'Build responsive UI components with React',
+        'Optimize web vitals and SEO performance',
+        'Integrate with backend APIs and databases',
+        'Implement authentication and authorization',
+        'Deploy applications to production environments'
+      ],
+      requirements: [
+        '3+ years of web application development',
+        'Strong expertise in Next.js and React',
+        'Proficiency in TypeScript and modern JavaScript',
+        'Experience with Tailwind CSS or styled-components',
+        'Knowledge of SEO best practices and web performance',
+        'Experience with API integration and database management',
+        'Familiarity with Vercel deployment platform is a plus'
+      ]
+    },
+    {
+      id: '10',
+      title: 'Junior Frontend Developer',
+      department: 'Engineering',
+      location: 'Remote',
+      type: 'Full-time',
+      salary: '$50k - $75k',
+      icon: <Code className="w-6 h-6" />,
+      description: 'Start your career with us as a Junior Frontend Developer. Work on real projects, grow your skills, and contribute to features used by millions of creators.',
+      responsibilities: [
+        'Build React components based on design specifications',
+        'Implement responsive user interfaces',
+        'Collaborate with senior developers and designers',
+        'Fix bugs and improve application functionality',
+        'Write unit tests for components',
+        'Learn and adopt best practices in frontend development',
+        'Participate in code reviews and team discussions'
+      ],
+      requirements: [
+        'Strong understanding of HTML5, CSS3, and JavaScript',
+        'Solid knowledge of React basics and hooks',
+        'Familiarity with responsive design principles',
+        'Basic understanding of TypeScript',
+        'Experience with Git and version control',
+        'Passion for learning and self-improvement',
+        'Bachelor\'s degree in Computer Science or equivalent experience'
+      ]
     }
   ];
 
@@ -210,38 +352,18 @@ const Careers: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-          <Link
-            to="/"
-            className="inline-flex items-center hover:scale-105 transition-transform duration-200"
-            aria-label="Go back to GoLiveGram homepage"
-          >
-            <img
-              src="/test_1.svg"
-              alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
-              className="h-10 w-auto hover:scale-105 transition-transform duration-200"
-              style={{ maxWidth: '260px', mixBlendMode: 'multiply' }}
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = '/test_1.svg';
-              }}
-            />
-          </Link>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16 md:py-24">
-        <div className="container mx-auto px-6">
+    <>
+      <Header />
+      <main className="min-h-screen bg-white pt-24">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-red-50 via-white to-white py-16 md:py-24">
+        <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Join the GoLiveGram Team 🚀</h1>
-            <p className="text-xl md:text-2xl mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black">Join the GoLiveGram Team <span className="text-red-600">🚀</span></h1>
+            <p className="text-lg md:text-xl mb-4 text-gray-700">
               Help us empower millions of creators worldwide
             </p>
-            <p className="text-lg opacity-90">
+            <p className="text-base text-gray-600">
               We're building the future of live streaming and creator monetization.
               Join our passionate team and make a real impact.
             </p>
@@ -251,45 +373,48 @@ const Careers: React.FC = () => {
 
       {/* Why Join Us */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Join GoLiveGram?</h2>
+        <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
+          <h2 className="text-fluid-h2 font-bold text-center mb-12">Why Join GoLiveGram?</h2>
+          
+          {/* Later h2 */}
+          {/* skip to preserve unique context */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <div className="text-center">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-8 h-8 text-purple-600" />
+              <div className="bg-white border border-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Fast-Growing</h3>
-              <p className="text-gray-600">Join a rocket ship with millions of users</p>
+              <p className="text-black">Join a rocket ship with millions of users</p>
             </div>
             <div className="text-center">
-              <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-pink-600" />
+              <div className="bg-white border border-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Amazing Team</h3>
-              <p className="text-gray-600">Work with talented, passionate people</p>
+              <p className="text-black">Work with talented, passionate people</p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-blue-600" />
+              <div className="bg-white border border-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Remote-First</h3>
-              <p className="text-gray-600">Work from anywhere in the world</p>
+              <p className="text-black">Work from anywhere in the world</p>
             </div>
             <div className="text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8 text-green-600" />
+              <div className="bg-white border border-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Great Benefits</h3>
-              <p className="text-gray-600">Competitive salary, equity, and perks</p>
+              <p className="text-black">Competitive salary, equity, and perks</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Job Openings */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Open Positions</h2>
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
+          <h2 className="text-fluid-h2 font-bold text-center mb-12">Open Positions</h2>
 
           <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {jobOpenings.map((job) => (
@@ -300,35 +425,31 @@ const Careers: React.FC = () => {
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-3 rounded-lg">
+                    <div className="bg-black text-white border border-white p-3 rounded-lg">
                       {job.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
-                      <p className="text-gray-600">{job.department}</p>
+                      <h3 className="text-xl font-bold text-black">{job.title}</h3>
+                      <p className="text-black opacity-70">{job.department}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-gray-600 text-sm">
+                  <div className="flex items-center text-black opacity-70 text-sm">
                     <MapPin className="w-4 h-4 mr-2" />
                     {job.location}
                   </div>
-                  <div className="flex items-center text-gray-600 text-sm">
+                  <div className="flex items-center text-black opacity-70 text-sm">
                     <Clock className="w-4 h-4 mr-2" />
                     {job.type}
                   </div>
-                  <div className="flex items-center text-gray-600 text-sm">
-                    <DollarSign className="w-4 h-4 mr-2" />
-                    {job.salary}
-                  </div>
                 </div>
 
-                <p className="text-gray-700 mb-4 line-clamp-2">{job.description}</p>
+                <p className="text-black opacity-90 mb-4 line-clamp-2">{job.description}</p>
 
                 <button
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-200"
+                  className="w-full bg-black text-white border border-white py-3 rounded-lg font-semibold hover:bg-red-600 transition-all duration-300"
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedJob(job);
@@ -356,8 +477,8 @@ const Careers: React.FC = () => {
             <div className="p-6 md:p-8 border-b">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{selectedJob.title}</h2>
-                  <div className="flex flex-wrap gap-4 text-gray-600">
+                  <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">{selectedJob.title}</h2>
+                  <div className="flex flex-wrap gap-4 text-black opacity-70">
                     <span className="flex items-center">
                       <Briefcase className="w-4 h-4 mr-1" />
                       {selectedJob.department}
@@ -370,25 +491,21 @@ const Careers: React.FC = () => {
                       <Clock className="w-4 h-4 mr-1" />
                       {selectedJob.type}
                     </span>
-                    <span className="flex items-center">
-                      <DollarSign className="w-4 h-4 mr-1" />
-                      {selectedJob.salary}
-                    </span>
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedJob(null)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl"
+                  className="text-black opacity-50 hover:text-black text-2xl transition-all duration-300"
                 >
                   ×
                 </button>
               </div>
 
-              <p className="text-gray-700 mb-6">{selectedJob.description}</p>
+              <p className="text-black opacity-90 mb-6">{selectedJob.description}</p>
 
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-3">Responsibilities</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc pl-5 space-y-2 text-black opacity-90">
                   {selectedJob.responsibilities.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
@@ -397,7 +514,7 @@ const Careers: React.FC = () => {
 
               <div>
                 <h3 className="text-xl font-semibold mb-3">Requirements</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc pl-5 space-y-2 text-black opacity-90">
                   {selectedJob.requirements.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
@@ -411,15 +528,15 @@ const Careers: React.FC = () => {
 
               {isSubmitted ? (
                 <div className="text-center py-8">
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h4 className="text-2xl font-bold text-gray-900 mb-2">Application Submitted! 🎉</h4>
-                  <p className="text-gray-600">Thank you for your interest. We'll review your application and get back to you soon.</p>
+                    <CheckCircle className="w-16 h-16 mx-auto mb-4" style={{ color: '#ee3a3a' }} />
+                    <h4 className="text-2xl font-bold text-black mb-2">Application Submitted! 🎉</h4>
+                    <p className="text-black opacity-70">Thank you for your interest. We'll review your application and get back to you soon.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-black mb-2">
                         Full Name *
                       </label>
                       <input
@@ -428,13 +545,13 @@ const Careers: React.FC = () => {
                         value={formData.fullName}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-black rounded-lg focus:ring-2 transition-all duration-300" style={{ outlineColor: '#ee3a3a' }}
                         placeholder="John Doe"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-black mb-2">
                         Email Address *
                       </label>
                       <input
@@ -443,7 +560,7 @@ const Careers: React.FC = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-black rounded-lg focus:ring-2 transition-all duration-300" style={{ outlineColor: '#ee3a3a' }}
                         placeholder="john@example.com"
                       />
                     </div>
@@ -451,7 +568,7 @@ const Careers: React.FC = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-black mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -460,28 +577,28 @@ const Careers: React.FC = () => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-black rounded-lg focus:ring-2 transition-all duration-300" style={{ outlineColor: '#ee3a3a' }}
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        LinkedIn Profile
+                      <label className="block text-sm font-semibold text-black mb-2">
+                        LinkedIn URL
                       </label>
                       <input
                         type="url"
                         name="linkedIn"
                         value={formData.linkedIn}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-black rounded-lg focus:ring-2 transition-all duration-300" style={{ outlineColor: '#ee3a3a' }}
                         placeholder="https://linkedin.com/in/johndoe"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Portfolio / GitHub (Optional)
                     </label>
                     <input
@@ -489,13 +606,13 @@ const Careers: React.FC = () => {
                       name="portfolio"
                       value={formData.portfolio}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-black rounded-lg focus:ring-2 transition-all duration-300" style={{ outlineColor: '#ee3a3a' }}
                       placeholder="https://github.com/johndoe or https://yourportfolio.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Cover Letter *
                     </label>
                     <textarea
@@ -504,13 +621,13 @@ const Careers: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                      className="w-full px-4 py-3 border border-black rounded-lg focus:ring-2 transition-all duration-300 resize-none" style={{ outlineColor: '#ee3a3a' }}
                       placeholder="Tell us why you're a great fit for this role..."
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Resume / CV * (PDF, DOC, DOCX - Max 5MB)
                     </label>
                     <div className="relative">
@@ -524,13 +641,13 @@ const Careers: React.FC = () => {
                       />
                       <label
                         htmlFor="resume-upload"
-                        className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-purple-500 transition-colors"
+                        className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-black rounded-lg cursor-pointer hover:border-black transition-colors"
                       >
                         <div className="text-center">
-                          <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                          <p className="text-sm text-gray-600">
+                          <Upload className="w-8 h-8 text-black opacity-50 mx-auto mb-2" />
+                          <p className="text-sm text-black opacity-70">
                             {formData.resume ? (
-                              <span className="text-purple-600 font-semibold">{formData.resume.name}</span>
+                              <span className="text-black font-semibold">{formData.resume.name}</span>
                             ) : (
                               <>Click to upload or drag and drop</>
                             )}
@@ -544,13 +661,13 @@ const Careers: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setSelectedJob(null)}
-                      className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+                      className="flex-1 px-6 py-3 border-2 border-black text-black rounded-lg font-semibold hover:bg-black hover:text-white transition-all duration-300"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200"
+                      className="flex-1 px-6 py-3 bg-black text-white border border-white rounded-lg font-semibold hover:bg-white hover:text-black transition-all duration-300"
                     >
                       Submit Application
                     </button>
@@ -566,21 +683,14 @@ const Careers: React.FC = () => {
       <div className="py-12 text-center">
         <Link
           to="/"
-          className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-200 shadow-lg"
+          className="inline-flex items-center px-6 py-3 bg-black text-white border border-white font-semibold rounded-full hover:bg-red-600 transition-all duration-300 shadow-lg"
         >
           ← Back to Home
         </Link>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-12">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} GoLiveGram. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
+      </main>
+      <Footer />
+    </>
   );
 };
 

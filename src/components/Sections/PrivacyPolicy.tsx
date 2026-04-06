@@ -1,33 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Header from '../Layout/Header';
+import Footer from '../Layout/Footer';
 
 const PrivacyPolicy: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Clean Header with Logo Only */}
-      <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-          <Link
-            to="/"
-            className="inline-flex items-center hover:scale-105 transition-transform duration-200"
-            aria-label="Go back to GoLiveGram homepage"
-          >
-            <img
-              src="/test_1.svg"
-              alt="GoLiveGram - Stream, Connect & Monetize Your Passion"
-              className="h-10 w-auto hover:scale-105 transition-transform duration-200"
-              style={{ maxWidth: '260px', mixBlendMode: 'multiply' }}
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = '/test_1.svg';
-              }}
-            />
-          </Link>
-        </div>
-      </header>
-
-      {/* Privacy Policy Content */}
-      <main className="py-4 sm:py-8 md:py-12">
+    <>
+      <Header />
+      <div className="min-h-screen bg-white pt-24">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 lg:p-12">
@@ -156,8 +135,9 @@ const PrivacyPolicy: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

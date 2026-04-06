@@ -6,8 +6,36 @@ export default defineConfig({
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xs: '320px',    // Extra small phones
+      sm: '640px',    // Small phones
+      md: '768px',    // Tablets
+      lg: '1024px',   // Large tablets/small desktop
+      xl: '1280px',   // Desktop
+      '2xl': '1536px' // Large desktop
+    },
     extend: {
+      fontSize: {
+        /* Fluid Typography - scales smoothly from 375px to 1920px+ */
+        'fluid-h1': ['var(--fluid-h1)', { lineHeight: 'var(--fluid-h1-line-height)', fontWeight: '900' }],
+        'fluid-h2': ['var(--fluid-h2)', { lineHeight: 'var(--fluid-h2-line-height)', fontWeight: '700' }],
+        'fluid-h3': ['var(--fluid-h3)', { lineHeight: 'var(--fluid-h3-line-height)', fontWeight: '600' }],
+        'fluid-body': ['var(--fluid-body)', { lineHeight: 'var(--fluid-body-line-height)' }],
+        'fluid-sm': ['var(--fluid-sm)', { lineHeight: 'var(--fluid-sm-line-height)' }],
+      },
+      maxWidth: {
+        'prose': 'var(--max-width-prose)',
+      },
       colors: {
+        navy: {
+          900: '#ffffff',
+          800: '#fff5f5',
+          700: '#fff0f0',
+          600: '#f0d0d0',
+        },
+        'electric-teal': '#ee3a3a',
+        'teal-hover': '#d73333',
+        'teal-glow': 'rgba(238, 58, 58, 0.1)',
         primary: {
           50: '#fef2f2',
           100: '#fee2e2',
@@ -40,7 +68,7 @@ export default defineConfig({
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
         heading: ['Poppins', 'system-ui', 'sans-serif'],
       },
       animation: {
